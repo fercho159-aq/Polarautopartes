@@ -1,14 +1,10 @@
-import { CoverageStats } from '@/components/coverage-stats';
+
 import { ProductList } from '@/components/product-list';
 import { SearchFilters } from '@/components/search-filters';
 import { mockProducts } from '@/lib/mock-data';
 import { Card } from '@/components/ui/card';
 
 export default function Home() {
-  // In a real app, these values would come from a database query
-  const totalModelsCovered = 450;
-  const fleetCoveragePercentage = 85;
-
   return (
     <div>
       <section className="text-center my-12 container mx-auto px-4">
@@ -20,27 +16,14 @@ export default function Home() {
         </p>
       </section>
 
-      <Card className="rounded-none">
+      <Card className="rounded-none w-full">
         <div className="container mx-auto px-4 py-8">
           <SearchFilters />
         </div>
       </Card>
       
       <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          <aside className="lg:col-span-1">
-            <div className="sticky top-20">
-              <CoverageStats
-                modelsCovered={totalModelsCovered}
-                coveragePercentage={fleetCoveragePercentage}
-              />
-            </div>
-          </aside>
-
-          <main className="lg:col-span-3">
-            <ProductList products={mockProducts} />
-          </main>
-        </div>
+        <ProductList products={mockProducts} />
       </div>
     </div>
   );
