@@ -2,6 +2,7 @@ import { CoverageStats } from '@/components/coverage-stats';
 import { ProductList } from '@/components/product-list';
 import { SearchFilters } from '@/components/search-filters';
 import { mockProducts } from '@/lib/mock-data';
+import { Card } from '@/components/ui/card';
 
 export default function Home() {
   // In a real app, these values would come from a database query
@@ -9,8 +10,8 @@ export default function Home() {
   const fleetCoveragePercentage = 85;
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <section className="text-center mb-12">
+    <div>
+      <section className="text-center my-12 container mx-auto px-4">
         <h1 className="font-headline text-4xl md:text-5xl font-bold text-primary mb-4">
           Encuentra la Parte Perfecta para tu Vehículo
         </h1>
@@ -19,20 +20,27 @@ export default function Home() {
         </p>
       </section>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-        <aside className="lg:col-span-1">
-          <div className="sticky top-20">
-            <SearchFilters />
-            <CoverageStats
-              modelsCovered={totalModelsCovered}
-              coveragePercentage={fleetCoveragePercentage}
-            />
-          </div>
-        </aside>
+      <Card className="rounded-none">
+        <div className="container mx-auto px-4 py-8">
+          <SearchFilters />
+        </div>
+      </Card>
+      
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <aside className="lg:col-span-1">
+            <div className="sticky top-20">
+              <CoverageStats
+                modelsCovered={totalModelsCovered}
+                coveragePercentage={fleetCoveragePercentage}
+              />
+            </div>
+          </aside>
 
-        <main className="lg:col-span-3">
-          <ProductList products={mockProducts} />
-        </main>
+          <main className="lg:col-span-3">
+            <ProductList products={mockProducts} />
+          </main>
+        </div>
       </div>
     </div>
   );

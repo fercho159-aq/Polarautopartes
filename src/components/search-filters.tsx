@@ -9,16 +9,16 @@ import { mockBrands, mockLines, mockModels, mockYears } from '@/lib/mock-data';
 
 export function SearchFilters() {
   return (
-    <Card className="mb-8">
-      <CardHeader>
+    <Card className="shadow-none border-none">
+      <CardHeader className="p-0 mb-6">
         <CardTitle className="flex items-center gap-2 font-headline text-xl">
           <SlidersHorizontal className="h-5 w-5" />
           Búsqueda Avanzada
         </CardTitle>
       </CardHeader>
-      <CardContent>
-        <form className="space-y-4">
-          <div className="relative">
+      <CardContent className="p-0">
+        <form className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+          <div className="relative lg:col-span-2">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input placeholder="Buscar por palabra clave..." className="pl-10" />
           </div>
@@ -62,7 +62,7 @@ export function SearchFilters() {
               ))}
             </SelectContent>
           </Select>
-          <div className="flex flex-col sm:flex-row gap-2">
+          <div className="flex flex-col sm:flex-row gap-2 lg:col-span-6">
             <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
               <Search className="mr-2 h-4 w-4" />
               Buscar
