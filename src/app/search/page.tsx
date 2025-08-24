@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import { useState, useEffect, Suspense } from 'react';
@@ -101,23 +102,25 @@ function SearchPageContent() {
   };
 
   return (
-    <div className="flex">
-        <aside className="w-1/4 p-6 sticky top-16 h-screen-minus-header hidden lg:block">
-           <SearchFilters onSearch={handleSearch} onClear={handleClear} initialLine={initialLine} />
+    <div className="container mx-auto px-4 py-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <aside className="lg:col-span-5 sticky top-16 h-max">
+           <div className="hidden lg:block">
+            <SearchFilters onSearch={handleSearch} onClear={handleClear} initialLine={initialLine} />
+           </div>
         </aside>
 
-        <main className="w-full lg:w-3/4 p-6">
-            <div className="container mx-auto px-4 py-8">
-                {isLoading ? (
-                    <div className="text-center py-16">
-                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-                        <p className="mt-4 text-muted-foreground">Cargando productos...</p>
-                    </div>
-                ) : (
-                    <ProductList products={filteredProducts} />
-                )}
-            </div>
+        <main className="lg:col-span-7">
+            {isLoading ? (
+                <div className="text-center py-16">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+                    <p className="mt-4 text-muted-foreground">Cargando productos...</p>
+                </div>
+            ) : (
+                <ProductList products={filteredProducts} />
+            )}
         </main>
+      </div>
     </div>
   );
 }
@@ -130,4 +133,3 @@ export default function SearchPage() {
         </Suspense>
     )
 }
-
