@@ -19,7 +19,7 @@ export default function AllLinesPage() {
         </p>
       </section>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
         {mockLines.map((line) => (
           <Link key={line} href={`/search?line=${encodeURIComponent(line)}`} className="group">
             <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full flex flex-col">
