@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import { useState, useEffect, Suspense } from 'react';
@@ -8,6 +7,7 @@ import { ProductList } from '@/components/product-list';
 import { SearchFilters, type SearchCriteria } from '@/components/search-filters';
 import type { Product } from '@/types';
 import { loadProductsFromCSV } from '@/lib/data-loader';
+import { ContactSection } from '@/components/contact-section';
 
 function SearchPageContent() {
   const router = useRouter();
@@ -109,6 +109,7 @@ function SearchPageContent() {
   };
 
   return (
+    <>
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         <aside className="lg:col-span-5 lg:sticky top-24 h-max z-20">
@@ -127,6 +128,8 @@ function SearchPageContent() {
         </main>
       </div>
     </div>
+    <ContactSection />
+    </>
   );
 }
 

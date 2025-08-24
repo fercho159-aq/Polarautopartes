@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Award, Building, Globe, Heart, Lightbulb, MapPin, Phone, Rocket, ShieldCheck, Star, Target, ThumbsUp, Users, Wrench } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
+import { ContactSection } from '@/components/contact-section';
 
 const teamMembers = [
   {
@@ -51,6 +52,7 @@ const timeline = [
 
 export default function NosotrosPage() {
   return (
+    <>
     <div className="bg-background text-foreground">
       {/* 1. Encabezado + Introducción */}
       <section className="relative text-center py-20 bg-card">
@@ -223,7 +225,8 @@ export default function NosotrosPage() {
                 </Button>
             </div>
         </section>
-
     </div>
+    <ContactSection />
+    </>
   );
 }

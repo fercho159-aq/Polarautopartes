@@ -1,8 +1,11 @@
+
+import { ContactSection } from "@/components/contact-section";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DollarSign, Search, ShoppingCart, Truck } from "lucide-react";
 
 export default function HowToBuyPage() {
   return (
+    <>
     <div className="container mx-auto px-4 py-12">
       <section className="text-center mb-12">
         <h1 className="font-headline text-4xl md:text-5xl font-bold text-primary mb-4">
@@ -63,5 +66,7 @@ export default function HowToBuyPage() {
         </Card>
       </div>
     </div>
+    <ContactSection />
+    </>
   );
 }

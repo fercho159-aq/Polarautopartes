@@ -1,12 +1,15 @@
+
 import { ProductCard } from "@/components/product-card";
 import { mockProducts } from "@/lib/mock-data";
 import { Badge } from "@/components/ui/badge";
+import { ContactSection } from "@/components/contact-section";
 
 export default function NewProductsPage() {
   // Filter for recent products, here we just take some from mock data
   const newProducts = mockProducts.slice(0, 4);
 
   return (
+    <>
     <div className="container mx-auto px-4 py-12">
       <section className="text-center mb-12">
           <Badge className="mb-4 bg-accent text-accent-foreground hover:bg-accent/80">Novedad</Badge>
@@ -31,5 +34,7 @@ export default function NewProductsPage() {
         </p>
       </section>
     </div>
+    <ContactSection />
+    </>
   );
 }
