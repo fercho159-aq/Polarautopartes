@@ -11,10 +11,10 @@ import { Textarea } from '@/components/ui/textarea';
 import { Car, MapPin, Phone, ShieldCheck, Star, ThumbsUp, Truck, Users, Wrench } from 'lucide-react';
 import { mockLines, mockProducts } from '@/lib/mock-data';
 import { SearchFilters } from '@/components/search-filters';
-import { ProductCard } from '@/components/product-card';
 import { Badge } from '@/components/ui/badge';
 import { useRouter } from 'next/navigation';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { FeaturedProductCard } from '@/components/featured-product-card';
 
 const testimonials = [
   {
@@ -126,11 +126,11 @@ export default function HomePage() {
             <h2 className="text-3xl font-headline font-bold text-center text-primary mb-12">Nuestras Líneas de Producto</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {mockLines.slice(0, 8).map((line) => (
-                <Link key={line} href={`/search?line=${line}`} className="group">
+                <Link key={line} href={`/search?line=${encodeURIComponent(line)}`} className="group">
                   <Card className="overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1">
                      <div className="relative h-40 w-full">
                         <Image
-                          src={`https://placehold.co/400x300.png`}
+                          src="https://placehold.co/400x300.png"
                           alt={line}
                           layout="fill"
                           objectFit="cover"
@@ -157,11 +157,11 @@ export default function HomePage() {
         <section id="destacados" className="py-16 bg-muted">
             <div className="container mx-auto px-4">
                 <h2 className="text-3xl font-headline font-bold text-center text-primary mb-12">Productos Destacados</h2>
-                <div className="grid grid-cols-1 gap-6">
-                    {mockProducts.slice(0, 2).map(product => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {mockProducts.slice(0, 4).map(product => (
                         <div key={product.id} className="relative">
                             <Badge className="absolute top-4 left-4 z-10 bg-accent text-accent-foreground">Más Vendido</Badge>
-                            <ProductCard product={product} />
+                            <FeaturedProductCard product={product} />
                         </div>
                     ))}
                 </div>
@@ -323,5 +323,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-    
