@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import Link from 'next/link';
@@ -12,16 +11,16 @@ import {
 import { Button } from '@/components/ui/button';
 import * as React from 'react';
 
-const navLinks = [
-  { href: '/', label: 'Inicio' },
-  { href: '/search', label: 'Catálogo' },
-  { href: '/lines', label: 'Líneas' },
-  { href: '/nosotros', label: 'Nosotros' },
-  { href: '/#contacto', label: 'Contacto' },
-];
-
 export default function Header() {
   const [isOpen, setIsOpen] = React.useState(false);
+
+  const navLinks = [
+    { href: '/', label: 'Inicio' },
+    { href: '/search', label: 'Catálogo' },
+    { href: '/lines', label: 'Líneas' },
+    { href: '/nosotros', label: 'Nosotros' },
+    { href: '/#contacto', label: 'Contacto' },
+  ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
