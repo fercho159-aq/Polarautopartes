@@ -29,7 +29,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li><Link href="/" className="text-sm text-muted-foreground hover:text-primary">Inicio</Link></li>
               <li><Link href="/search" className="text-sm text-muted-foreground hover:text-primary">Catálogo</Link></li>
-              <li><Link href="/#nosotros" className="text-sm text-muted-foreground hover:text-primary">Nosotros</Link></li>
+              <li><Link href="/nosotros" className="text-sm text-muted-foreground hover:text-primary">Nosotros</Link></li>
               <li><Link href="/#contacto" className="text-sm text-muted-foreground hover:text-primary">Contacto</Link></li>
               <li><Link href="/how-to-buy" className="text-sm text-muted-foreground hover:text-primary">Cómo Comprar</Link></li>
             </ul>
