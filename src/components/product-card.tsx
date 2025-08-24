@@ -41,7 +41,7 @@ export function ProductCard({ product }: ProductCardProps) {
             <CarouselPrevious />
             <CarouselNext />
           </Carousel>
-          <div className="text-sm space-y-2 py-4 md:py-0 flex flex-col justify-center h-full">
+          <div className="text-sm space-y-2 p-[75px] flex flex-col justify-center h-full">
             <h1 className="font-headline text-2xl font-bold text-primary">{product.name}</h1>
             <p className="font-bold text-primary">#KG: <span className="text-foreground font-normal">{product.sku}</span></p>
             <p className="font-bold text-primary">Línea: <span className="text-foreground font-normal">{product.line}</span></p>
