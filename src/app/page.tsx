@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import Link from 'next/link';
@@ -111,13 +112,22 @@ export default function HomePage() {
         <section id="lineas" className="py-16">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-headline font-bold text-center text-primary mb-12">Nuestras Líneas de Producto</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-              {mockLines.slice(0, 12).map((line) => (
-                <Link key={line} href={`/search?line=${line}`}>
-                  <Card className="group text-center p-4 transition-all hover:bg-primary hover:text-primary-foreground hover:shadow-xl hover:-translate-y-2 cursor-pointer h-full">
-                    <CardContent className="flex flex-col items-center justify-center h-full p-2">
-                      <Wrench className="h-10 w-10 mb-3 text-primary transition-colors group-hover:text-primary-foreground" />
-                      <h3 className="font-headline font-semibold">{line}</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {mockLines.slice(0, 8).map((line) => (
+                <Link key={line} href={`/search?line=${line}`} className="group">
+                  <Card className="overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1">
+                     <div className="relative h-40 w-full">
+                        <Image
+                          src={`https://placehold.co/400x300.png`}
+                          alt={line}
+                          layout="fill"
+                          objectFit="cover"
+                          className="transition-transform duration-300 group-hover:scale-110"
+                          data-ai-hint="car part"
+                        />
+                      </div>
+                    <CardContent className="p-4 text-center">
+                      <h3 className="font-headline font-semibold text-lg">{line}</h3>
                     </CardContent>
                   </Card>
                 </Link>
@@ -287,4 +297,5 @@ export default function HomePage() {
     </div>
   );
 }
+
 
