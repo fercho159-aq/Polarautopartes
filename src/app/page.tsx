@@ -1,20 +1,36 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ProductList } from '@/components/product-list';
 import { SearchFilters, type SearchCriteria } from '@/components/search-filters';
-import { mockProducts } from '@/lib/mock-data';
 import { Card } from '@/components/ui/card';
 import type { Product } from '@/types';
+import { loadProductsFromCSV } from '@/lib/data-loader';
+import { mockProducts } from '@/lib/mock-data';
 
 export default function Home() {
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>(mockProducts);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      setIsLoading(true);
+      const products = await loadProductsFromCSV();
+      // Fallback to mock data if CSV loading fails or is empty
+      const initialProducts = products.length > 0 ? products : mockProducts;
+      setAllProducts(initialProducts);
+      setFilteredProducts(initialProducts);
+      setIsLoading(false);
+    }
+    fetchData();
+  }, []);
 
   const handleSearch = (criteria: SearchCriteria) => {
     const { keyword, brand, model, year, line } = criteria;
     
-    let products = mockProducts.filter(product => {
+    let products = allProducts.filter(product => {
       const keywordMatch = keyword 
         ? product.name.toLowerCase().includes(keyword.toLowerCase()) ||
           product.sku.toLowerCase().includes(keyword.toLowerCase()) ||
@@ -22,11 +38,11 @@ export default function Home() {
         : true;
 
       const brandMatch = brand 
-        ? product.applications.some(app => app.brand === brand)
+        ? product.applications.some(app => app.brand.toLowerCase() === brand.toLowerCase())
         : true;
       
       const modelMatch = model
-        ? product.applications.some(app => app.model === model)
+        ? product.applications.some(app => app.model.toLowerCase() === model.toLowerCase())
         : true;
 
       const yearMatch = year
@@ -49,7 +65,7 @@ export default function Home() {
   };
   
   const handleClear = () => {
-    setFilteredProducts(mockProducts);
+    setFilteredProducts(allProducts);
   };
 
   return (
@@ -70,7 +86,11 @@ export default function Home() {
       </Card>
       
       <div className="container mx-auto px-4 py-8">
-        <ProductList products={filteredProducts} />
+        {isLoading ? (
+            <p>Cargando productos...</p>
+        ) : (
+            <ProductList products={filteredProducts} />
+        )}
       </div>
     </div>
   );

@@ -1,0 +1,15 @@
+id,name,brand,line,description,sku,price,imageUrl,oem,specifications,characteristics,applications_brand,applications_model,applications_motor,applications_years
+1,Bomba de Agua Auxiliar,KG,Bomba de Agua,"Bomba de Agua Auxiliar para varios modelos de Audi y Volkswagen.",KGPA-1040,150,https://placehold.co/400x400.png,1K0965561G,,"",Audi,A3,"L4 2.0L",2006 - 2007
+1,Bomba de Agua Auxiliar,KG,Bomba de Agua,"Bomba de Agua Auxiliar para varios modelos de Audi y Volkswagen.",KGPA-1040,150,https://placehold.co/400x400.png,1K0965561G,,"",Audi,A4 Quattro,"V6 3.2L",2009 - 2009
+1,Bomba de Agua Auxiliar,KG,Bomba de Agua,"Bomba de Agua Auxiliar para varios modelos de Audi y Volkswagen.",KGPA-1040,150,https://placehold.co/400x400.png,1K0965561G,,"",Audi,A5 Quattro,"V6 3.2L",2008 - 2008
+1,Bomba de Agua Auxiliar,KG,Bomba de Agua,"Bomba de Agua Auxiliar para varios modelos de Audi y Volkswagen.",KGPA-1040,150,https://placehold.co/400x400.png,1K0965561G,,"",Volkswagen,GTI,"L4 2.0L",2007 - 2008
+1,Bomba de Agua Auxiliar,KG,Bomba de Agua,"Bomba de Agua Auxiliar para varios modelos de Audi y Volkswagen.",KGPA-1040,150,https://placehold.co/400x400.png,1K0965561G,,"",Volkswagen,Jetta,"L4 2.0L",2006 - 2008
+1,Bomba de Agua Auxiliar,KG,Bomba de Agua,"Bomba de Agua Auxiliar para varios modelos de Audi y Volkswagen.",KGPA-1040,150,https://placehold.co/400x400.png,1K0965561G,,"",Volkswagen,Passat,"L4 2.0L",2006 - 2008
+8,Radiador,Valeo,Enfriamiento,"Radiador de aluminio para Mazda CX-5.",VAL-RD-008,3500,https://placehold.co/400x400.png,OEM-VAL-008,,"",Mazda,CX-5,"L4 2.5L",2017 - 2018
+9,Deposito Anticongelante,KeepOnGreen,Deposito de Anticongelante,"Deposito de anticongelante para Nissan Versa.",KG-DA-009,450,https://placehold.co/400x400.png,21710-1HS0A,,"Con tapón",Nissan,Versa,"1.6L",2012 - 2019
+10,Toma de Agua,KeepOnGreen,Toma de Agua y Termostatos,"Toma de agua con termostato para Chevrolet Aveo.",KG-TA-010,620,https://placehold.co/400x400.png,96984104,,"Incluye termostato y sensor",Chevrolet,Aveo,"1.6L",2009 - 2017
+11,Motoventilador,TYC,Motoventiladores,"Motoventilador completo para VW Vento.",TYC-MV-011,2300,https://placehold.co/400x400.png,6R0959455E,,"Con tolva y motor",Volkswagen,Vento,"1.6L",2014 - 2020
+12,Bomba de Agua,Moresa,Bomba de Agua,"Bomba de agua para Nissan NP300.",MOR-BA-012,890,https://placehold.co/400x400.png,B1010-2S70A,,"",Nissan,NP300,"2.4L",2009 - 2015
+13,Radiador,DEYAC,Radiadores,"Radiador para Chevrolet Beat.",DEY-RD-013,1850,https://placehold.co/400x400.png,96677918,,"Transmisión manual",Chevrolet,Beat,"1.2L",2018 - 2021
+14,Tapon de Radiador,KeepOnGreen,Tapones de Depositos y Radiador,"Tapon de radiador para Toyota Hilux.",KG-TR-014,150,https://placehold.co/400x400.png,16401-62100,,"1.1 Bar",Toyota,Hilux,"2.7L",2006 - 2015
+15,Termostato,Motorad,Toma de Agua y Termostatos,"Termostato para Kia Rio.",MOT-TH-015,380,https://placehold.co/400x400.png,25500-2B000,,"Temperatura de apertura 82°C",Kia,Rio,"1.6L",2016 - 2020
