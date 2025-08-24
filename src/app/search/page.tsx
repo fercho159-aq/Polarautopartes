@@ -111,7 +111,7 @@ function SearchPageContent() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        <aside className="lg:col-span-5 sticky top-24 h-max z-20">
+        <aside className="lg:col-span-5 lg:sticky top-24 h-max z-20">
             <SearchFilters onSearch={handleSearch} onClear={handleClear} initialLine={initialLine} />
         </aside>
 
