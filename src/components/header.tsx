@@ -14,7 +14,7 @@ import * as React from 'react';
 
 const navLinks = [
   { href: '/', label: 'Inicio' },
-  { href: '/search', label: 'Búsqueda' },
+  { href: '/search', label: 'Catálogo' },
   { href: '/lines', label: 'Líneas' },
   { href: '/#nosotros', label: 'Nosotros' },
   { href: '/#opiniones', label: 'Opiniones' },
