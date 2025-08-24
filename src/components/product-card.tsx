@@ -12,7 +12,7 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <Card className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-lg">
       <CardContent className="p-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           <Carousel className="w-full">
             <CarouselContent>
               <CarouselItem>
@@ -41,7 +41,7 @@ export function ProductCard({ product }: ProductCardProps) {
             <CarouselPrevious />
             <CarouselNext />
           </Carousel>
-          <div className="text-sm space-y-2">
+          <div className="text-sm space-y-2 p-4">
             <h1 className="font-headline text-2xl font-bold text-primary">{product.name}</h1>
             <p className="font-bold text-primary">#KG: <span className="text-foreground font-normal">{product.sku}</span></p>
             <p className="font-bold text-primary">Línea: <span className="text-foreground font-normal">{product.line}</span></p>
