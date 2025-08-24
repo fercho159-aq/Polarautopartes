@@ -102,4 +102,16 @@ export const mockProducts: Product[] = [
 export const mockBrands = [...new Set(mockProducts.map(p => p.brand))];
 export const mockModels = [...new Set(mockProducts.map(p => p.model))];
 export const mockYears = [...new Set(mockProducts.map(p => p.year))].sort((a, b) => b - a);
-export const mockLines = [...new Set(mockProducts.map(p => p.line))];
+export const mockLines = [
+    "Bomba de Agua",
+    "Deposito de Anticongelante",
+    "Distribucion por Cadena",
+    "Fan Clutch",
+    "Motoventiladores",
+    "Radiadores",
+    "Sistema de Accesorios",
+    "Sistema de Distribución",
+    "Tapones de Depositos y Radiador",
+    "Toma de Agua y Termostatos",
+    "Tubos de Enfriamiento"
+];
