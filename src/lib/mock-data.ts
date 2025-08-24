@@ -1,3 +1,4 @@
+
 import type { Product } from '@/types';
 
 export const mockProducts: Product[] = [
@@ -5,8 +6,8 @@ export const mockProducts: Product[] = [
     id: '1',
     name: 'Bomba de Agua Auxiliar',
     brand: 'KG',
-    line: 'Bomba de Agua Auxiliar',
-    description: 'Filtro de aceite de alto rendimiento para Chevrolet Aveo.',
+    line: 'Bomba de Agua',
+    description: 'Bomba de Agua Auxiliar para varios modelos de Audi y Volkswagen.',
     sku: 'KGPA-1040',
     price: 150.00,
     imageUrl: 'https://placehold.co/400x400.png',
@@ -14,12 +15,12 @@ export const mockProducts: Product[] = [
     specifications: 'Especificación de ejemplo',
     characteristics: 'Característica de ejemplo',
     applications: [
-      { brand: 'AUDI', model: 'A3', motor: 'L4 2.0L', years: '2006 - 2007' },
-      { brand: 'AUDI', model: 'A4 QUATTRO', motor: 'V6 3.2L', years: '2009 - 2009' },
-      { brand: 'AUDI', model: 'A5 QUATTRO', motor: 'V6 3.2L', years: '2008 - 2008' },
-      { brand: 'VOLKSWAGEN', model: 'GTI', motor: 'L4 2.0L', years: '2007 - 2008' },
-      { brand: 'VOLKSWAGEN', model: 'JETTA', motor: 'L4 2.0L', years: '2006 - 2008' },
-      { brand: 'VOLKSWAGEN', model: 'PASSAT', motor: 'L4 2.0L', years: '2006 - 2008' },
+      { brand: 'Audi', model: 'A3', motor: 'L4 2.0L', years: '2006 - 2007' },
+      { brand: 'Audi', model: 'A4 Quattro', motor: 'V6 3.2L', years: '2009 - 2009' },
+      { brand: 'Audi', model: 'A5 Quattro', motor: 'V6 3.2L', years: '2008 - 2008' },
+      { brand: 'Volkswagen', model: 'GTI', motor: 'L4 2.0L', years: '2007 - 2008' },
+      { brand: 'Volkswagen', model: 'Jetta', motor: 'L4 2.0L', years: '2006 - 2008' },
+      { brand: 'Volkswagen', model: 'Passat', motor: 'L4 2.0L', years: '2006 - 2008' },
     ],
   },
   {
@@ -33,8 +34,8 @@ export const mockProducts: Product[] = [
     imageUrl: 'https://placehold.co/400x400.png',
     oem: 'OEM-BR-002',
     applications: [
-        { brand: 'Volkswagen', model: 'Jetta', motor: 'L4 2.0L', years: '2020-2022' },
-        { brand: 'Volkswagen', model: 'Golf', motor: 'L4 1.4L', years: '2019-2021' },
+        { brand: 'Volkswagen', model: 'Jetta', motor: 'L4 2.0L', years: '2020 - 2022' },
+        { brand: 'Volkswagen', model: 'Golf', motor: 'L4 1.4L', years: '2019 - 2021' },
     ]
   },
   {
@@ -48,7 +49,7 @@ export const mockProducts: Product[] = [
     imageUrl: 'https://placehold.co/400x400.png',
     oem: 'OEM-NGK-003',
      applications: [
-        { brand: 'Nissan', model: 'Sentra', motor: 'L4 1.8L', years: '2017-2019' },
+        { brand: 'Nissan', model: 'Sentra', motor: 'L4 1.8L', years: '2017 - 2019' },
      ]
   },
   {
@@ -62,7 +63,7 @@ export const mockProducts: Product[] = [
     imageUrl: 'https://placehold.co/400x400.png',
     oem: 'OEM-MON-004',
     applications: [
-        { brand: 'Honda', model: 'Civic', motor: 'L4 1.5T', years: '2020-2021' },
+        { brand: 'Honda', model: 'Civic', motor: 'L4 1.5T', years: '2020 - 2021' },
     ]
   },
     {
@@ -76,7 +77,7 @@ export const mockProducts: Product[] = [
     imageUrl: 'https://placehold.co/400x400.png',
     oem: 'OEM-LTH-005',
     applications: [
-        { brand: 'Nissan', model: 'Versa', motor: 'L4 1.6L', years: '2021-2023' },
+        { brand: 'Nissan', model: 'Versa', motor: 'L4 1.6L', years: '2021 - 2023' },
     ]
   },
   {
@@ -90,7 +91,7 @@ export const mockProducts: Product[] = [
     imageUrl: 'https://placehold.co/400x400.png',
     oem: 'OEM-BOS-006',
     applications: [
-        { brand: 'VW', model: 'Tiguan', motor: 'L4 2.0T', years: '2021-2022' },
+        { brand: 'Volkswagen', model: 'Tiguan', motor: 'L4 2.0T', years: '2021 - 2022' },
     ]
   },
     {
@@ -104,7 +105,7 @@ export const mockProducts: Product[] = [
     imageUrl: 'https://placehold.co/400x400.png',
     oem: 'OEM-GON-007',
     applications: [
-        { brand: 'Ford', model: 'Mustang', motor: 'V8 5.0L', years: '2020-2021' },
+        { brand: 'Ford', model: 'Mustang', motor: 'V8 5.0L', years: '2020 - 2021' },
     ]
   },
   {
@@ -118,7 +119,7 @@ export const mockProducts: Product[] = [
     imageUrl: 'https://placehold.co/400x400.png',
     oem: 'OEM-VAL-008',
     applications: [
-        { brand: 'Mazda', model: 'CX-5', motor: 'L4 2.5L', years: '2017-2018' },
+        { brand: 'Mazda', model: 'CX-5', motor: 'L4 2.5L', years: '2017 - 2018' },
     ]
   },
 ];
@@ -192,22 +193,62 @@ export const vehicleData = [
     brand: 'Volkswagen',
     models: [
         { name: 'GTI', years: [2008, 2007] },
-        { name: 'Jetta', years: [2008, 2007, 2006] },
+        { name: 'Jetta', years: [2022, 2021, 2020, 2008, 2007, 2006] },
         { name: 'Passat', years: [2008, 2007, 2006] },
+        { name: 'Golf', years: [2021, 2019] },
+        { name: 'Tiguan', years: [2022, 2021] },
+        { name: 'Vento', years: [2020, 2019] }
     ],
   },
+  {
+    brand: 'Nissan',
+    models: [
+      { name: 'Sentra', years: [2019, 2018, 2017] },
+      { name: 'Versa', years: [2023, 2022, 2021] },
+      { name: 'Kicks', years: [2021, 2020] },
+      { name: 'March', years: [2020, 2019] },
+    ]
+  },
+  {
+    brand: 'Honda',
+    models: [
+      { name: 'Civic', years: [2021, 2020] },
+      { name: 'Accord', years: [2022, 2021] },
+    ]
+  },
+  {
+    brand: 'Ford',
+    models: [
+      { name: 'Mustang', years: [2021, 2020] },
+      { name: 'Lobo', years: [2022, 2021] },
+    ]
+  },
+  {
+    brand: 'Mazda',
+    models: [
+      { name: 'CX-5', years: [2018, 2017] },
+      { name: 'Mazda 3', years: [2020, 2019] },
+    ]
+  }
 ];
 
 
 export const mockLines = [
+    "Accesorios",
     "Bomba de Agua",
     "Deposito de Anticongelante",
     "Distribucion por Cadena",
+    "Eléctrico",
+    "Enfriamiento",
     "Fan Clutch",
+    "Filtros",
+    "Frenos",
+    "Motor",
     "Motoventiladores",
     "Radiadores",
     "Sistema de Accesorios",
     "Sistema de Distribución",
+    "Suspensión",
     "Tapones de Depositos y Radiador",
     "Toma de Agua y Termostatos",
     "Tubos de Enfriamiento"
