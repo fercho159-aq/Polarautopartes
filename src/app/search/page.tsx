@@ -84,7 +84,7 @@ function SearchPageContent() {
     }
     fetchData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialLine, initialBrand, initialModel, initialYear, initialKeyword]);
+  }, []);
 
   const handleSearch = (criteria: SearchCriteria) => {
      const params = new URLSearchParams();
@@ -95,19 +95,24 @@ function SearchPageContent() {
     if (criteria.line) params.set('line', criteria.line);
     
     router.push(`/search?${params.toString()}`);
+    
+    setIsLoading(true);
+    const filtered = applyFilters(allProducts, criteria);
+    setFilteredProducts(filtered);
+    setIsLoading(false);
+
   };
   
   const handleClear = () => {
     router.push('/search');
+    setFilteredProducts(allProducts);
   };
 
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         <aside className="lg:col-span-5 sticky top-16 h-max">
-           <div className="hidden lg:block">
             <SearchFilters onSearch={handleSearch} onClear={handleClear} initialLine={initialLine} />
-           </div>
         </aside>
 
         <main className="lg:col-span-7">

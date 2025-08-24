@@ -15,16 +15,19 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 export default function ProductDetailPage({ params }: { params: { sku: string } }) {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
+  const sku = params.sku;
 
   useEffect(() => {
     async function getProduct() {
+      if (!sku) return;
+      setLoading(true);
       const allProducts = await loadProductsFromCSV();
-      const foundProduct = allProducts.find(p => p.sku === params.sku);
+      const foundProduct = allProducts.find(p => p.sku === sku);
       setProduct(foundProduct || null);
       setLoading(false);
     }
     getProduct();
-  }, [params.sku]);
+  }, [sku]);
 
   if (loading) {
     return (
@@ -39,7 +42,7 @@ export default function ProductDetailPage({ params }: { params: { sku: string } 
     return (
       <div className="container mx-auto px-4 py-12 text-center">
         <h1 className="font-headline text-3xl font-bold text-destructive">Producto no encontrado</h1>
-        <p className="text-muted-foreground mt-2">No pudimos encontrar un producto con el SKU: {params.sku}</p>
+        <p className="text-muted-foreground mt-2">No pudimos encontrar un producto con el SKU: {sku}</p>
       </div>
     );
   }
