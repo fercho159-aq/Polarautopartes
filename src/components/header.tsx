@@ -13,8 +13,8 @@ import * as React from 'react';
 
 const navLinks = [
   { href: '/', label: 'Inicio' },
-  { href: '/#search', label: 'Búsqueda' },
-  { href: '/#lineas', label: 'Líneas' },
+  { href: '/search', label: 'Búsqueda' },
+  { href: '/lines', label: 'Líneas' },
   { href: '/#nosotros', label: 'Nosotros' },
   { href: '/#opiniones', label: 'Opiniones' },
   { href: '/#contacto', label: 'Contacto' },
@@ -34,7 +34,7 @@ export default function Header() {
         
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
           {navLinks.map(link => (
-            <Link key={link.href} href={link.href} className="text-foreground/60 transition-colors hover:text-foreground/80">
+            <Link key={link.href + link.label} href={link.href} className="text-foreground/60 transition-colors hover:text-foreground/80">
               {link.label}
             </Link>
           ))}
@@ -68,7 +68,7 @@ export default function Header() {
                   <nav className="flex flex-col gap-6">
                     {navLinks.map(link => (
                       <Link
-                        key={link.href}
+                        key={link.href + link.label}
                         href={link.href}
                         className="text-lg font-semibold"
                         onClick={() => setIsOpen(false)}
@@ -85,4 +85,3 @@ export default function Header() {
     </header>
   );
 }
-

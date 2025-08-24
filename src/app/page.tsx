@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import Link from 'next/link';
@@ -135,7 +134,7 @@ export default function HomePage() {
             </div>
              <div className="text-center mt-12">
                 <Button asChild variant="outline">
-                    <Link href="/search">Explorar Todas las Líneas</Link>
+                    <Link href="/lines">Explorar Todas las Líneas</Link>
                 </Button>
             </div>
           </div>
@@ -297,5 +296,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-
