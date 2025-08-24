@@ -2,44 +2,30 @@
 'use client';
 
 import { useState, useEffect, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { ProductList } from '@/components/product-list';
 import { SearchFilters, type SearchCriteria } from '@/components/search-filters';
-import { Card } from '@/components/ui/card';
 import type { Product } from '@/types';
 import { loadProductsFromCSV } from '@/lib/data-loader';
 
 function SearchPageContent() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const initialLine = searchParams.get('line') || '';
+  const initialBrand = searchParams.get('brand') || '';
+  const initialModel = searchParams.get('model') || '';
+  const initialYear = searchParams.get('year') || '';
+  const initialKeyword = searchParams.get('keyword') || '';
+
 
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    async function fetchData() {
-      setIsLoading(true);
-      const products = await loadProductsFromCSV();
-      setAllProducts(products);
-
-      // Apply initial filter if line is present in URL
-      if (initialLine) {
-        const initiallyFiltered = products.filter(p => p.line === initialLine);
-        setFilteredProducts(initiallyFiltered);
-      } else {
-        setFilteredProducts(products);
-      }
-      
-      setIsLoading(false);
-    }
-    fetchData();
-  }, [initialLine]);
-
-  const handleSearch = (criteria: SearchCriteria) => {
+   const applyFilters = (products: Product[], criteria: SearchCriteria) => {
     const { keyword, brand, model, year, line } = criteria;
     
-    let products = allProducts.filter(product => {
+    return products.filter(product => {
       const keywordMatch = keyword 
         ? product.name.toLowerCase().includes(keyword.toLowerCase()) ||
           product.sku.toLowerCase().includes(keyword.toLowerCase()) ||
@@ -56,8 +42,8 @@ function SearchPageContent() {
 
       const yearMatch = year
         ? product.applications.some(app => {
+            if (!app.years) return false;
             const yearNumber = parseInt(year);
-            // Handle year ranges like '2006-2008' and single years like '2009'
             const yearParts = String(app.years).split('-').map(y => parseInt(y.trim()));
             if (yearParts.length > 1) {
               return yearNumber >= yearParts[0] && yearNumber <= yearParts[1];
@@ -70,38 +56,68 @@ function SearchPageContent() {
 
       return keywordMatch && brandMatch && modelMatch && yearMatch && lineMatch;
     });
+  };
 
-    setFilteredProducts(products);
+  useEffect(() => {
+    async function fetchData() {
+      setIsLoading(true);
+      const products = await loadProductsFromCSV();
+      setAllProducts(products);
+
+      const initialCriteria = {
+        line: initialLine,
+        brand: initialBrand,
+        model: initialModel,
+        year: initialYear,
+        keyword: initialKeyword,
+      };
+
+      if (initialLine || initialBrand || initialModel || initialYear || initialKeyword) {
+        const initiallyFiltered = applyFilters(products, initialCriteria);
+        setFilteredProducts(initiallyFiltered);
+      } else {
+        setFilteredProducts(products);
+      }
+      
+      setIsLoading(false);
+    }
+    fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialLine, initialBrand, initialModel, initialYear, initialKeyword]);
+
+  const handleSearch = (criteria: SearchCriteria) => {
+     const params = new URLSearchParams();
+    if (criteria.keyword) params.set('keyword', criteria.keyword);
+    if (criteria.brand) params.set('brand', criteria.brand);
+    if (criteria.model) params.set('model', criteria.model);
+    if (criteria.year) params.set('year', criteria.year);
+    if (criteria.line) params.set('line', criteria.line);
+    
+    router.push(`/search?${params.toString()}`);
   };
   
   const handleClear = () => {
-    setFilteredProducts(allProducts);
+    router.push('/search');
   };
 
   return (
-    <div>
-      <section className="text-center my-12 container mx-auto px-4">
-        <h1 className="font-headline text-4xl md:text-5xl font-bold text-primary mb-4">
-          Catálogo de Productos
-        </h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Utiliza nuestra búsqueda avanzada para localizar exactamente lo que necesitas en nuestro extenso catálogo.
-        </p>
-      </section>
+    <div className="flex">
+        <aside className="w-1/4 p-6 sticky top-16 h-screen-minus-header hidden lg:block">
+           <SearchFilters onSearch={handleSearch} onClear={handleClear} initialLine={initialLine} />
+        </aside>
 
-      <Card className="rounded-none w-full sticky top-14 z-40 shadow-md">
-        <div className="container mx-auto px-4 py-8">
-          <SearchFilters onSearch={handleSearch} onClear={handleClear} initialLine={initialLine} />
-        </div>
-      </Card>
-      
-      <div className="container mx-auto px-4 py-8">
-        {isLoading ? (
-            <p className="text-center">Cargando productos...</p>
-        ) : (
-            <ProductList products={filteredProducts} />
-        )}
-      </div>
+        <main className="w-full lg:w-3/4 p-6">
+            <div className="container mx-auto px-4 py-8">
+                {isLoading ? (
+                    <div className="text-center py-16">
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+                        <p className="mt-4 text-muted-foreground">Cargando productos...</p>
+                    </div>
+                ) : (
+                    <ProductList products={filteredProducts} />
+                )}
+            </div>
+        </main>
     </div>
   );
 }

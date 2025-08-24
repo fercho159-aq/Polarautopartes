@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -8,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Search, SlidersHorizontal, X } from 'lucide-react';
 import { vehicleData, mockLines } from '@/lib/mock-data';
+import { Label } from '@/components/ui/label';
 
 const brands = [...new Set(vehicleData.map(item => item.brand))].sort();
 
@@ -37,6 +39,13 @@ export function SearchFilters({ onSearch, onClear, initialLine = '' }: SearchFil
 
   useEffect(() => {
     setSelectedLine(initialLine);
+  }, [initialLine]);
+
+  useEffect(() => {
+    if (initialLine) {
+        handleSubmit(new Event('submit') as unknown as React.FormEvent);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialLine]);
 
   const handleBrandChange = (brand: string) => {
@@ -92,71 +101,85 @@ export function SearchFilters({ onSearch, onClear, initialLine = '' }: SearchFil
   };
 
   return (
-    <Card className="shadow-none border-none">
-      <CardHeader className="p-0 mb-6">
-        <CardTitle className="flex items-center gap-2 font-headline text-xl">
-          <SlidersHorizontal className="h-5 w-5" />
+    <Card className="shadow-lg border-border bg-card">
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2 font-headline text-2xl text-primary">
+          <SlidersHorizontal className="h-6 w-6" />
           Búsqueda Avanzada
         </CardTitle>
       </CardHeader>
-      <CardContent className="p-0">
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
-          <div className="relative lg:col-span-2">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+      <CardContent>
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-3 relative">
+             <Label htmlFor="keyword-search">Búsqueda por Palabra Clave</Label>
+            <Search className="absolute left-3 bottom-3 h-4 w-4 text-muted-foreground" />
             <Input 
-              placeholder="Buscar por palabra clave..." 
+              id="keyword-search"
+              placeholder="Buscar por nombre, SKU, descripción..." 
               className="pl-10" 
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}
             />
           </div>
-          <Select onValueChange={handleBrandChange} value={selectedBrand}>
-            <SelectTrigger>
-              <SelectValue placeholder="Marca" />
-            </SelectTrigger>
-            <SelectContent>
-              {brands.map((brand) => (
-                <SelectItem key={brand} value={brand}>{brand}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          <Select onValueChange={handleModelChange} value={selectedModel} disabled={!selectedBrand}>
-            <SelectTrigger>
-              <SelectValue placeholder="Modelo" />
-            </SelectTrigger>
-            <SelectContent>
-              {availableModels.map((model) => (
-                <SelectItem key={model.name} value={model.name}>{model.name}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          <Select onValueChange={setSelectedYear} value={selectedYear} disabled={!selectedModel}>
-            <SelectTrigger>
-              <SelectValue placeholder="Año" />
-            </SelectTrigger>
-            <SelectContent>
-              {availableYears.map((year) => (
-                <SelectItem key={year} value={String(year)}>{year}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          <Select onValueChange={setSelectedLine} value={selectedLine}>
-            <SelectTrigger>
-              <SelectValue placeholder="Línea de partes" />
-            </SelectTrigger>
-            <SelectContent>
-              {mockLines.map((line) => (
-                <SelectItem key={line} value={line}>{line}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          <div className="flex flex-col sm:flex-row gap-2 lg:col-span-6">
-            <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
-              <Search className="mr-2 h-4 w-4" />
+          <div>
+            <Label htmlFor="brand-select">Marca</Label>
+            <Select onValueChange={handleBrandChange} value={selectedBrand}>
+              <SelectTrigger id="brand-select">
+                <SelectValue placeholder="Selecciona Marca" />
+              </SelectTrigger>
+              <SelectContent>
+                {brands.map((brand) => (
+                  <SelectItem key={brand} value={brand}>{brand}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div>
+             <Label htmlFor="model-select">Modelo</Label>
+            <Select onValueChange={handleModelChange} value={selectedModel} disabled={!selectedBrand}>
+              <SelectTrigger id="model-select">
+                <SelectValue placeholder="Selecciona Modelo" />
+              </SelectTrigger>
+              <SelectContent>
+                {availableModels.map((model) => (
+                  <SelectItem key={model.name} value={model.name}>{model.name}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+           <div>
+            <Label htmlFor="year-select">Año</Label>
+            <Select onValueChange={setSelectedYear} value={selectedYear} disabled={!selectedModel}>
+              <SelectTrigger id="year-select">
+                <SelectValue placeholder="Selecciona Año" />
+              </SelectTrigger>
+              <SelectContent>
+                {availableYears.map((year) => (
+                  <SelectItem key={year} value={String(year)}>{year}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+           </div>
+          <div className="lg:col-span-3">
+             <Label htmlFor="line-select">Línea de Producto</Label>
+            <Select onValueChange={setSelectedLine} value={selectedLine}>
+              <SelectTrigger id="line-select">
+                <SelectValue placeholder="Selecciona Línea de partes" />
+              </SelectTrigger>
+              <SelectContent>
+                {mockLines.map((line) => (
+                  <SelectItem key={line} value={line}>{line}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 lg:col-span-3">
+            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-lg py-6">
+              <Search className="mr-2 h-5 w-5" />
               Buscar
             </Button>
-            <Button type="button" variant="outline" className="w-full" onClick={handleClear}>
-               <X className="mr-2 h-4 w-4" />
+            <Button type="button" variant="outline" className="w-full text-lg py-6" onClick={handleClear}>
+               <X className="mr-2 h-5 w-5" />
               Limpiar
             </Button>
           </div>

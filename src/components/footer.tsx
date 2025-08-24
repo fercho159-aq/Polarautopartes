@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Wrench } from 'lucide-react';
 
@@ -14,14 +15,23 @@ export default function Footer() {
             <p className="text-muted-foreground text-sm">
               Tu tienda de confianza para partes de vehículos.
             </p>
+             <div className="mt-4">
+                <h3 className="font-headline text-lg font-semibold mb-2">Aceptamos</h3>
+                <div className="flex items-center gap-2">
+                    <img src="https://placehold.co/40x25.png" alt="Visa" data-ai-hint="credit card logo" />
+                    <img src="https://placehold.co/40x25.png" alt="Mastercard" data-ai-hint="credit card logo" />
+                    <img src="https://placehold.co/40x25.png" alt="PayPal" data-ai-hint="payment logo" />
+                </div>
+            </div>
           </div>
           <div>
             <h3 className="font-headline text-lg font-semibold mb-4">Navegación</h3>
             <ul className="space-y-2">
               <li><Link href="/" className="text-sm text-muted-foreground hover:text-primary">Inicio</Link></li>
+              <li><Link href="/search" className="text-sm text-muted-foreground hover:text-primary">Catálogo</Link></li>
+              <li><Link href="/#nosotros" className="text-sm text-muted-foreground hover:text-primary">Nosotros</Link></li>
+              <li><Link href="/#contacto" className="text-sm text-muted-foreground hover:text-primary">Contacto</Link></li>
               <li><Link href="/how-to-buy" className="text-sm text-muted-foreground hover:text-primary">Cómo Comprar</Link></li>
-              <li><Link href="/contact" className="text-sm text-muted-foreground hover:text-primary">Contacto</Link></li>
-              <li><Link href="/new-products" className="text-sm text-muted-foreground hover:text-primary">Nuevos Productos</Link></li>
             </ul>
           </div>
           <div>
@@ -29,6 +39,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary">Términos y Condiciones</Link></li>
               <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary">Política de Privacidad</Link></li>
+              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary">Política de Devoluciones</Link></li>
             </ul>
           </div>
           <div>
@@ -47,3 +58,4 @@ export default function Footer() {
     </footer>
   );
 }
+
