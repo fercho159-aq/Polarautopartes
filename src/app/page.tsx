@@ -81,7 +81,7 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative h-[70vh] flex items-center justify-center text-white">
+        <section className="relative h-[60vh] flex items-center justify-center text-white">
           <Image
             src="https://placehold.co/1920x1080.png"
             alt="Sistema de enfriamiento de un auto"
@@ -91,7 +91,7 @@ export default function HomePage() {
             data-ai-hint="car engine cooling system"
           />
           <div className="relative z-10 text-center p-4">
-            <h1 className="text-4xl md:text-6xl font-headline font-bold mb-4 drop-shadow-lg">
+            <h1 className="text-4xl md:text-5xl font-headline font-bold mb-4 drop-shadow-lg">
               Encuentra la Refacción Ideal para tu Auto
             </h1>
             <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto drop-shadow-md">
@@ -159,7 +159,7 @@ export default function HomePage() {
               ))}
             </div>
              <div className="text-center mt-12">
-                <Button asChild variant="outline">
+                <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
                     <Link href="/lines">Explorar Todas las Líneas</Link>
                 </Button>
             </div>
