@@ -1,9 +1,11 @@
 
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Award, Building, Globe, Heart, Lightbulb, MapPin, Phone, Rocket, ShieldCheck, Star, Target, ThumbsUp, Users, Wrench } from 'lucide-react';
+import { Award, Rocket, Target, Heart, ShieldCheck, Globe, ThumbsUp, Star } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { ContactSection } from '@/components/contact-section';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
