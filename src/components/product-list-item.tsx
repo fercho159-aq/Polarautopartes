@@ -11,7 +11,7 @@ interface ProductListItemProps {
 
 export function ProductListItem({ product }: ProductListItemProps) {
   return (
-    <div className="flex flex-col sm:flex-row gap-6 p-4 transition-colors hover:bg-muted/50 rounded-lg">
+    <div className="flex flex-col sm:flex-row gap-6 p-4 transition-shadow hover:shadow-lg rounded-lg bg-card border">
       <Link href={`/products/${product.sku}`} className="sm:w-1/4 flex-shrink-0">
           <div className="relative aspect-square w-full bg-card rounded-lg overflow-hidden border">
             <Image
