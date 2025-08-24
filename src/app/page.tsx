@@ -9,12 +9,15 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Car, MapPin, Phone, ShieldCheck, Star, ThumbsUp, Truck, Users, Wrench } from 'lucide-react';
-import { mockLines, mockProducts } from '@/lib/mock-data';
+import { mockLines } from '@/lib/mock-data';
 import { SearchFilters } from '@/components/search-filters';
 import { Badge } from '@/components/ui/badge';
 import { useRouter } from 'next/navigation';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { FeaturedProductCard } from '@/components/featured-product-card';
+import { useEffect, useState } from 'react';
+import type { Product } from '@/types';
+import { loadProductsFromCSV } from '@/lib/data-loader';
 
 const testimonials = [
   {
@@ -52,6 +55,16 @@ const testimonials = [
 
 export default function HomePage() {
   const router = useRouter();
+  const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    async function loadFeatured() {
+      const allProducts = await loadProductsFromCSV();
+      // For demo, we'll just take the first 4 as "featured"
+      setFeaturedProducts(allProducts.slice(0, 4));
+    }
+    loadFeatured();
+  }, []);
 
   const handleSearch = (criteria: any) => {
     const params = new URLSearchParams();
@@ -158,7 +171,7 @@ export default function HomePage() {
             <div className="container mx-auto px-4">
                 <h2 className="text-3xl font-headline font-bold text-center text-primary mb-12">Productos Destacados</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {mockProducts.slice(0, 4).map(product => (
+                    {featuredProducts.map(product => (
                         <div key={product.id} className="relative">
                             <Badge className="absolute top-4 left-4 z-10 bg-accent text-accent-foreground">Más Vendido</Badge>
                             <FeaturedProductCard product={product} />
