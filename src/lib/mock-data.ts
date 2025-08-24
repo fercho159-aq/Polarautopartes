@@ -99,9 +99,66 @@ export const mockProducts: Product[] = [
   },
 ];
 
-export const mockBrands = [...new Set(mockProducts.map(p => p.brand))];
-export const mockModels = [...new Set(mockProducts.map(p => p.model))];
-export const mockYears = [...new Set(mockProducts.map(p => p.year))].sort((a, b) => b - a);
+export const vehicleData = [
+  {
+    brand: 'Acdelco',
+    models: [
+      { name: 'Aveo', years: [2020, 2019, 2018] },
+      { name: 'Spark', years: [2021, 2020] },
+    ],
+  },
+  {
+    brand: 'Brembo',
+    models: [
+        { name: 'Jetta', years: [2022, 2021, 2020] },
+        { name: 'Golf', years: [2021, 2019] }
+    ],
+  },
+  {
+    brand: 'NGK',
+    models: [
+        { name: 'Sentra', years: [2019, 2018] },
+        { name: 'March', years: [2020, 2019] }
+    ],
+  },
+    {
+    brand: 'Monroe',
+    models: [
+        { name: 'Civic', years: [2021, 2020] },
+        { name: 'Accord', years: [2022, 2021] }
+    ],
+  },
+    {
+    brand: 'LTH',
+    models: [
+        { name: 'Versa', years: [2023, 2022] },
+        { name: 'Kicks', years: [2021, 2020] }
+    ],
+  },
+    {
+    brand: 'Bosch',
+    models: [
+        { name: 'Tiguan', years: [2022, 2021] },
+        { name: 'Vento', years: [2020, 2019] }
+    ],
+  },
+  {
+    brand: 'Gonher',
+    models: [
+        { name: 'Mustang', years: [2021, 2020] },
+        { name: 'Lobo', years: [2022, 2021] }
+    ],
+  },
+  {
+    brand: 'Valeo',
+    models: [
+        { name: 'CX-5', years: [2018, 2017] },
+        { name: 'Mazda 3', years: [2020, 2019] }
+    ],
+  },
+];
+
+
 export const mockLines = [
     "Bomba de Agua",
     "Deposito de Anticongelante",

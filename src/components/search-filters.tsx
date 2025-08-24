@@ -1,13 +1,43 @@
 'use client';
 
+import { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Search, SlidersHorizontal, X } from 'lucide-react';
-import { mockBrands, mockLines, mockModels, mockYears } from '@/lib/mock-data';
+import { vehicleData, mockLines } from '@/lib/mock-data';
+
+const brands = vehicleData.map(item => item.brand);
 
 export function SearchFilters() {
+  const [selectedBrand, setSelectedBrand] = useState('');
+  const [selectedModel, setSelectedModel] = useState('');
+  
+  const [availableModels, setAvailableModels] = useState<{name: string; years: number[]}[]>([]);
+  const [availableYears, setAvailableYears] = useState<number[]>([]);
+
+  const handleBrandChange = (brand: string) => {
+    setSelectedBrand(brand);
+    setSelectedModel('');
+    setAvailableYears([]);
+    const brandData = vehicleData.find(item => item.brand === brand);
+    setAvailableModels(brandData ? brandData.models : []);
+  };
+
+  const handleModelChange = (modelName: string) => {
+    setSelectedModel(modelName);
+    const modelData = availableModels.find(model => model.name === modelName);
+    setAvailableYears(modelData ? modelData.years.sort((a, b) => b - a) : []);
+  };
+
+  const handleClear = () => {
+    setSelectedBrand('');
+    setSelectedModel('');
+    setAvailableModels([]);
+    setAvailableYears([]);
+  };
+
   return (
     <Card className="shadow-none border-none">
       <CardHeader className="p-0 mb-6">
@@ -22,32 +52,32 @@ export function SearchFilters() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input placeholder="Buscar por palabra clave..." className="pl-10" />
           </div>
-          <Select>
+          <Select onValueChange={handleBrandChange} value={selectedBrand}>
             <SelectTrigger>
               <SelectValue placeholder="Marca" />
             </SelectTrigger>
             <SelectContent>
-              {mockBrands.map((brand) => (
+              {brands.map((brand) => (
                 <SelectItem key={brand} value={brand}>{brand}</SelectItem>
               ))}
             </SelectContent>
           </Select>
-          <Select>
+          <Select onValueChange={handleModelChange} value={selectedModel} disabled={!selectedBrand}>
             <SelectTrigger>
               <SelectValue placeholder="Modelo" />
             </SelectTrigger>
             <SelectContent>
-              {mockModels.map((model) => (
-                <SelectItem key={model} value={model}>{model}</SelectItem>
+              {availableModels.map((model) => (
+                <SelectItem key={model.name} value={model.name}>{model.name}</SelectItem>
               ))}
             </SelectContent>
           </Select>
-          <Select>
+          <Select disabled={!selectedModel}>
             <SelectTrigger>
               <SelectValue placeholder="Año" />
             </SelectTrigger>
             <SelectContent>
-              {mockYears.map((year) => (
+              {availableYears.map((year) => (
                 <SelectItem key={year} value={String(year)}>{year}</SelectItem>
               ))}
             </SelectContent>
@@ -67,7 +97,7 @@ export function SearchFilters() {
               <Search className="mr-2 h-4 w-4" />
               Buscar
             </Button>
-            <Button type="reset" variant="outline" className="w-full">
+            <Button type="button" variant="outline" className="w-full" onClick={handleClear}>
                <X className="mr-2 h-4 w-4" />
               Limpiar
             </Button>
