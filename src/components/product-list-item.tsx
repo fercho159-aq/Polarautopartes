@@ -5,10 +5,9 @@ import type { Product } from '@/types';
 import Image from 'next/image';
 import { Button } from './ui/button';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle, ChevronDown } from 'lucide-react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
 import { Badge } from './ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 interface ProductListItemProps {
   product: Product;
@@ -60,37 +59,31 @@ export function ProductListItem({ product }: ProductListItemProps) {
           </div>
       </div>
       
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="item-1">
-          <AccordionTrigger className="text-sm font-semibold text-primary hover:no-underline">
-              Ver Aplicaciones ({product.applications.length})
-          </AccordionTrigger>
-          <AccordionContent>
-            <div className="max-h-60 overflow-y-auto border rounded-lg mt-2">
-              <Table>
-                <TableHeader className="sticky top-0 bg-muted">
-                  <TableRow>
-                    <TableHead className="font-bold">Marca</TableHead>
-                    <TableHead className="font-bold">Modelo</TableHead>
-                    <TableHead className="font-bold">Motor</TableHead>
-                    <TableHead className="font-bold">Años</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {product.applications.map((app, index) => (
-                    <TableRow key={index} className={index % 2 === 0 ? 'bg-muted/50' : 'bg-card'}>
-                      <TableCell>{app.brand}</TableCell>
-                      <TableCell>{app.model}</TableCell>
-                      <TableCell>{app.motor}</TableCell>
-                      <TableCell>{app.years}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+      <div className="mt-2">
+        <h4 className="text-sm font-semibold text-primary mb-2">Aplicaciones ({product.applications.length})</h4>
+        <div className="max-h-60 overflow-y-auto border rounded-lg">
+          <Table>
+            <TableHeader className="sticky top-0 bg-muted">
+              <TableRow>
+                <TableHead className="font-bold">Marca</TableHead>
+                <TableHead className="font-bold">Modelo</TableHead>
+                <TableHead className="font-bold">Motor</TableHead>
+                <TableHead className="font-bold">Años</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {product.applications.map((app, index) => (
+                <TableRow key={index} className={index % 2 === 0 ? 'bg-muted/50' : 'bg-card'}>
+                  <TableCell>{app.brand}</TableCell>
+                  <TableCell>{app.model}</TableCell>
+                  <TableCell>{app.motor}</TableCell>
+                  <TableCell>{app.years}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+      </div>
     </div>
   );
 }
