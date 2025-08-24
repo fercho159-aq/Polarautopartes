@@ -60,8 +60,8 @@ export default function HomePage() {
   useEffect(() => {
     async function loadFeatured() {
       const allProducts = await loadProductsFromCSV();
-      // For demo, we'll just take the first 4 as "featured"
-      setFeaturedProducts(allProducts.slice(0, 4));
+      // For demo, we'll just take the first 6 as "featured"
+      setFeaturedProducts(allProducts.slice(0, 6));
     }
     loadFeatured();
   }, []);
@@ -170,7 +170,7 @@ export default function HomePage() {
         <section id="destacados" className="py-16 bg-muted">
             <div className="container mx-auto px-4">
                 <h2 className="text-3xl font-headline font-bold text-center text-primary mb-12">Productos Destacados</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {featuredProducts.map(product => (
                         <div key={product.id} className="relative">
                             <Badge className="absolute top-4 left-4 z-10 bg-accent text-accent-foreground">Más Vendido</Badge>
