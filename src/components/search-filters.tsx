@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -22,32 +22,51 @@ export interface SearchCriteria {
 interface SearchFiltersProps {
     onSearch: (criteria: SearchCriteria) => void;
     onClear: () => void;
+    initialLine?: string;
 }
 
-export function SearchFilters({ onSearch, onClear }: SearchFiltersProps) {
+export function SearchFilters({ onSearch, onClear, initialLine = '' }: SearchFiltersProps) {
   const [keyword, setKeyword] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('');
   const [selectedModel, setSelectedModel] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
-  const [selectedLine, setSelectedLine] = useState('');
+  const [selectedLine, setSelectedLine] = useState(initialLine);
   
   const [availableModels, setAvailableModels] = useState<{name: string; years: number[]}[]>([]);
   const [availableYears, setAvailableYears] = useState<number[]>([]);
+
+  useEffect(() => {
+    setSelectedLine(initialLine);
+  }, [initialLine]);
 
   const handleBrandChange = (brand: string) => {
     setSelectedBrand(brand);
     setSelectedModel('');
     setSelectedYear('');
     setAvailableYears([]);
-    const brandData = vehicleData.find(item => item.brand === brand);
-    setAvailableModels(brandData ? brandData.models.sort((a,b) => a.name.localeCompare(b.name)) : []);
+    
+    const modelsForBrand = vehicleData
+      .filter(item => item.brand === brand)
+      .flatMap(item => item.models);
+      
+    const uniqueModels = Array.from(new Map(modelsForBrand.map(m => [m.name, m])).values())
+      .sort((a, b) => a.name.localeCompare(b.name));
+      
+    setAvailableModels(uniqueModels);
   };
 
   const handleModelChange = (modelName: string) => {
     setSelectedModel(modelName);
     setSelectedYear('');
-    const modelData = availableModels.find(model => model.name === modelName);
-    setAvailableYears(modelData ? modelData.years.sort((a, b) => b - a) : []);
+    
+    const yearsForModel = vehicleData
+      .filter(item => item.brand === selectedBrand)
+      .flatMap(item => item.models)
+      .filter(model => model.name === modelName)
+      .flatMap(model => model.years);
+      
+    const uniqueYears = [...new Set(yearsForModel)].sort((a, b) => b - a);
+    setAvailableYears(uniqueYears);
   };
 
   const handleSubmit = (e: React.FormEvent) => {

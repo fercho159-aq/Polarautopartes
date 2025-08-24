@@ -12,6 +12,7 @@ import * as React from 'react';
 
 const navLinks = [
   { href: '/', label: 'Inicio' },
+  { href: '/search', label: 'Búsqueda' },
   { href: '/how-to-buy', label: 'Cómo Comprar' },
   { href: '/contact', label: 'Contacto' },
   { href: '/new-products', label: 'Nuevos Productos' },
