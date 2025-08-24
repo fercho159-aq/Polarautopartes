@@ -1,6 +1,7 @@
 import type { Product } from '@/types';
 import { ProductListItem } from './product-list-item';
 import { Separator } from './ui/separator';
+import React from 'react';
 
 interface ProductListProps {
   products: Product[];
@@ -21,10 +22,10 @@ export function ProductList({ products }: ProductListProps) {
       <h2 className="font-headline text-3xl font-bold mb-4">Resultados de la Búsqueda <span className="text-muted-foreground font-normal text-2xl">({products.length})</span></h2>
       <div className="flex flex-col gap-4">
         {products.map((product, index) => (
-          <>
-            <ProductListItem key={product.id} product={product} />
+          <React.Fragment key={product.id}>
+            <ProductListItem product={product} />
             {index < products.length - 1 && <Separator />}
-          </>
+          </React.Fragment>
         ))}
       </div>
     </div>
