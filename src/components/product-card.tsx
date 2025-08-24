@@ -12,6 +12,7 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <Card className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-lg">
       <CardContent className="p-4">
+        <h1 className="font-headline text-2xl font-bold mb-4 text-primary">{product.name}</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
           <Carousel className="w-full">
             <CarouselContent>
