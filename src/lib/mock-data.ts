@@ -3,99 +3,123 @@ import type { Product } from '@/types';
 export const mockProducts: Product[] = [
   {
     id: '1',
-    name: 'Filtro de Aceite',
-    brand: 'Acdelco',
-    model: 'Aveo',
-    year: 2020,
-    line: 'Filtros',
+    name: 'Bomba de Agua Auxiliar',
+    brand: 'KG',
+    line: 'Bomba de Agua Auxiliar',
     description: 'Filtro de aceite de alto rendimiento para Chevrolet Aveo.',
-    sku: 'AC-FO-001',
+    sku: 'KGPA-1040',
     price: 150.00,
     imageUrl: 'https://placehold.co/400x400.png',
+    oem: '1K0965561G',
+    specifications: 'Especificación de ejemplo',
+    characteristics: 'Característica de ejemplo',
+    applications: [
+      { brand: 'AUDI', model: 'A3', motor: 'L4 2.0L', years: '2006 - 2007' },
+      { brand: 'AUDI', model: 'A4 QUATTRO', motor: 'V6 3.2L', years: '2009 - 2009' },
+      { brand: 'AUDI', model: 'A5 QUATTRO', motor: 'V6 3.2L', years: '2008 - 2008' },
+      { brand: 'VOLKSWAGEN', model: 'GTI', motor: 'L4 2.0L', years: '2007 - 2008' },
+      { brand: 'VOLKSWAGEN', model: 'JETTA', motor: 'L4 2.0L', years: '2006 - 2008' },
+      { brand: 'VOLKSWAGEN', model: 'PASSAT', motor: 'L4 2.0L', years: '2006 - 2008' },
+    ],
   },
   {
     id: '2',
     name: 'Balatas Delanteras',
     brand: 'Brembo',
-    model: 'Jetta',
-    year: 2022,
     line: 'Frenos',
     description: 'Juego de balatas cerámicas para Volkswagen Jetta.',
     sku: 'BR-FD-002',
     price: 850.50,
     imageUrl: 'https://placehold.co/400x400.png',
+    oem: 'OEM-BR-002',
+    applications: [
+        { brand: 'Volkswagen', model: 'Jetta', motor: 'L4 2.0L', years: '2020-2022' },
+        { brand: 'Volkswagen', model: 'Golf', motor: 'L4 1.4L', years: '2019-2021' },
+    ]
   },
   {
     id: '3',
     name: 'Bujía de Iridio',
     brand: 'NGK',
-    model: 'Sentra',
-    year: 2019,
     line: 'Motor',
     description: 'Bujía de iridio de larga duración para Nissan Sentra.',
     sku: 'NGK-BI-003',
     price: 220.00,
     imageUrl: 'https://placehold.co/400x400.png',
+    oem: 'OEM-NGK-003',
+     applications: [
+        { brand: 'Nissan', model: 'Sentra', motor: 'L4 1.8L', years: '2017-2019' },
+     ]
   },
   {
     id: '4',
     name: 'Amortiguador Trasero',
     brand: 'Monroe',
-    model: 'Civic',
-    year: 2021,
     line: 'Suspensión',
     description: 'Amortiguador de gas para Honda Civic.',
     sku: 'MON-AT-004',
     price: 1200.00,
     imageUrl: 'https://placehold.co/400x400.png',
+    oem: 'OEM-MON-004',
+    applications: [
+        { brand: 'Honda', model: 'Civic', motor: 'L4 1.5T', years: '2020-2021' },
+    ]
   },
     {
     id: '5',
     name: 'Batería de Coche',
     brand: 'LTH',
-    model: 'Versa',
-    year: 2023,
     line: 'Eléctrico',
     description: 'Batería de 12V para Nissan Versa.',
     sku: 'LTH-BC-005',
     price: 2100.75,
     imageUrl: 'https://placehold.co/400x400.png',
+    oem: 'OEM-LTH-005',
+    applications: [
+        { brand: 'Nissan', model: 'Versa', motor: 'L4 1.6L', years: '2021-2023' },
+    ]
   },
   {
     id: '6',
     name: 'Limpiaparabrisas',
     brand: 'Bosch',
-    model: 'Tiguan',
-    year: 2022,
     line: 'Accesorios',
     description: 'Juego de limpiaparabrisas para VW Tiguan.',
     sku: 'BOS-LP-006',
     price: 450.00,
     imageUrl: 'https://placehold.co/400x400.png',
+    oem: 'OEM-BOS-006',
+    applications: [
+        { brand: 'VW', model: 'Tiguan', motor: 'L4 2.0T', years: '2021-2022' },
+    ]
   },
     {
     id: '7',
     name: 'Filtro de Aire',
     brand: 'Gonher',
-    model: 'Mustang',
-    year: 2021,
     line: 'Filtros',
     description: 'Filtro de aire de alto flujo para Ford Mustang.',
     sku: 'GON-FA-007',
     price: 350.00,
     imageUrl: 'https://placehold.co/400x400.png',
+    oem: 'OEM-GON-007',
+    applications: [
+        { brand: 'Ford', model: 'Mustang', motor: 'V8 5.0L', years: '2020-2021' },
+    ]
   },
   {
     id: '8',
     name: 'Radiador',
     brand: 'Valeo',
-    model: 'CX-5',
-    year: 2018,
     line: 'Enfriamiento',
     description: 'Radiador de aluminio para Mazda CX-5.',
     sku: 'VAL-RD-008',
     price: 3500.00,
     imageUrl: 'https://placehold.co/400x400.png',
+    oem: 'OEM-VAL-008',
+    applications: [
+        { brand: 'Mazda', model: 'CX-5', motor: 'L4 2.5L', years: '2017-2018' },
+    ]
   },
 ];
 
@@ -154,6 +178,22 @@ export const vehicleData = [
     models: [
         { name: 'CX-5', years: [2018, 2017] },
         { name: 'Mazda 3', years: [2020, 2019] }
+    ],
+  },
+  {
+    brand: 'Audi',
+    models: [
+        { name: 'A3', years: [2007, 2006] },
+        { name: 'A4 Quattro', years: [2009] },
+        { name: 'A5 Quattro', years: [2008] },
+    ],
+  },
+  {
+    brand: 'Volkswagen',
+    models: [
+        { name: 'GTI', years: [2008, 2007] },
+        { name: 'Jetta', years: [2008, 2007, 2006] },
+        { name: 'Passat', years: [2008, 2007, 2006] },
     ],
   },
 ];
