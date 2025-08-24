@@ -1,6 +1,6 @@
 import type { Product } from '@/types';
 import Image from 'next/image';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
@@ -41,7 +41,7 @@ export function ProductCard({ product }: ProductCardProps) {
             <CarouselPrevious />
             <CarouselNext />
           </Carousel>
-          <div className="text-sm space-y-2 p-[75px]">
+          <div className="text-sm space-y-2 py-4 md:py-0 md:px-8 flex flex-col justify-center h-full">
             <h1 className="font-headline text-2xl font-bold text-primary">{product.name}</h1>
             <p className="font-bold text-primary">#KG: <span className="text-foreground font-normal">{product.sku}</span></p>
             <p className="font-bold text-primary">Línea: <span className="text-foreground font-normal">{product.line}</span></p>
@@ -52,26 +52,29 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
       </CardContent>
       <div className="px-4 pb-4">
-        <Table>
-          <TableHeader>
-            <TableRow className="bg-primary hover:bg-primary/90">
-              <TableHead className="text-primary-foreground font-bold">Marca</TableHead>
-              <TableHead className="text-primary-foreground font-bold">Modelo</TableHead>
-              <TableHead className="text-primary-foreground font-bold">Motor</TableHead>
-              <TableHead className="text-primary-foreground font-bold">Años</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {product.applications.map((app, index) => (
-              <TableRow key={index} className={index % 2 === 0 ? 'bg-muted/50' : 'bg-card'}>
-                <TableCell>{app.brand}</TableCell>
-                <TableCell>{app.model}</TableCell>
-                <TableCell>{app.motor}</TableCell>
-                <TableCell>{app.years}</TableCell>
+        <h3 className="font-headline text-xl font-bold text-primary mb-4">Aplicaciones</h3>
+        <div className="max-h-60 overflow-y-auto border rounded-lg">
+          <Table>
+            <TableHeader className="sticky top-0 bg-primary/95 backdrop-blur-sm">
+              <TableRow className="hover:bg-primary/90">
+                <TableHead className="text-primary-foreground font-bold">Marca</TableHead>
+                <TableHead className="text-primary-foreground font-bold">Modelo</TableHead>
+                <TableHead className="text-primary-foreground font-bold">Motor</TableHead>
+                <TableHead className="text-primary-foreground font-bold">Años</TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHeader>
+            <TableBody>
+              {product.applications.map((app, index) => (
+                <TableRow key={index} className={index % 2 === 0 ? 'bg-muted/50' : 'bg-card'}>
+                  <TableCell>{app.brand}</TableCell>
+                  <TableCell>{app.model}</TableCell>
+                  <TableCell>{app.motor}</TableCell>
+                  <TableCell>{app.years}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </div>
     </Card>
   );
