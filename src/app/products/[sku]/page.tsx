@@ -22,11 +22,9 @@ function safeDecode(uriComponent: string) {
     }
 }
 
-
-export default function ProductDetailPage({ params }: { params: { sku: string } }) {
+function ProductDetailContent({ sku }: { sku: string }) {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
-  const sku = safeDecode(params.sku);
 
   useEffect(() => {
     async function getProduct() {
@@ -60,7 +58,11 @@ export default function ProductDetailPage({ params }: { params: { sku: string } 
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <ProductCard product={product} />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <div className="md:col-span-2">
+            <ProductCard product={product} />
+        </div>
+      </div>
 
       <section id="contacto" className="py-16 mt-8">
         <div className="container mx-auto px-4">
@@ -125,4 +127,12 @@ export default function ProductDetailPage({ params }: { params: { sku: string } 
       </section>
     </div>
   );
+}
+
+
+export default function ProductDetailPage({ params }: { params: { sku: string } }) {
+    const resolvedParams = use(Promise.resolve(params));
+    const sku = safeDecode(resolvedParams.sku);
+
+    return <ProductDetailContent sku={sku} />;
 }
