@@ -106,27 +106,29 @@ export default function NosotrosPage() {
 
       {/* 3. Historia o recorrido */}
       <section className="py-16 bg-card">
-          <div className="container mx-auto px-4">
-              <h2 className="text-3xl font-headline font-bold text-center text-primary mb-12">Nuestra Trayectoria</h2>
-              <div className="relative">
-                  <div className="absolute left-1/2 h-full w-0.5 bg-border -translate-x-1/2 hidden md:block"></div>
-                  {timeline.map((item, index) => (
-                      <div key={item.year} className={`relative mb-12 md:mb-8 flex md:items-center w-full ${index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
-                          <div className={`w-full md:w-5/12 p-4`}>
-                              <Card className="p-6 hover:shadow-xl transition-shadow">
-                                <p className="text-primary font-bold text-lg mb-2">{item.year}</p>
-                                <h4 className="font-headline text-xl font-bold mb-2">{item.event}</h4>
-                                <p className="text-muted-foreground">{item.description}</p>
-                              </Card>
-                          </div>
-                          <div className="absolute md:relative z-10 flex items-center justify-center w-10 h-10 bg-primary rounded-full ring-4 ring-background left-1/2 -translate-x-1/2 md:translate-x-0">
-                            <Award className="text-primary-foreground"/>
-                          </div>
-                           <div className="w-full md:w-5/12 p-4"></div>
-                      </div>
-                  ))}
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-headline font-bold text-center text-primary mb-12">Nuestra Trayectoria</h2>
+          <div className="relative">
+            <div className="absolute left-0 right-0 md:left-1/2 md:right-auto top-0 w-full h-full">
+              <div className="absolute h-full w-0.5 bg-border left-1/2 -translate-x-1/2 hidden md:block" />
+            </div>
+            {timeline.map((item, index) => (
+              <div key={item.year} className={`relative flex justify-between md:items-center w-full mb-8 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+                <div className="w-full md:w-5/12">
+                   <Card className="p-6 hover:shadow-xl transition-shadow">
+                        <p className="text-primary font-bold text-lg mb-2">{item.year}</p>
+                        <h4 className="font-headline text-xl font-bold mb-2">{item.event}</h4>
+                        <p className="text-muted-foreground">{item.description}</p>
+                   </Card>
+                </div>
+                <div className="absolute left-1/2 -translate-x-1/2 md:relative md:translate-x-0 z-10 flex items-center justify-center w-10 h-10 bg-primary rounded-full ring-4 ring-card">
+                  <Award className="text-primary-foreground"/>
+                </div>
+                 <div className="w-full md:w-5/12" />
               </div>
+            ))}
           </div>
+        </div>
       </section>
 
 
@@ -224,3 +226,5 @@ export default function NosotrosPage() {
     </div>
   );
 }
+
+    
