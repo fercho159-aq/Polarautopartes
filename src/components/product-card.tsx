@@ -52,7 +52,7 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
       </CardContent>
       <div className="px-4 pb-4">
-        <h3 className="font-headline text-xl font-bold text-primary mb-4">Aplicaciones</h3>
+        <h3 className="font-headline text-xl font-bold text-primary mb-4">Modelos Compatibles</h3>
         <div className="max-h-60 overflow-y-auto border rounded-lg">
           <Table>
             <TableHeader className="sticky top-0 bg-primary/95 backdrop-blur-sm">

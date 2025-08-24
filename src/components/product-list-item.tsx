@@ -60,7 +60,7 @@ export function ProductListItem({ product }: ProductListItemProps) {
       </div>
       
       <div className="mt-2">
-        <h4 className="text-sm font-semibold text-primary mb-2">Aplicaciones ({product.applications.length})</h4>
+        <h4 className="text-sm font-semibold text-primary mb-2">Modelos Compatibles ({product.applications.length})</h4>
         <div className="max-h-60 overflow-y-auto border rounded-lg">
           <Table>
             <TableHeader className="sticky top-0 bg-muted">
