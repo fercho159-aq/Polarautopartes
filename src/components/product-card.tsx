@@ -1,6 +1,6 @@
 import type { Product } from '@/types';
 import Image from 'next/image';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
@@ -41,28 +41,28 @@ export function ProductCard({ product }: ProductCardProps) {
             <CarouselPrevious />
             <CarouselNext />
           </Carousel>
-          <div className="text-sm">
-            <p className="font-bold text-green-600">#KG: <span className="text-foreground font-normal">{product.sku}</span></p>
-            <p className="font-bold text-green-600">Línea: <span className="text-foreground font-normal">{product.line}</span></p>
-            <p className="font-bold text-green-600">OEM: <span className="text-foreground font-normal">{product.oem}</span></p>
-            {product.specifications && <p className="font-bold text-green-600">Especificaciones: <span className="text-foreground font-normal">{product.specifications}</span></p>}
-            {product.characteristics && <p className="font-bold text-green-600">Caracteristicas: <span className="text-foreground font-normal">{product.characteristics}</span></p>}
+          <div className="text-sm space-y-1">
+            <p className="font-bold text-primary">#KG: <span className="text-foreground font-normal">{product.sku}</span></p>
+            <p className="font-bold text-primary">Línea: <span className="text-foreground font-normal">{product.line}</span></p>
+            <p className="font-bold text-primary">OEM: <span className="text-foreground font-normal">{product.oem}</span></p>
+            {product.specifications && <p className="font-bold text-primary">Especificaciones: <span className="text-foreground font-normal">{product.specifications}</span></p>}
+            {product.characteristics && <p className="font-bold text-primary">Caracteristicas: <span className="text-foreground font-normal">{product.characteristics}</span></p>}
           </div>
         </div>
       </CardContent>
       <div className="px-4 pb-4">
         <Table>
           <TableHeader>
-            <TableRow className="bg-green-600 hover:bg-green-700">
-              <TableHead className="text-white font-bold">Marca</TableHead>
-              <TableHead className="text-white font-bold">Modelo</TableHead>
-              <TableHead className="text-white font-bold">Motor</TableHead>
-              <TableHead className="text-white font-bold">Años</TableHead>
+            <TableRow className="bg-primary hover:bg-primary/90">
+              <TableHead className="text-primary-foreground font-bold">Marca</TableHead>
+              <TableHead className="text-primary-foreground font-bold">Modelo</TableHead>
+              <TableHead className="text-primary-foreground font-bold">Motor</TableHead>
+              <TableHead className="text-primary-foreground font-bold">Años</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {product.applications.map((app, index) => (
-              <TableRow key={index} className={index % 2 === 0 ? 'bg-gray-800 text-white' : 'bg-white'}>
+              <TableRow key={index} className={index % 2 === 0 ? 'bg-muted/50' : 'bg-card'}>
                 <TableCell>{app.brand}</TableCell>
                 <TableCell>{app.model}</TableCell>
                 <TableCell>{app.motor}</TableCell>
