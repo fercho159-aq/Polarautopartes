@@ -321,7 +321,7 @@ export default function HomePage() {
                             <div>
                                <p className="font-semibold text-foreground">Correos</p>
                                <p>Ventas: ventas@polarautopartes.com</p>
-                               <p>Servicio Técnico: soporte@polarautopartes.com</p>
+                               <p>Soporte Técnico: soporte@polarautopartes.com</p>
                            </div>
                         </div>
                      </div>

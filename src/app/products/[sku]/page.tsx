@@ -11,11 +11,22 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { use } from 'react';
+
+// This is a workaround for a Next.js bug where params are not properly decoded
+function safeDecode(uriComponent: string) {
+    try {
+        return decodeURIComponent(uriComponent)
+    } catch {
+        return uriComponent
+    }
+}
+
 
 export default function ProductDetailPage({ params }: { params: { sku: string } }) {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
-  const sku = params.sku;
+  const sku = safeDecode(params.sku);
 
   useEffect(() => {
     async function getProduct() {

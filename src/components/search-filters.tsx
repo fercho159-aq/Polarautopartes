@@ -109,8 +109,8 @@ export function SearchFilters({ onSearch, onClear, initialLine = '' }: SearchFil
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-3 relative">
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="md:col-span-2 relative">
              <Label htmlFor="keyword-search">Búsqueda por Palabra Clave</Label>
             <Search className="absolute left-3 bottom-3 h-4 w-4 text-muted-foreground" />
             <Input 
@@ -121,7 +121,7 @@ export function SearchFilters({ onSearch, onClear, initialLine = '' }: SearchFil
               onChange={(e) => setKeyword(e.target.value)}
             />
           </div>
-          <div>
+          <div className="col-span-1">
             <Label htmlFor="brand-select">Marca</Label>
             <Select onValueChange={handleBrandChange} value={selectedBrand}>
               <SelectTrigger id="brand-select">
@@ -134,7 +134,7 @@ export function SearchFilters({ onSearch, onClear, initialLine = '' }: SearchFil
               </SelectContent>
             </Select>
           </div>
-          <div>
+          <div className="col-span-1">
              <Label htmlFor="model-select">Modelo</Label>
             <Select onValueChange={handleModelChange} value={selectedModel} disabled={!selectedBrand}>
               <SelectTrigger id="model-select">
@@ -147,7 +147,7 @@ export function SearchFilters({ onSearch, onClear, initialLine = '' }: SearchFil
               </SelectContent>
             </Select>
           </div>
-           <div>
+           <div className="col-span-1">
             <Label htmlFor="year-select">Año</Label>
             <Select onValueChange={setSelectedYear} value={selectedYear} disabled={!selectedModel}>
               <SelectTrigger id="year-select">
@@ -160,7 +160,7 @@ export function SearchFilters({ onSearch, onClear, initialLine = '' }: SearchFil
               </SelectContent>
             </Select>
            </div>
-          <div className="lg:col-span-3">
+          <div className="col-span-1 md:col-span-2">
              <Label htmlFor="line-select">Línea de Producto</Label>
             <Select onValueChange={setSelectedLine} value={selectedLine}>
               <SelectTrigger id="line-select">
@@ -173,7 +173,7 @@ export function SearchFilters({ onSearch, onClear, initialLine = '' }: SearchFil
               </SelectContent>
             </Select>
           </div>
-          <div className="flex flex-col sm:flex-row gap-4 lg:col-span-3">
+          <div className="flex flex-col sm:flex-row gap-4 md:col-span-2">
             <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-lg py-6">
               <Search className="mr-2 h-5 w-5" />
               Buscar
