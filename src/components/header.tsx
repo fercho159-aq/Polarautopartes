@@ -11,16 +11,16 @@ import {
 import { Button } from '@/components/ui/button';
 import * as React from 'react';
 
-export default function Header() {
-  const [isOpen, setIsOpen] = React.useState(false);
-
-  const navLinks = [
+const navLinks = [
     { href: '/', label: 'Inicio' },
     { href: '/search', label: 'Catálogo' },
     { href: '/lines', label: 'Líneas' },
     { href: '/nosotros', label: 'Nosotros' },
     { href: '/#contacto', label: 'Contacto' },
-  ];
+];
+
+export default function Header() {
+  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -32,7 +32,7 @@ export default function Header() {
         
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
           {navLinks.map(link => (
-            <Link key={link.href + link.label} href={link.href} className="text-foreground/60 transition-colors hover:text-foreground/80">
+            <Link key={link.href} href={link.href} className="text-foreground/60 transition-colors hover:text-foreground/80">
               {link.label}
             </Link>
           ))}
@@ -55,7 +55,7 @@ export default function Header() {
                   <nav className="flex flex-col gap-6">
                     {navLinks.map(link => (
                       <Link
-                        key={link.href + link.label}
+                        key={link.href}
                         href={link.href}
                         className="text-lg font-semibold"
                         onClick={() => setIsOpen(false)}
