@@ -83,7 +83,7 @@ export default function HomePage() {
         {/* Hero Section */}
         <section className="relative h-[60vh] flex items-center justify-center text-white">
           <Image
-            src="https://placehold.co/1920x1080.png"
+            src="/Imges/1.png"
             alt="Sistema de enfriamiento de un auto"
             layout="fill"
             objectFit="cover"

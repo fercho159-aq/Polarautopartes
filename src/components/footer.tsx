@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { Wrench } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -9,8 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <Wrench className="h-6 w-6 text-primary" />
-              <span className="font-headline text-xl font-bold text-primary">Polar Autopartes</span>
+               <Image src="https://placehold.co/180x40.png" alt="Polar Autopartes Logo" width={180} height={40} data-ai-hint="logo" />
             </Link>
             <p className="text-muted-foreground text-sm">
               Tu tienda de confianza para partes de vehículos.
