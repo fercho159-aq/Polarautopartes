@@ -25,7 +25,7 @@ export default function AllLinesPage() {
             <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full flex flex-col">
               <div className="relative h-40 w-full">
                 <Image
-                  src="https://placehold.co/400x300.png"
+                  src="/Images/10.png"
                   alt={line}
                   layout="fill"
                   objectFit="cover"

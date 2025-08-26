@@ -14,19 +14,19 @@ const teamMembers = [
   {
     name: 'Juan Pérez',
     role: 'Director General',
-    avatar: 'https://placehold.co/200x200.png',
+    avatar: '/Images/5.png',
     bio: 'Con más de 20 años de experiencia en el sector automotriz, Juan lidera nuestra visión estratégica.'
   },
   {
     name: 'Ana García',
     role: 'Gerente de Ventas',
-    avatar: 'https://placehold.co/200x200.png',
+    avatar: '/Images/5.png',
     bio: 'Ana se asegura de que cada cliente reciba la mejor atención y encuentre la pieza perfecta.'
   },
   {
     name: 'Luis Hernández',
     role: 'Jefe de Almacén',
-    avatar: 'https://placehold.co/200x200.png',
+    avatar: '/Images/5.png',
     bio: 'Luis garantiza que nuestro inventario esté siempre al día y que los envíos salgan a tiempo.'
   },
 ];

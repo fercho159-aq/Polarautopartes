@@ -61,7 +61,7 @@ export function ContactSection() {
                             </div>
                         </div>
                         <div className="mt-6 h-64 w-full bg-muted rounded-lg overflow-hidden relative">
-                            <Image src="https://placehold.co/600x400.png" alt="Mapa de ubicación" layout="fill" objectFit="cover" data-ai-hint="map location" />
+                            <Image src="/Images/a8.png" alt="Mapa de ubicación" layout="fill" objectFit="cover" data-ai-hint="map location" />
                         </div>
                     </div>
                 </div>

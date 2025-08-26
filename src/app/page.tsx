@@ -83,7 +83,7 @@ export default function HomePage() {
         {/* Hero Section */}
         <section className="relative h-[60vh] flex items-center justify-center text-white">
           <Image
-            src="/Imges/1.png"
+            src="/Images/ima2.jpg"
             alt="Sistema de enfriamiento de un auto"
             layout="fill"
             objectFit="cover"
@@ -143,7 +143,7 @@ export default function HomePage() {
                   <Card className="overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1">
                      <div className="relative h-40 w-full">
                         <Image
-                          src="https://placehold.co/400x300.png"
+                          src="/Images/a2.png"
                           alt={line}
                           layout="fill"
                           objectFit="cover"
@@ -211,7 +211,7 @@ export default function HomePage() {
             </div>
             <div className="relative h-80 w-full rounded-lg overflow-hidden shadow-lg">
                 <Image
-                    src="https://placehold.co/600x400.png"
+                    src="/Images/a7.png"
                     alt="Equipo de Polar Autopartes"
                     layout="fill"
                     objectFit="cover"
@@ -326,7 +326,7 @@ export default function HomePage() {
                         </div>
                      </div>
                      <div className="mt-6 h-64 w-full bg-muted rounded-lg overflow-hidden relative">
-                        <Image src="https://placehold.co/600x400.png" alt="Mapa de ubicación" layout="fill" objectFit="cover" data-ai-hint="map location"/>
+                        <Image src="/Images/a8.png" alt="Mapa de ubicación" layout="fill" objectFit="cover" data-ai-hint="map location"/>
                      </div>
                  </div>
             </div>

@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <Link href="/" className="flex items-center gap-2 mb-4">
-               <Image src="/logo.png" alt="Polar Autopartes Logo" width={180} height={40} data-ai-hint="logo" />
+               <Image src="/Images/logop.png" alt="Polar Autopartes Logo" width={180} height={40} data-ai-hint="logo" />
             </Link>
             <p className="text-muted-foreground text-sm">
               Tu tienda de confianza para partes de vehículos.

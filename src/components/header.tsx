@@ -26,7 +26,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 max-w-screen-2xl items-center justify-between px-[25px]">
         <Link href="/" className="flex items-center gap-2">
-          <Image src="/logo.png" alt="Polar Autopartes Logo" width={180} height={40} data-ai-hint="logo" />
+          <Image src="/Images/logop.png" alt="Polar Autopartes Logo" width={180} height={40} data-ai-hint="logo" />
         </Link>
         
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
