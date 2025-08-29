@@ -127,9 +127,8 @@ export default function HomePage() {
                                 <Image
                                     src={slide.image}
                                     alt={slide.title}
-                                    layout="fill"
-                                    objectFit="cover"
-                                    className="absolute z-0 brightness-50"
+                                    fill
+                                    className="object-cover absolute z-0 brightness-50"
                                     data-ai-hint={slide.hint}
                                 />
                                 <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white p-4">
@@ -263,7 +262,7 @@ export default function HomePage() {
                 <Image
                     src="/Images/a7.png"
                     alt="Equipo de Polar Autopartes"
-                    layout="fill"
+                    fill
                     objectFit="cover"
                     data-ai-hint="automotive parts warehouse"
                 />
@@ -376,7 +375,7 @@ export default function HomePage() {
                         </div>
                      </div>
                      <div className="mt-6 h-64 w-full bg-muted rounded-lg overflow-hidden relative">
-                        <Image src="/Images/a8.png" alt="Mapa de ubicación" layout="fill" objectFit="cover" data-ai-hint="map location"/>
+                        <Image src="/Images/a8.png" alt="Mapa de ubicación" fill objectFit="cover" data-ai-hint="map location"/>
                      </div>
                  </div>
             </div>
