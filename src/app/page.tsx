@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Car, MapPin, Phone, ShieldCheck, Star, ThumbsUp, Truck, Users, Wrench } from 'lucide-react';
+import { Car, Mail, MapPin, Phone, ShieldCheck, Star, ThumbsUp, Truck, Users, Wrench } from 'lucide-react';
 import { mockLines } from '@/lib/mock-data';
 import { SearchFilters } from '@/components/search-filters';
 import { Badge } from '@/components/ui/badge';
@@ -50,6 +50,27 @@ const testimonials = [
     quote: 'Los condensadores tienen un rendimiento excelente. Mis clientes de autos de alta gama quedan muy satisfechos con la eficiencia del enfriamiento.',
     avatar: 'https://placehold.co/100x100.png',
   },
+];
+
+const heroSlides = [
+    {
+        image: "/Images/ima2.jpg",
+        title: "Encuentra la Refacción Ideal para tu Auto",
+        subtitle: "Calidad y cobertura para el sistema de enfriamiento de tu vehículo.",
+        hint: "car engine cooling system"
+    },
+    {
+        image: "/Images/a2.png",
+        title: "Bombas de Agua de Alto Rendimiento",
+        subtitle: "Durabilidad y eficiencia para mantener tu motor en la temperatura correcta.",
+        hint: "car water pump"
+    },
+    {
+        image: "/Images/a7.png",
+        title: "Radiadores para Todos los Modelos",
+        subtitle: "La mayor cobertura del mercado para autos nacionales e importados.",
+        hint: "automotive parts warehouse"
+    }
 ];
 
 
@@ -97,27 +118,40 @@ export default function HomePage() {
 
 
         {/* Hero Section */}
-        <section className="relative h-[60vh] flex items-center justify-center text-white">
-          <Image
-            src="/Images/ima2.jpg"
-            alt="Sistema de enfriamiento de un auto"
-            layout="fill"
-            objectFit="cover"
-            className="absolute z-0 brightness-50"
-            data-ai-hint="car engine cooling system"
-          />
-          <div className="relative z-10 text-center p-4">
-            <h1 className="text-4xl md:text-5xl font-headline font-bold mb-4 drop-shadow-lg">
-              Encuentra la Refacción Ideal para tu Auto
-            </h1>
-            <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto drop-shadow-md">
-              Calidad y cobertura para el sistema de enfriamiento de tu vehículo.
-            </p>
-            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-10 py-6">
-              <Link href="/search">Buscar Refacción</Link>
-            </Button>
-          </div>
+         <section className="relative h-[60vh] w-full">
+            <Carousel className="w-full h-full" opts={{ loop: true }}>
+                <CarouselContent className="h-full">
+                    {heroSlides.map((slide, index) => (
+                        <CarouselItem key={index} className="h-full">
+                            <div className="relative h-full w-full">
+                                <Image
+                                    src={slide.image}
+                                    alt={slide.title}
+                                    layout="fill"
+                                    objectFit="cover"
+                                    className="absolute z-0 brightness-50"
+                                    data-ai-hint={slide.hint}
+                                />
+                                <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white p-4">
+                                    <h1 className="text-4xl md:text-5xl font-headline font-bold mb-4 drop-shadow-lg">
+                                        {slide.title}
+                                    </h1>
+                                    <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto drop-shadow-md">
+                                        {slide.subtitle}
+                                    </p>
+                                    <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-10 py-6">
+                                        <Link href="/search">Buscar Refacción</Link>
+                                    </Button>
+                                </div>
+                            </div>
+                        </CarouselItem>
+                    ))}
+                </CarouselContent>
+                <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-20 hidden md:flex" />
+                <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-20 hidden md:flex" />
+            </Carousel>
         </section>
+
 
         {/* Search Block */}
         <section id="search" className="py-12 bg-muted">
@@ -175,7 +209,7 @@ export default function HomePage() {
               ))}
             </div>
              <div className="text-center mt-12">
-                <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
+                <Button asChild variant="secondary">
                     <Link href="/lines">Explorar Todas las Líneas</Link>
                 </Button>
             </div>
@@ -246,7 +280,7 @@ export default function HomePage() {
                 align: "start",
                 loop: true,
               }}
-              className="w-full"
+              className="w-full max-w-6xl mx-auto"
             >
               <CarouselContent>
                 {testimonials.map((testimonial, index) => (
@@ -273,8 +307,8 @@ export default function HomePage() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
+              <CarouselPrevious className="-left-4 md:-left-8" />
+              <CarouselNext className="-right-4 md:-right-8" />
             </Carousel>
           </div>
         </section>

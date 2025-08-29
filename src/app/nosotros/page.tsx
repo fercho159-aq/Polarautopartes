@@ -134,20 +134,19 @@ export default function NosotrosPage() {
           <div className="relative">
             <div className="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-border hidden md:block" />
             {timeline.map((item, index) => (
-              <div key={item.year} className={`relative flex justify-between items-center w-full mb-8 md:mb-16 ${index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
-                <div className="w-full md:w-5/12">
-                   <Card className="p-6 hover:shadow-xl transition-shadow ml-4 md:ml-0 md:mr-0 mr-0">
+              <div key={item.year} className={`relative flex items-center w-full mb-8 md:mb-16 ${index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
+                <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 z-10 items-center justify-center w-10 h-10 bg-primary rounded-full ring-8 ring-card">
+                  <Award className="text-primary-foreground"/>
+                </div>
+                <div className="md:hidden absolute top-0 left-0 -translate-x-1/2 z-10 flex items-center justify-center w-8 h-8 bg-primary rounded-full ring-4 ring-card" style={{ marginLeft: '1rem' }}>
+                   <Award className="text-primary-foreground h-4 w-4"/>
+                </div>
+                <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12'} pl-8`}>
+                   <Card className="p-6 hover:shadow-xl transition-shadow">
                         <p className="text-primary font-bold text-lg mb-2">{item.year}</p>
                         <h4 className="font-headline text-xl font-bold mb-2">{item.event}</h4>
                         <p className="text-muted-foreground">{item.description}</p>
                    </Card>
-                </div>
-                <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 z-10 items-center justify-center w-10 h-10 bg-primary rounded-full ring-8 ring-card">
-                  <Award className="text-primary-foreground"/>
-                </div>
-                 <div className="hidden md:block w-5/12" />
-                 <div className="md:hidden absolute top-0 left-0 -translate-x-1/2 z-10 flex items-center justify-center w-8 h-8 bg-primary rounded-full ring-4 ring-card">
-                   <Award className="text-primary-foreground h-4 w-4"/>
                 </div>
               </div>
             ))}
