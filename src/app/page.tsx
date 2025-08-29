@@ -73,6 +73,7 @@ export default function HomePage() {
     if (criteria.model) params.set('model', criteria.model);
     if (criteria.year) params.set('year', criteria.year);
     if (criteria.line) params.set('line', criteria.line);
+    if (criteria.motor) params.set('motor', criteria.motor);
     router.push(`/search?${params.toString()}`);
   };
 
@@ -80,6 +81,21 @@ export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
+
+        {/* Top Search Bar */}
+        <section className="py-4 bg-card border-b shadow-sm">
+            <div className="container mx-auto px-4">
+                <SearchFilters 
+                    onSearch={handleSearch} 
+                    onClear={() => router.push('/search')} 
+                    variant="compact"
+                    hideKeywordSearch
+                    hideTitle
+                />
+            </div>
+        </section>
+
+
         {/* Hero Section */}
         <section className="relative h-[60vh] flex items-center justify-center text-white">
           <Image
