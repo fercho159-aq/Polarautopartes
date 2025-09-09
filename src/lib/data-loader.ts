@@ -8,7 +8,6 @@ interface CsvProduct {
   line: string;
   description: string;
   sku: string;
-  price: string;
   imageUrl: string;
   oem: string;
   specifications?: string;
@@ -38,7 +37,7 @@ export async function loadProductsFromCSV(): Promise<Product[]> {
     const productMap = new Map<string, Product>();
 
     parsed.data.forEach((row) => {
-      if (!row.id) return;
+      if (!row.id || !row.sku) return;
 
       const application: ProductApplication = {
         brand: row.applications_brand,
@@ -57,7 +56,6 @@ export async function loadProductsFromCSV(): Promise<Product[]> {
           line: row.line,
           description: row.description,
           sku: row.sku,
-          price: parseFloat(row.price),
           imageUrl: row.imageUrl,
           oem: row.oem,
           specifications: row.specifications,

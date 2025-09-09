@@ -12,7 +12,6 @@ export interface Product {
   line: string;
   description: string;
   sku: string;
-  price: number;
   imageUrl: string;
   oem: string;
   specifications?: string;
