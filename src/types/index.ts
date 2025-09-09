@@ -13,7 +13,6 @@ export interface Product {
   description: string;
   sku: string;
   imageUrl: string;
-  oem: string;
   specifications?: string;
   characteristics?: string;
   applications: ProductApplication[];

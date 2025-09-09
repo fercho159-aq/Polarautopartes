@@ -9,9 +9,7 @@ export const mockProducts: Product[] = [
     line: 'Bomba de Agua',
     description: 'Bomba de Agua Auxiliar para varios modelos de Audi y Volkswagen.',
     sku: 'KGPA-1040',
-    price: 150.00,
     imageUrl: '/Images/10.png',
-    oem: '1K0965561G',
     specifications: 'Especificación de ejemplo',
     characteristics: 'Característica de ejemplo',
     applications: [
@@ -30,9 +28,7 @@ export const mockProducts: Product[] = [
     line: 'Frenos',
     description: 'Juego de balatas cerámicas para Volkswagen Jetta.',
     sku: 'BR-FD-002',
-    price: 850.50,
     imageUrl: '/Images/10.png',
-    oem: 'OEM-BR-002',
     applications: [
         { brand: 'Volkswagen', model: 'Jetta', motor: 'L4 2.0L', years: '2020 - 2022' },
         { brand: 'Volkswagen', model: 'Golf', motor: 'L4 1.4L', years: '2019 - 2021' },
@@ -45,9 +41,7 @@ export const mockProducts: Product[] = [
     line: 'Motor',
     description: 'Bujía de iridio de larga duración para Nissan Sentra.',
     sku: 'NGK-BI-003',
-    price: 220.00,
     imageUrl: '/Images/10.png',
-    oem: 'OEM-NGK-003',
      applications: [
         { brand: 'Nissan', model: 'Sentra', motor: 'L4 1.8L', years: '2017 - 2019' },
      ]
@@ -59,9 +53,7 @@ export const mockProducts: Product[] = [
     line: 'Suspensión',
     description: 'Amortiguador de gas para Honda Civic.',
     sku: 'MON-AT-004',
-    price: 1200.00,
     imageUrl: '/Images/10.png',
-    oem: 'OEM-MON-004',
     applications: [
         { brand: 'Honda', model: 'Civic', motor: 'L4 1.5T', years: '2020 - 2021' },
     ]
@@ -73,9 +65,7 @@ export const mockProducts: Product[] = [
     line: 'Eléctrico',
     description: 'Batería de 12V para Nissan Versa.',
     sku: 'LTH-BC-005',
-    price: 2100.75,
     imageUrl: '/Images/10.png',
-    oem: 'OEM-LTH-005',
     applications: [
         { brand: 'Nissan', model: 'Versa', motor: 'L4 1.6L', years: '2021 - 2023' },
     ]
@@ -87,9 +77,7 @@ export const mockProducts: Product[] = [
     line: 'Accesorios',
     description: 'Juego de limpiaparabrisas para VW Tiguan.',
     sku: 'BOS-LP-006',
-    price: 450.00,
     imageUrl: '/Images/10.png',
-    oem: 'OEM-BOS-006',
     applications: [
         { brand: 'Volkswagen', model: 'Tiguan', motor: 'L4 2.0T', years: '2021 - 2022' },
     ]
@@ -101,9 +89,7 @@ export const mockProducts: Product[] = [
     line: 'Filtros',
     description: 'Filtro de aire de alto flujo para Ford Mustang.',
     sku: 'GON-FA-007',
-    price: 350.00,
     imageUrl: '',
-    oem: 'OEM-GON-007',
     applications: [
         { brand: 'Ford', model: 'Mustang', motor: 'V8 5.0L', years: '2020 - 2021' },
     ]
@@ -115,9 +101,7 @@ export const mockProducts: Product[] = [
     line: 'Enfriamiento',
     description: 'Radiador de aluminio para Mazda CX-5.',
     sku: 'VAL-RD-008',
-    price: 3500.00,
     imageUrl: '/Images/10.png',
-    oem: 'OEM-VAL-008',
     applications: [
         { brand: 'Mazda', model: 'CX-5', motor: 'L4 2.5L', years: '2017 - 2018' },
     ]

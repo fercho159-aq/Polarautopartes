@@ -37,7 +37,6 @@ export function ProductListItem({ product }: ProductListItemProps) {
                 <p className="text-sm mt-2 line-clamp-2">{product.description}</p>
                 <div className="flex flex-wrap gap-2 mt-3 text-xs">
                   <Badge variant="secondary">SKU: {product.sku}</Badge>
-                  <Badge variant="secondary">OEM: {product.oem || 'N/A'}</Badge>
                   <Badge variant="secondary">Marca: {product.brand}</Badge>
                 </div>
             </div>

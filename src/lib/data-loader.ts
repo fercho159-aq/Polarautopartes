@@ -9,7 +9,6 @@ interface CsvProduct {
   description: string;
   sku: string;
   imageUrl: string;
-  oem: string;
   specifications?: string;
   characteristics?: string;
   applications_brand: string;
@@ -57,7 +56,6 @@ export async function loadProductsFromCSV(): Promise<Product[]> {
           description: row.description,
           sku: row.sku,
           imageUrl: row.imageUrl,
-          oem: row.oem,
           specifications: row.specifications,
           characteristics: row.characteristics,
           applications: [application],

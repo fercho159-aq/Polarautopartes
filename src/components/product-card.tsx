@@ -45,7 +45,6 @@ export function ProductCard({ product }: ProductCardProps) {
             <h1 className="font-headline text-2xl font-bold text-primary">{product.name}</h1>
             <p className="font-bold text-primary">#KG: <span className="text-foreground font-normal">{product.sku}</span></p>
             <p className="font-bold text-primary">Línea: <span className="text-foreground font-normal">{product.line}</span></p>
-            <p className="font-bold text-primary">OEM: <span className="text-foreground font-normal">{product.oem}</span></p>
             {product.specifications && <p className="font-bold text-primary">Especificaciones: <span className="text-foreground font-normal">{product.specifications}</span></p>}
             {product.characteristics && <p className="font-bold text-primary">Caracteristicas: <span className="text-foreground font-normal">{product.characteristics}</span></p>}
           </div>
