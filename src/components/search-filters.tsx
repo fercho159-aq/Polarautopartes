@@ -8,11 +8,10 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Search, SlidersHorizontal, X } from 'lucide-react';
-import { vehicleData, mockLines } from '@/lib/mock-data';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
-
-const brands = [...new Set(vehicleData.map(item => item.brand))].sort();
+import type { Product, ProductApplication } from '@/types';
+import { loadProductsFromCSV } from '@/lib/data-loader';
 
 export interface SearchCriteria {
     keyword: string;
@@ -40,6 +39,7 @@ export function SearchFilters({
     hideKeywordSearch = false,
     hideTitle = false
 }: SearchFiltersProps) {
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [keyword, setKeyword] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('');
   const [selectedModel, setSelectedModel] = useState('');
@@ -47,8 +47,26 @@ export function SearchFilters({
   const [selectedLine, setSelectedLine] = useState(initialLine);
   const [selectedMotor, setSelectedMotor] = useState('');
   
-  const [availableModels, setAvailableModels] = useState<{name: string; years: number[]}[]>([]);
-  const [availableYears, setAvailableYears] = useState<number[]>([]);
+  const [brands, setBrands] = useState<string[]>([]);
+  const [lines, setLines] = useState<string[]>([]);
+  const [availableModels, setAvailableModels] = useState<string[]>([]);
+  const [availableYears, setAvailableYears] = useState<string[]>([]);
+  const [availableMotors, setAvailableMotors] = useState<string[]>([]);
+
+  useEffect(() => {
+    async function loadData() {
+      const products = await loadProductsFromCSV();
+      setAllProducts(products);
+
+      const allApps = products.flatMap(p => p.applications);
+      const uniqueBrands = [...new Set(allApps.map(app => app.brand))].sort();
+      const uniqueLines = [...new Set(products.map(p => p.line))].sort();
+
+      setBrands(uniqueBrands);
+      setLines(uniqueLines);
+    }
+    loadData();
+  }, []);
 
   useEffect(() => {
     setSelectedLine(initialLine);
@@ -61,35 +79,56 @@ export function SearchFilters({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialLine]);
 
+  const getYearsFromRange = (range: string): number[] => {
+    if (!range) return [];
+    const parts = range.split('-').map(y => parseInt(y.trim()));
+    if (parts.length > 1 && !isNaN(parts[0]) && !isNaN(parts[1])) {
+      const years = [];
+      for (let y = parts[0]; y <= parts[1]; y++) {
+        years.push(y);
+      }
+      return years;
+    }
+    if (!isNaN(parts[0])) return [parts[0]];
+    return [];
+  };
+
   const handleBrandChange = (brand: string) => {
     setSelectedBrand(brand);
     setSelectedModel('');
     setSelectedYear('');
+    setSelectedMotor('');
+
+    const modelsForBrand = allProducts
+      .flatMap(p => p.applications)
+      .filter(app => app.brand === brand)
+      .map(app => app.model);
+      
+    setAvailableModels([...new Set(modelsForBrand)].sort());
     setAvailableYears([]);
-    
-    const modelsForBrand = vehicleData
-      .filter(item => item.brand === brand)
-      .flatMap(item => item.models);
-      
-    const uniqueModels = Array.from(new Map(modelsForBrand.map(m => [m.name, m])).values())
-      .sort((a, b) => a.name.localeCompare(b.name));
-      
-    setAvailableModels(uniqueModels);
+    setAvailableMotors([]);
   };
 
-  const handleModelChange = (modelName: string) => {
-    setSelectedModel(modelName);
+  const handleModelChange = (model: string) => {
+    setSelectedModel(model);
     setSelectedYear('');
-    
-    const yearsForModel = vehicleData
-      .filter(item => item.brand === selectedBrand)
-      .flatMap(item => item.models)
-      .filter(model => model.name === modelName)
-      .flatMap(model => model.years);
-      
-    const uniqueYears = [...new Set(yearsForModel)].sort((a, b) => b - a);
-    setAvailableYears(uniqueYears);
+    setSelectedMotor('');
+
+    const appsForModel = allProducts
+        .flatMap(p => p.applications)
+        .filter(app => app.brand === selectedBrand && app.model === model);
+
+    const yearsForModel = appsForModel.flatMap(app => getYearsFromRange(app.years));
+    setAvailableYears([...new Set(yearsForModel)].sort((a,b) => b-a).map(String));
+
+    const motorsForModel = appsForModel.map(app => app.motor);
+    setAvailableMotors([...new Set(motorsForModel)].sort());
   };
+
+  const handleYearChange = (year: string) => {
+    setSelectedYear(year);
+    // Optionally re-filter motors if year selection should affect it
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -112,6 +151,7 @@ export function SearchFilters({
     setSelectedMotor('');
     setAvailableModels([]);
     setAvailableYears([]);
+    setAvailableMotors([]);
     onClear();
   };
 
@@ -134,11 +174,11 @@ export function SearchFilters({
               </SelectTrigger>
               <SelectContent>
                 {availableModels.map((model) => (
-                  <SelectItem key={model.name} value={model.name}>{model.name}</SelectItem>
+                  <SelectItem key={model} value={model}>{model}</SelectItem>
                 ))}
               </SelectContent>
             </Select>
-            <Select onValueChange={setSelectedYear} value={selectedYear} disabled={!selectedModel}>
+            <Select onValueChange={handleYearChange} value={selectedYear} disabled={!selectedModel}>
               <SelectTrigger>
                 <SelectValue placeholder="Año" />
               </SelectTrigger>
@@ -148,16 +188,14 @@ export function SearchFilters({
                 ))}
               </SelectContent>
             </Select>
-             <Select onValueChange={setSelectedMotor} value={selectedMotor}>
+             <Select onValueChange={setSelectedMotor} value={selectedMotor} disabled={!selectedModel}>
                 <SelectTrigger>
                     <SelectValue placeholder="Motor" />
                 </SelectTrigger>
                 <SelectContent>
-                    {/* NOTE: Motor options should be populated dynamically based on context */}
-                    <SelectItem value="2.0L">2.0L</SelectItem>
-                    <SelectItem value="2.5L">2.5L</SelectItem>
-                    <SelectItem value="3.6L">3.6L</SelectItem>
-                    <SelectItem value="5.7L">5.7L</SelectItem>
+                    {availableMotors.map(motor => (
+                       <SelectItem key={motor} value={motor}>{motor}</SelectItem>
+                    ))}
                 </SelectContent>
             </Select>
             <Button type="submit" className="w-full md:w-auto bg-primary hover:bg-primary/90">
@@ -216,14 +254,14 @@ export function SearchFilters({
                 </SelectTrigger>
                 <SelectContent>
                     {availableModels.map((model) => (
-                    <SelectItem key={model.name} value={model.name}>{model.name}</SelectItem>
+                    <SelectItem key={model} value={model}>{model}</SelectItem>
                     ))}
                 </SelectContent>
                 </Select>
             </div>
             <div>
                 <Label htmlFor="year-select">Año</Label>
-                <Select onValueChange={setSelectedYear} value={selectedYear} disabled={!selectedModel}>
+                <Select onValueChange={handleYearChange} value={selectedYear} disabled={!selectedModel}>
                 <SelectTrigger id="year-select">
                     <SelectValue placeholder="Selecciona" />
                 </SelectTrigger>
@@ -236,16 +274,14 @@ export function SearchFilters({
             </div>
              <div>
                 <Label htmlFor="motor-select">Motor</Label>
-                <Select onValueChange={setSelectedMotor} value={selectedMotor}>
+                <Select onValueChange={setSelectedMotor} value={selectedMotor} disabled={!selectedModel}>
                     <SelectTrigger id="motor-select">
                         <SelectValue placeholder="Selecciona" />
                     </SelectTrigger>
                     <SelectContent>
-                         {/* NOTE: Motor options should be populated dynamically */}
-                        <SelectItem value="2.0L">2.0L</SelectItem>
-                        <SelectItem value="2.5L">2.5L</SelectItem>
-                        <SelectItem value="3.6L">3.6L</SelectItem>
-                        <SelectItem value="5.7L">5.7L</SelectItem>
+                        {availableMotors.map(motor => (
+                            <SelectItem key={motor} value={motor}>{motor}</SelectItem>
+                        ))}
                     </SelectContent>
                 </Select>
             </div>
@@ -258,7 +294,7 @@ export function SearchFilters({
                 <SelectValue placeholder="Selecciona Línea de partes" />
               </SelectTrigger>
               <SelectContent>
-                {mockLines.map((line) => (
+                {lines.map((line) => (
                   <SelectItem key={line} value={line}>{line}</SelectItem>
                 ))}
               </SelectContent>

@@ -77,14 +77,18 @@ const heroSlides = [
 export default function HomePage() {
   const router = useRouter();
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
+  const [productLines, setProductLines] = useState<string[]>([]);
 
   useEffect(() => {
-    async function loadFeatured() {
+    async function loadInitialData() {
       const allProducts = await loadProductsFromCSV();
-      // For demo, we'll just take the first 6 as "featured"
+      // For demo, we'll just take some as "featured"
       setFeaturedProducts(allProducts.slice(0, 6));
+
+      const uniqueLines = [...new Set(allProducts.map(p => p.line))].sort();
+      setProductLines(uniqueLines);
     }
-    loadFeatured();
+    loadInitialData();
   }, []);
 
   const handleSearch = (criteria: any) => {
@@ -122,8 +126,8 @@ export default function HomePage() {
             <Carousel className="w-full h-full" opts={{ loop: true }}>
                 <CarouselContent>
                     {heroSlides.map((slide, index) => (
-                        <CarouselItem key={index}>
-                            <div className="relative h-[60vh] w-full">
+                        <CarouselItem key={index} className="h-[60vh]">
+                            <div className="relative h-full w-full">
                                 <Image
                                     src={slide.image}
                                     alt={slide.title}
@@ -187,14 +191,14 @@ export default function HomePage() {
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-headline font-bold text-center text-primary mb-12">Nuestras Líneas de Producto</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {mockLines.slice(0, 8).map((line) => (
+              {productLines.slice(0, 8).map((line) => (
                 <Link key={line} href={`/search?line=${encodeURIComponent(line)}`} className="group">
                   <Card className="overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1">
                      <div className="relative h-40 w-full">
                         <Image
                           src="/Images/a2.png"
                           alt={line}
-                          layout="fill"
+                          fill
                           objectFit="cover"
                           className="transition-transform duration-300 group-hover:scale-110"
                           data-ai-hint="car part"

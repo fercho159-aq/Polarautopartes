@@ -1,12 +1,27 @@
 
+
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
-import { mockLines } from '@/lib/mock-data';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { ArrowRight } from 'lucide-react';
 import { ContactSection } from '@/components/contact-section';
+import { useEffect, useState } from 'react';
+import { loadProductsFromCSV } from '@/lib/data-loader';
 
 export default function AllLinesPage() {
+  const [lines, setLines] = useState<string[]>([]);
+  
+  useEffect(() => {
+    async function fetchLines() {
+        const products = await loadProductsFromCSV();
+        const uniqueLines = [...new Set(products.map(p => p.line))].sort();
+        setLines(uniqueLines);
+    }
+    fetchLines();
+  }, []);
+
   return (
     <>
     <div className="container mx-auto px-4 py-12">
@@ -20,14 +35,14 @@ export default function AllLinesPage() {
       </section>
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-        {mockLines.map((line) => (
+        {lines.map((line) => (
           <Link key={line} href={`/search?line=${encodeURIComponent(line)}`} className="group">
             <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full flex flex-col">
               <div className="relative h-40 w-full">
                 <Image
                   src="/Images/10.png"
                   alt={line}
-                  layout="fill"
+                  fill
                   objectFit="cover"
                   className="transition-transform duration-300 group-hover:scale-110"
                   data-ai-hint="car part"
