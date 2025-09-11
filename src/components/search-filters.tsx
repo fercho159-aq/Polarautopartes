@@ -59,8 +59,8 @@ export function SearchFilters({
       setAllProducts(products);
 
       const allApps = products.flatMap(p => p.applications);
-      const uniqueBrands = [...new Set(allApps.map(app => app.brand))].sort();
-      const uniqueLines = [...new Set(products.map(p => p.line))].sort();
+      const uniqueBrands = [...new Set(allApps.map(app => app.brand))].filter(Boolean).sort();
+      const uniqueLines = [...new Set(products.map(p => p.line))].filter(Boolean).sort();
 
       setBrands(uniqueBrands);
       setLines(uniqueLines);
@@ -104,7 +104,7 @@ export function SearchFilters({
       .filter(app => app.brand === brand)
       .map(app => app.model);
       
-    setAvailableModels([...new Set(modelsForBrand)].sort());
+    setAvailableModels([...new Set(modelsForBrand)].filter(Boolean).sort());
     setAvailableYears([]);
     setAvailableMotors([]);
   };
@@ -122,7 +122,7 @@ export function SearchFilters({
     setAvailableYears([...new Set(yearsForModel)].sort((a,b) => b-a).map(String));
 
     const motorsForModel = appsForModel.map(app => app.motor);
-    setAvailableMotors([...new Set(motorsForModel)].sort());
+    setAvailableMotors([...new Set(motorsForModel)].filter(Boolean).sort());
   };
 
   const handleYearChange = (year: string) => {
