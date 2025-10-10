@@ -119,7 +119,7 @@ export function SearchFilters({
         .filter(app => app.brand === selectedBrand && app.model === model);
 
     const yearsForModel = appsForModel.flatMap(app => getYearsFromRange(app.years));
-    setAvailableYears([...new Set(yearsForModel)].sort((a,b) => b-a).map(String));
+    setAvailableYears([...new Set(yearsForModel)].sort((a,b) => b-a).map(String).filter(Boolean));
 
     const motorsForModel = appsForModel.map(app => app.motor);
     setAvailableMotors([...new Set(motorsForModel)].filter(Boolean).sort());
@@ -232,7 +232,7 @@ export function SearchFilters({
             </div>
           )}
           
-          <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="flex flex-col gap-1.5">
                 <Label htmlFor="brand-select">Marca</Label>
                 <Select onValueChange={handleBrandChange} value={selectedBrand}>
