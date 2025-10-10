@@ -16,14 +16,6 @@ export default function Footer() {
             <p className="text-muted-foreground text-sm">
               Tu tienda de confianza para partes de vehículos.
             </p>
-             <div className="mt-4">
-                <h3 className="font-headline text-lg font-semibold mb-2">Aceptamos</h3>
-                <div className="flex items-center gap-2">
-                    <img src="https://placehold.co/40x25.png" alt="Visa" data-ai-hint="credit card logo" />
-                    <img src="https://placehold.co/40x25.png" alt="Mastercard" data-ai-hint="credit card logo" />
-                    <img src="https://placehold.co/40x25.png" alt="PayPal" data-ai-hint="payment logo" />
-                </div>
-            </div>
           </div>
           <div>
             <h3 className="font-headline text-lg font-semibold mb-4">Navegación</h3>
