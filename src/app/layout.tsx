@@ -35,6 +35,18 @@ export default function RootLayout({
             gtag('config', 'G-341VJ9T735');
           `}
         </Script>
+
+        {/* Google tag (gtag.js) for Ads */}
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-17551630186"></Script>
+        <Script id="google-ads">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'AW-17551630186');
+          `}
+        </Script>
         
         {/* Meta Pixel Code */}
         <Script id="meta-pixel-init" strategy="afterInteractive">
@@ -64,7 +76,7 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
         </div>
-        <WhatsAppButton phoneNumber="528116924693" />
+        <WhatsAppButton phoneNumber="5218116924693" />
         <Toaster />
       </body>
     </html>
