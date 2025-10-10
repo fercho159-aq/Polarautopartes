@@ -1,6 +1,16 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { Facebook, Instagram, Youtube, Linkedin } from 'lucide-react';
+
+// Custom TikTok icon as it's not in lucide-react by default
+const TikTokIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+        <path d="M21 7.5a4.5 4.5 0 0 1-4.5 4.5H12V4.5a2.5 2.5 0 0 1 5 0v3"/>
+        <path d="M16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0z"/>
+    </svg>
+)
+
 
 export default function Footer() {
   return (
@@ -44,10 +54,18 @@ export default function Footer() {
           <div>
             <h3 className="font-headline text-lg font-semibold mb-4">Síguenos</h3>
             <div className="flex space-x-4">
-              <Link href="https://www.facebook.com/polarautopartes?mibextid=ZbWKwL" className="text-muted-foreground hover:text-primary" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></Link>
-              <Link href="https://www.instagram.com/polarautopartesmty?igsh=MWhxaTZzanBkdzZncA==" className="text-muted-foreground hover:text-primary" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></Link>
-              <Link href="https://youtube.com/@polarautopartesmty?si=tlXGMePgs8R1Gw5c" className="text-muted-foreground hover:text-primary" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10C2.5 6 7.5 4 12 4s9.5 2 9.5 3a24.12 24.12 0 0 1 0 10c0 1-4.5 3-9.5 3s-9.5-2-9.5-3z"/><path d="m10 9 5 3-5 3Z"/></svg></Link>
-              <Link href="https://www.tiktok.com/@polarautopartesmty" className="text-muted-foreground hover:text-primary" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 7.5a4.5 4.5 0 0 1-4.5 4.5H12V4.5a2.5 2.5 0 0 1 5 0v3"/><path d="M16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0z"/><path d="M7.5 12V4.5a2.5 2.5 0 0 0-5 0v3"/></svg></Link>
+              <Link href="https://www.facebook.com/polarautopartes?mibextid=ZbWKwL" className="text-muted-foreground hover:text-primary" target="_blank" rel="noopener noreferrer">
+                <Facebook className="h-6 w-6" />
+              </Link>
+              <Link href="https://www.instagram.com/polarautopartesmty?igsh=MWhxaTZzanBkdzZncA==" className="text-muted-foreground hover:text-primary" target="_blank" rel="noopener noreferrer">
+                <Instagram className="h-6 w-6" />
+              </Link>
+              <Link href="https://youtube.com/@polarautopartesmty?si=tlXGMePgs8R1Gw5c" className="text-muted-foreground hover:text-primary" target="_blank" rel="noopener noreferrer">
+                <Youtube className="h-6 w-6" />
+              </Link>
+              <Link href="https://www.tiktok.com/@polarautopartesmty" className="text-muted-foreground hover:text-primary" target="_blank" rel="noopener noreferrer">
+                <TikTokIcon className="h-6 w-6" />
+              </Link>
             </div>
           </div>
         </div>
