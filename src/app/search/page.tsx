@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import { useState, useEffect, Suspense } from 'react';
@@ -12,7 +13,6 @@ import { ContactSection } from '@/components/contact-section';
 function SearchPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const initialLine = searchParams.get('line') || '';
   const initialBrand = searchParams.get('brand') || '';
   const initialModel = searchParams.get('model') || '';
   const initialYear = searchParams.get('year') || '';
@@ -24,7 +24,7 @@ function SearchPageContent() {
   const [isLoading, setIsLoading] = useState(true);
 
    const applyFilters = (products: Product[], criteria: SearchCriteria) => {
-    const { keyword, brand, model, year, line, motor } = criteria;
+    const { keyword, brand, model, year, motor } = criteria;
     
     return products.filter(product => {
       const keywordMatch = keyword 
@@ -57,6 +57,7 @@ function SearchPageContent() {
         ? product.applications.some(app => app.motor === motor)
         : true;
 
+      const line = searchParams.get('line');
       const lineMatch = line ? product.line === line : true;
 
       return keywordMatch && brandMatch && modelMatch && yearMatch && lineMatch && motorMatch;
@@ -70,7 +71,6 @@ function SearchPageContent() {
       setAllProducts(products);
 
       const initialCriteria: SearchCriteria = {
-        line: initialLine,
         brand: initialBrand,
         model: initialModel,
         year: initialYear,
@@ -78,7 +78,7 @@ function SearchPageContent() {
         motor: searchParams.get('motor') || '',
       };
 
-      if (Object.values(initialCriteria).some(v => v)) {
+      if (Object.values(initialCriteria).some(v => v) || searchParams.get('line')) {
         const initiallyFiltered = applyFilters(products, initialCriteria);
         setFilteredProducts(initiallyFiltered);
       } else {
@@ -97,9 +97,11 @@ function SearchPageContent() {
     if (criteria.brand) params.set('brand', criteria.brand);
     if (criteria.model) params.set('model', criteria.model);
     if (criteria.year) params.set('year', criteria.year);
-    if (criteria.line) params.set('line', criteria.line);
     if (criteria.motor) params.set('motor', criteria.motor);
     
+    const line = searchParams.get('line');
+    if (line) params.set('line', line);
+
     // Using replace to avoid bloating browser history on every filter change
     router.replace(`/search?${params.toString()}`);
     
@@ -123,7 +125,6 @@ function SearchPageContent() {
             <SearchFilters 
               onSearch={handleSearch} 
               onClear={handleClear} 
-              initialLine={initialLine} 
             />
         </aside>
 

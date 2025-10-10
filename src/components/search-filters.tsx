@@ -18,7 +18,6 @@ export interface SearchCriteria {
     brand: string;
     model: string;
     year: string;
-    line: string;
     motor: string;
 }
 
@@ -44,11 +43,9 @@ export function SearchFilters({
   const [selectedBrand, setSelectedBrand] = useState('');
   const [selectedModel, setSelectedModel] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
-  const [selectedLine, setSelectedLine] = useState(initialLine);
   const [selectedMotor, setSelectedMotor] = useState('');
   
   const [brands, setBrands] = useState<string[]>([]);
-  const [lines, setLines] = useState<string[]>([]);
   const [availableModels, setAvailableModels] = useState<string[]>([]);
   const [availableYears, setAvailableYears] = useState<string[]>([]);
   const [availableMotors, setAvailableMotors] = useState<string[]>([]);
@@ -73,32 +70,26 @@ export function SearchFilters({
 
       const allApps = products.flatMap(p => p.applications);
       const uniqueBrands = [...new Set(allApps.map(app => app.brand))].filter(Boolean).sort();
-      const uniqueLines = [...new Set(products.map(p => p.line))].filter(Boolean).sort();
       
       setBrands(uniqueBrands);
-      setLines(uniqueLines);
     }
     loadData();
   }, []);
 
   useEffect(() => {
-    setSelectedLine(initialLine);
-  }, [initialLine]);
-
-  useEffect(() => {
-    const criteria = {
+    const criteria: SearchCriteria = {
         keyword: debouncedKeyword,
         brand: selectedBrand,
         model: selectedModel,
         year: selectedYear,
-        line: selectedLine,
         motor: selectedMotor,
     };
     // Trigger search if any filter has a value.
     if (Object.values(criteria).some(val => val !== '')) {
       onSearch(criteria);
     }
-  }, [debouncedKeyword, selectedBrand, selectedModel, selectedYear, selectedLine, selectedMotor, onSearch]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedKeyword, selectedBrand, selectedModel, selectedYear, selectedMotor]);
 
   const getYearsFromRange = (range: string): number[] => {
     if (!range) return [];
@@ -155,7 +146,6 @@ export function SearchFilters({
     setSelectedBrand('');
     setSelectedModel('');
     setSelectedYear('');
-    setSelectedLine('');
     setSelectedMotor('');
     setAvailableModels([]);
     setAvailableYears([]);
@@ -291,19 +281,6 @@ export function SearchFilters({
             </div>
           </div>
           
-          <div className="md:col-span-2">
-             <Label htmlFor="line-select">Línea de Producto</Label>
-            <Select onValueChange={setSelectedLine} value={selectedLine}>
-              <SelectTrigger id="line-select">
-                <SelectValue placeholder="Selecciona Línea de partes" />
-              </SelectTrigger>
-              <SelectContent>
-                {lines.map((line) => (
-                  <SelectItem key={line} value={line}>{line}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
           <div className="flex flex-col sm:flex-row gap-4 md:col-span-2">
             <Button type="button" variant="outline" className="w-full text-lg py-6" onClick={handleClear}>
                <X className="mr-2 h-5 w-5" />
