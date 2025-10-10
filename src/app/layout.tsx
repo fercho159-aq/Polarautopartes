@@ -25,14 +25,14 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
         
         {/* Google tag (gtag.js) */}
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-17551630186"></Script>
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-341VJ9T735"></Script>
         <Script id="google-analytics">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', 'AW-17551630186');
+            gtag('config', 'G-341VJ9T735');
           `}
         </Script>
         
@@ -64,7 +64,7 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
         </div>
-        <WhatsAppButton phoneNumber="8116924693" />
+        <WhatsAppButton phoneNumber="528116924693" />
         <Toaster />
       </body>
     </html>
