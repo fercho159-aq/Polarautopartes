@@ -1,15 +1,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Facebook, Instagram, Youtube, Linkedin } from 'lucide-react';
-
-// Custom TikTok icon as it's not in lucide-react by default
-const TikTokIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-        <path d="M21 7.5a4.5 4.5 0 0 1-4.5 4.5H12V4.5a2.5 2.5 0 0 1 5 0v3"/>
-        <path d="M16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0z"/>
-    </svg>
-)
+import { FaFacebook, FaInstagram, FaYoutube, FaTiktok } from 'react-icons/fa';
 
 
 export default function Footer() {
@@ -55,16 +47,16 @@ export default function Footer() {
             <h3 className="font-headline text-lg font-semibold mb-4">Síguenos</h3>
             <div className="flex space-x-4">
               <Link href="https://www.facebook.com/polarautopartes?mibextid=ZbWKwL" className="text-muted-foreground hover:text-primary" target="_blank" rel="noopener noreferrer">
-                <Facebook className="h-6 w-6" />
+                <FaFacebook className="h-6 w-6" />
               </Link>
               <Link href="https://www.instagram.com/polarautopartesmty?igsh=MWhxaTZzanBkdzZncA==" className="text-muted-foreground hover:text-primary" target="_blank" rel="noopener noreferrer">
-                <Instagram className="h-6 w-6" />
+                <FaInstagram className="h-6 w-6" />
               </Link>
               <Link href="https://youtube.com/@polarautopartesmty?si=tlXGMePgs8R1Gw5c" className="text-muted-foreground hover:text-primary" target="_blank" rel="noopener noreferrer">
-                <Youtube className="h-6 w-6" />
+                <FaYoutube className="h-6 w-6" />
               </Link>
               <Link href="https://www.tiktok.com/@polarautopartesmty" className="text-muted-foreground hover:text-primary" target="_blank" rel="noopener noreferrer">
-                <TikTokIcon className="h-6 w-6" />
+                <FaTiktok className="h-6 w-6" />
               </Link>
             </div>
           </div>
