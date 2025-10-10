@@ -23,7 +23,7 @@ const WhatsAppIcon = () => (
 
 
 export function WhatsAppButton({ phoneNumber, message }: WhatsAppButtonProps) {
-  const url = `https://wa.me/${phoneNumber}${message ? `?text=${encodeURIComponent(message)}` : ''}`;
+  const url = `https://wa.me/521${phoneNumber}${message ? `?text=${encodeURIComponent(message)}` : ''}`;
 
   return (
     <Link

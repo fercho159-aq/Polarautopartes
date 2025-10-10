@@ -26,7 +26,7 @@ export default function ContactPage() {
             </div>
             <div>
               <h3 className="font-headline text-xl font-semibold">Nuestra Oficina</h3>
-              <p className="text-muted-foreground">Av. Principal 123, Ciudad, País</p>
+              <p className="text-muted-foreground">Jesus Cantu Leal #1423, Monterrey, Mexico</p>
             </div>
           </div>
             <div className="flex items-start gap-4">
@@ -35,7 +35,7 @@ export default function ContactPage() {
             </div>
             <div>
               <h3 className="font-headline text-xl font-semibold">Teléfono</h3>
-              <p className="text-muted-foreground">+1 (555) 123-4567</p>
+              <p className="text-muted-foreground">+52 81 1692 4693</p>
             </div>
           </div>
             <div className="flex items-start gap-4">
@@ -44,7 +44,7 @@ export default function ContactPage() {
             </div>
             <div>
               <h3 className="font-headline text-xl font-semibold">Email</h3>
-              <p className="text-muted-foreground">contacto@polarautopartes.com</p>
+              <p className="text-muted-foreground">admon@polarautopartes.com</p>
             </div>
           </div>
         </div>

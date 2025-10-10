@@ -98,23 +98,22 @@ function ProductDetailContent({ sku }: { sku: string }) {
                               <MapPin className="h-6 w-6 text-primary mt-1"/>
                               <div>
                                   <p className="font-semibold text-foreground">Dirección</p>
-                                  <p>Av. de las Partes 123, Col. Industrial, C.P. 54000, Tlalnepantla, Estado de México.</p>
+                                  <p>Jesus Cantu Leal #1423, Monterrey, Mexico</p>
                               </div>
                           </div>
                           <div className="flex items-start gap-4">
                               <Phone className="h-6 w-6 text-primary mt-1"/>
                                <div>
                                   <p className="font-semibold text-foreground">Teléfonos</p>
-                                  <p>Ventas: (55) 5555-1234</p>
-                                  <p>WhatsApp: (55) 9876-5432</p>
+                                  <p>+52 81 1692 4693</p>
+                                  <p>WhatsApp: +52 1 81 1692 4693</p>
                               </div>
                           </div>
                           <div className="flex items-start gap-4">
                               <Mail className="h-6 w-6 text-primary mt-1"/>
                               <div>
                                  <p className="font-semibold text-foreground">Correos</p>
-                                 <p>Ventas: ventas@polarautopartes.com</p>
-                                 <p>Soporte Técnico: soporte@polarautopartes.com</p>
+                                 <p>admon@polarautopartes.com</p>
                              </div>
                           </div>
                        </div>

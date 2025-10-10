@@ -9,7 +9,6 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Car, Mail, MapPin, Phone, ShieldCheck, Star, ThumbsUp, Truck, Users, Wrench } from 'lucide-react';
-import { mockLines } from '@/lib/mock-data';
 import { SearchFilters } from '@/components/search-filters';
 import { Badge } from '@/components/ui/badge';
 import { useRouter } from 'next/navigation';
@@ -97,7 +96,6 @@ export default function HomePage() {
     if (criteria.brand) params.set('brand', criteria.brand);
     if (criteria.model) params.set('model', criteria.model);
     if (criteria.year) params.set('year', criteria.year);
-    if (criteria.line) params.set('line', criteria.line);
     if (criteria.motor) params.set('motor', criteria.motor);
     router.push(`/search?${params.toString()}`);
   };
@@ -358,23 +356,22 @@ export default function HomePage() {
                             <MapPin className="h-6 w-6 text-primary mt-1"/>
                             <div>
                                 <p className="font-semibold text-foreground">Dirección</p>
-                                <p>Av. de las Partes 123, Col. Industrial, C.P. 54000, Tlalnepantla, Estado de México.</p>
+                                <p>Jesus Cantu Leal #1423, Monterrey, Mexico</p>
                             </div>
                         </div>
                         <div className="flex items-start gap-4">
                             <Phone className="h-6 w-6 text-primary mt-1"/>
                              <div>
                                 <p className="font-semibold text-foreground">Teléfonos</p>
-                                <p>Ventas: (55) 5555-1234</p>
-                                <p>WhatsApp: (55) 9876-5432</p>
+                                <p>+52 81 1692 4693</p>
+                                <p>WhatsApp: +52 1 81 1692 4693</p>
                             </div>
                         </div>
                         <div className="flex items-start gap-4">
-                            <Users className="h-6 w-6 text-primary mt-1"/>
+                            <Mail className="h-6 w-6 text-primary mt-1"/>
                             <div>
                                <p className="font-semibold text-foreground">Correos</p>
-                               <p>Ventas: ventas@polarautopartes.com</p>
-                               <p>Soporte Técnico: soporte@polarautopartes.com</p>
+                               <p>admon@polarautopartes.com</p>
                            </div>
                         </div>
                      </div>
