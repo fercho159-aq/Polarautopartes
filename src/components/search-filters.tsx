@@ -233,7 +233,7 @@ export function SearchFilters({
           )}
           
           <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-            <div>
+            <div className="flex flex-col gap-1.5">
                 <Label htmlFor="brand-select">Marca</Label>
                 <Select onValueChange={handleBrandChange} value={selectedBrand}>
                 <SelectTrigger id="brand-select">
@@ -246,7 +246,7 @@ export function SearchFilters({
                 </SelectContent>
                 </Select>
             </div>
-            <div>
+            <div className="flex flex-col gap-1.5">
                 <Label htmlFor="model-select">Modelo</Label>
                 <Select onValueChange={handleModelChange} value={selectedModel} disabled={!selectedBrand}>
                 <SelectTrigger id="model-select">
@@ -259,7 +259,7 @@ export function SearchFilters({
                 </SelectContent>
                 </Select>
             </div>
-            <div>
+            <div className="flex flex-col gap-1.5">
                 <Label htmlFor="year-select">Año</Label>
                 <Select onValueChange={handleYearChange} value={selectedYear} disabled={!selectedModel}>
                 <SelectTrigger id="year-select">
@@ -272,7 +272,7 @@ export function SearchFilters({
                 </SelectContent>
                 </Select>
             </div>
-             <div>
+             <div className="flex flex-col gap-1.5">
                 <Label htmlFor="motor-select">Motor</Label>
                 <Select onValueChange={setSelectedMotor} value={selectedMotor} disabled={!selectedModel}>
                     <SelectTrigger id="motor-select">
