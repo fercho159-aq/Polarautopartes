@@ -75,7 +75,7 @@ export function SearchFilters({
       const allApps = products.flatMap(p => p.applications);
       const uniqueBrands = [...new Set(allApps.map(app => app.brand))].filter(Boolean).sort();
       const uniqueLines = [...new Set(products.map(p => p.line))].filter(Boolean).sort();
-
+      
       setBrands(uniqueBrands);
       setLines(uniqueLines);
     }
@@ -172,7 +172,7 @@ export function SearchFilters({
 
   if (variant === 'compact') {
       return (
-        <form onSubmit={(e) => e.preventDefault()} className="flex flex-col md:flex-row items-center gap-3">
+        <form onSubmit={(e) => e.preventDefault()} className="grid grid-cols-1 md:grid-cols-4 items-center gap-3">
             <Select onValueChange={handleBrandChange} value={selectedBrand}>
               <SelectTrigger>
                 <SelectValue placeholder="Marca" />
@@ -213,10 +213,6 @@ export function SearchFilters({
                     ))}
                 </SelectContent>
             </Select>
-            <Button type="button" onClick={triggerSearch} className="w-full md:w-auto bg-primary hover:bg-primary/90">
-              <Search className="mr-2 h-4 w-4" />
-              Buscar
-            </Button>
         </form>
       )
   }
