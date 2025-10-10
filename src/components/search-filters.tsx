@@ -52,6 +52,20 @@ export function SearchFilters({
   const [availableModels, setAvailableModels] = useState<string[]>([]);
   const [availableYears, setAvailableYears] = useState<string[]>([]);
   const [availableMotors, setAvailableMotors] = useState<string[]>([]);
+  
+  // Debounce for keyword search
+  const [debouncedKeyword, setDebouncedKeyword] = useState(keyword);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedKeyword(keyword);
+    }, 500); // 500ms delay
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [keyword]);
+
 
   useEffect(() => {
     async function loadData() {
@@ -72,12 +86,25 @@ export function SearchFilters({
     setSelectedLine(initialLine);
   }, [initialLine]);
 
+  // Effect to trigger search when filters change
   useEffect(() => {
-    if (initialLine) {
-        handleSubmit(new Event('submit') as unknown as React.FormEvent);
+    // Don't run search on initial load unless there's an initial line
+    if (debouncedKeyword || selectedBrand || selectedModel || selectedYear || selectedLine || selectedMotor) {
+       triggerSearch();
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialLine]);
+  }, [debouncedKeyword, selectedBrand, selectedModel, selectedYear, selectedLine, selectedMotor]);
+
+  const triggerSearch = () => {
+    onSearch({
+        keyword: debouncedKeyword,
+        brand: selectedBrand,
+        model: selectedModel,
+        year: selectedYear,
+        line: selectedLine,
+        motor: selectedMotor,
+    });
+  };
 
   const getYearsFromRange = (range: string): number[] => {
     if (!range) return [];
@@ -130,18 +157,6 @@ export function SearchFilters({
     // Optionally re-filter motors if year selection should affect it
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSearch({
-        keyword,
-        brand: selectedBrand,
-        model: selectedModel,
-        year: selectedYear,
-        line: selectedLine,
-        motor: selectedMotor,
-    });
-  };
-
   const handleClear = () => {
     setKeyword('');
     setSelectedBrand('');
@@ -157,7 +172,7 @@ export function SearchFilters({
 
   if (variant === 'compact') {
       return (
-        <form onSubmit={handleSubmit} className="flex flex-col md:flex-row items-center gap-3">
+        <form onSubmit={(e) => e.preventDefault()} className="flex flex-col md:flex-row items-center gap-3">
             <Select onValueChange={handleBrandChange} value={selectedBrand}>
               <SelectTrigger>
                 <SelectValue placeholder="Marca" />
@@ -198,7 +213,7 @@ export function SearchFilters({
                     ))}
                 </SelectContent>
             </Select>
-            <Button type="submit" className="w-full md:w-auto bg-primary hover:bg-primary/90">
+            <Button type="button" onClick={triggerSearch} className="w-full md:w-auto bg-primary hover:bg-primary/90">
               <Search className="mr-2 h-4 w-4" />
               Buscar
             </Button>
@@ -217,7 +232,7 @@ export function SearchFilters({
             </CardHeader>
         )}
       <CardContent className={cn(hideTitle && "pt-6")}>
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <form onSubmit={(e) => e.preventDefault()} className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {!hideKeywordSearch && (
             <div className="md:col-span-2 relative">
                 <Label htmlFor="keyword-search">Búsqueda por Palabra Clave</Label>
@@ -301,10 +316,6 @@ export function SearchFilters({
             </Select>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 md:col-span-2">
-            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-lg py-6">
-              <Search className="mr-2 h-5 w-5" />
-              Buscar
-            </Button>
             <Button type="button" variant="outline" className="w-full text-lg py-6" onClick={handleClear}>
                <X className="mr-2 h-5 w-5" />
               Limpiar
