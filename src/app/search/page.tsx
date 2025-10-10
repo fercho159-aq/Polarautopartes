@@ -24,7 +24,7 @@ function SearchPageContent() {
   const [isLoading, setIsLoading] = useState(true);
 
    const applyFilters = (products: Product[], criteria: SearchCriteria) => {
-    const { keyword, brand, model, year, line } = criteria;
+    const { keyword, brand, model, year, line, motor } = criteria;
     
     return products.filter(product => {
       const keywordMatch = keyword 
@@ -52,10 +52,14 @@ function SearchPageContent() {
             return yearNumber === yearParts[0];
           })
         : true;
+      
+      const motorMatch = motor
+        ? product.applications.some(app => app.motor === motor)
+        : true;
 
       const lineMatch = line ? product.line === line : true;
 
-      return keywordMatch && brandMatch && modelMatch && yearMatch && lineMatch;
+      return keywordMatch && brandMatch && modelMatch && yearMatch && lineMatch && motorMatch;
     });
   };
 
@@ -65,15 +69,16 @@ function SearchPageContent() {
       const products = await loadProductsFromCSV();
       setAllProducts(products);
 
-      const initialCriteria = {
+      const initialCriteria: SearchCriteria = {
         line: initialLine,
         brand: initialBrand,
         model: initialModel,
         year: initialYear,
         keyword: initialKeyword,
+        motor: searchParams.get('motor') || '',
       };
 
-      if (initialLine || initialBrand || initialModel || initialYear || initialKeyword) {
+      if (Object.values(initialCriteria).some(v => v)) {
         const initiallyFiltered = applyFilters(products, initialCriteria);
         setFilteredProducts(initiallyFiltered);
       } else {
@@ -93,8 +98,10 @@ function SearchPageContent() {
     if (criteria.model) params.set('model', criteria.model);
     if (criteria.year) params.set('year', criteria.year);
     if (criteria.line) params.set('line', criteria.line);
+    if (criteria.motor) params.set('motor', criteria.motor);
     
-    router.push(`/search?${params.toString()}`);
+    // Using replace to avoid bloating browser history on every filter change
+    router.replace(`/search?${params.toString()}`);
     
     setIsLoading(true);
     const filtered = applyFilters(allProducts, criteria);
@@ -113,7 +120,11 @@ function SearchPageContent() {
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         <aside className="lg:col-span-5 lg:sticky top-24 h-max z-20">
-            <SearchFilters onSearch={handleSearch} onClear={handleClear} initialLine={initialLine} />
+            <SearchFilters 
+              onSearch={handleSearch} 
+              onClear={handleClear} 
+              initialLine={initialLine} 
+            />
         </aside>
 
         <main className="lg:col-span-7">

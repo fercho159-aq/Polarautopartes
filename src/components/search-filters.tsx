@@ -10,7 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Search, SlidersHorizontal, X } from 'lucide-react';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
-import type { Product, ProductApplication } from '@/types';
+import type { Product } from '@/types';
 import { loadProductsFromCSV } from '@/lib/data-loader';
 
 export interface SearchCriteria {
