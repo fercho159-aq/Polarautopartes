@@ -53,13 +53,12 @@ export function SearchFilters({
   const [availableYears, setAvailableYears] = useState<string[]>([]);
   const [availableMotors, setAvailableMotors] = useState<string[]>([]);
   
-  // Debounce for keyword search
   const [debouncedKeyword, setDebouncedKeyword] = useState(keyword);
 
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedKeyword(keyword);
-    }, 500); // 500ms delay
+    }, 500);
 
     return () => {
       clearTimeout(handler);
@@ -86,25 +85,20 @@ export function SearchFilters({
     setSelectedLine(initialLine);
   }, [initialLine]);
 
-  // Effect to trigger search when filters change
   useEffect(() => {
-    // Don't run search on initial load unless there's an initial line
-    if (debouncedKeyword || selectedBrand || selectedModel || selectedYear || selectedLine || selectedMotor) {
-       triggerSearch();
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedKeyword, selectedBrand, selectedModel, selectedYear, selectedLine, selectedMotor]);
-
-  const triggerSearch = () => {
-    onSearch({
+    const criteria = {
         keyword: debouncedKeyword,
         brand: selectedBrand,
         model: selectedModel,
         year: selectedYear,
         line: selectedLine,
         motor: selectedMotor,
-    });
-  };
+    };
+    // Trigger search if any filter has a value.
+    if (Object.values(criteria).some(val => val !== '')) {
+      onSearch(criteria);
+    }
+  }, [debouncedKeyword, selectedBrand, selectedModel, selectedYear, selectedLine, selectedMotor, onSearch]);
 
   const getYearsFromRange = (range: string): number[] => {
     if (!range) return [];
@@ -154,7 +148,6 @@ export function SearchFilters({
 
   const handleYearChange = (year: string) => {
     setSelectedYear(year);
-    // Optionally re-filter motors if year selection should affect it
   }
 
   const handleClear = () => {
@@ -172,7 +165,7 @@ export function SearchFilters({
 
   if (variant === 'compact') {
       return (
-        <form onSubmit={(e) => e.preventDefault()} className="grid grid-cols-1 md:grid-cols-4 items-center gap-3">
+        <form onSubmit={(e) => e.preventDefault()} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center gap-3">
             <Select onValueChange={handleBrandChange} value={selectedBrand}>
               <SelectTrigger>
                 <SelectValue placeholder="Marca" />
