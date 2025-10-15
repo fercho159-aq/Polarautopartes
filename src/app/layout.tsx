@@ -7,6 +7,16 @@ import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { WhatsAppButton } from '@/components/whatsapp-button';
 
+declare global {
+  interface Window {
+    dataLayer: any[];
+    gtag: (...args: any[]) => void;
+    fbq: any;
+    _fbq: any;
+    beTracker: any;
+  }
+}
+
 export const metadata: Metadata = {
   title: 'Polar Autopartes',
   description: 'Catálogo de partes para vehículos.',
@@ -38,13 +48,33 @@ export default function RootLayout({
 
         {/* Google tag (gtag.js) for Ads */}
         <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-17551630186"></Script>
-        <Script id="google-ads">
+        <Script id="google-ads-config">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
             gtag('config', 'AW-17551630186');
+          `}
+        </Script>
+
+        {/* Event snippet for Clic de llamada conversion page */}
+        <Script id="google-ads-conversion">
+          {`
+            function gtag_report_conversion(url) {
+              var callback = function () {
+                if (typeof(url) != 'undefined') {
+                  window.open(url, '_blank');
+                }
+              };
+              gtag('event', 'conversion', {
+                  'send_to': 'AW-17551630186/UhtrCP7q4q0bEOq-orFB',
+                  'value': 1.0,
+                  'currency': 'MXN',
+                  'event_callback': callback
+              });
+              return false;
+            }
           `}
         </Script>
         

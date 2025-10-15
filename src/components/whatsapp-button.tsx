@@ -2,6 +2,7 @@
 'use client';
 
 import Link from 'next/link';
+import { MouseEventHandler } from 'react';
 
 interface WhatsAppButtonProps {
     phoneNumber: string;
@@ -21,15 +22,30 @@ const WhatsAppIcon = () => (
     </svg>
 );
 
+declare global {
+    interface Window {
+        gtag_report_conversion?: (url: string) => boolean;
+    }
+}
 
 export function WhatsAppButton({ phoneNumber, message }: WhatsAppButtonProps) {
-  const url = `https://wa.me/521${phoneNumber}${message ? `?text=${encodeURIComponent(message)}` : ''}`;
+  const url = `https://wa.me/${phoneNumber}${message ? `?text=${encodeURIComponent(message)}` : ''}`;
+
+  const handleClick: MouseEventHandler<HTMLAnchorElement> = (e) => {
+    e.preventDefault();
+    if (window.gtag_report_conversion) {
+      window.gtag_report_conversion(url);
+    } else {
+        window.open(url, '_blank');
+    }
+  };
 
   return (
     <Link
       href={url}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={handleClick}
       className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#25D366]"
       aria-label="Contactar por WhatsApp"
     >
