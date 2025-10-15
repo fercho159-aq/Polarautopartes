@@ -69,6 +69,13 @@ export default function RootLayout({
           />
         </noscript>
         {/* End Meta Pixel Code */}
+
+        {/* Metricool tracker */}
+        <Script id="metricool-tracker" strategy="afterInteractive">
+          {`
+            function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"1e7ddbaff2703e19711275cb22779f3b"})});
+          `}
+        </Script>
       </head>
       <body className={cn("min-h-screen bg-background font-body antialiased")}>
         <div className="relative flex min-h-screen flex-col">
