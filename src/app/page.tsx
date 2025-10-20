@@ -65,7 +65,7 @@ const heroSlides = [
         hint: "car water pump"
     },
     {
-        image: "/Images/a7.png",
+        image: "/Images/Banners/polar 3.jpg",
         title: "Radiadores para Todos los Modelos",
         subtitle: "La mayor cobertura del mercado para autos nacionales e importados.",
         hint: "automotive parts warehouse"
