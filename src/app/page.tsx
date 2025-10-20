@@ -120,17 +120,18 @@ export default function HomePage() {
 
 
         {/* Hero Section */}
-         <section className="relative h-[450px] w-full">
-            <Carousel className="w-full h-full" opts={{ loop: true }}>
+         <section className="relative w-full">
+            <Carousel className="w-full" opts={{ loop: true }}>
                 <CarouselContent>
                     {heroSlides.map((slide, index) => (
-                        <CarouselItem key={index} className="h-[450px]">
-                            <div className="relative h-full w-full">
+                        <CarouselItem key={index}>
+                            <div className="relative w-full aspect-[1900/670]">
                                 <Image
                                     src={slide.image}
                                     alt={slide.title}
                                     fill
-                                    className="object-cover absolute z-0"
+                                    className="object-cover"
+                                    priority={index === 0}
                                     data-ai-hint={slide.hint}
                                 />
                             </div>
@@ -375,5 +376,7 @@ export default function HomePage() {
     </div>
   );
 }
+
+    
 
     
