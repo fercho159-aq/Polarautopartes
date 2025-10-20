@@ -53,13 +53,13 @@ const testimonials = [
 
 const heroSlides = [
     {
-        image: "/Images/ima2.jpg",
+        image: "/Images/Banners/polar 1.jpg",
         title: "Encuentra la Refacción Ideal para tu Auto",
         subtitle: "Calidad y cobertura para el sistema de enfriamiento de tu vehículo.",
         hint: "car engine cooling system"
     },
     {
-        image: "/Images/a2.png",
+        image: "/Images/Banners/polar 2.jpg",
         title: "Bombas de Agua de Alto Rendimiento",
         subtitle: "Durabilidad y eficiencia para mantener tu motor en la temperatura correcta.",
         hint: "car water pump"
@@ -130,20 +130,9 @@ export default function HomePage() {
                                     src={slide.image}
                                     alt={slide.title}
                                     fill
-                                    className="object-cover absolute z-0 brightness-50"
+                                    className="object-cover absolute z-0"
                                     data-ai-hint={slide.hint}
                                 />
-                                <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white p-4">
-                                    <h1 className="text-4xl md:text-5xl font-headline font-bold mb-4 drop-shadow-lg">
-                                        {slide.title}
-                                    </h1>
-                                    <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto drop-shadow-md">
-                                        {slide.subtitle}
-                                    </p>
-                                    <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-10 py-6">
-                                        <Link href="/search">Buscar Refacción</Link>
-                                    </Button>
-                                </div>
                             </div>
                         </CarouselItem>
                     ))}
