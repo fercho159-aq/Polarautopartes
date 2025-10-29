@@ -225,7 +225,6 @@ export default function NosotrosPage() {
                       <Card className="flex flex-col h-full bg-card">
                         <CardHeader className="flex-grow">
                           <div className="flex items-center mb-4">
-                            <Image src={testimonial.avatar} alt={testimonial.name} width={50} height={50} className="rounded-full mr-4" data-ai-hint="person portrait"/>
                             <div>
                               <p className="font-bold">{testimonial.name}</p>
                               <p className="text-sm text-muted-foreground">{testimonial.role}</p>
