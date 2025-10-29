@@ -1,4 +1,6 @@
 
+'use client';
+
 import { ProductCard } from "@/components/product-card";
 import { Badge } from "@/components/ui/badge";
 import { ContactSection } from "@/components/contact-section";
