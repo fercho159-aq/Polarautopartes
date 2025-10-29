@@ -82,8 +82,10 @@ export default function HomePage() {
   useEffect(() => {
     async function loadInitialData() {
       const allProducts = await loadProductsFromCSV();
-      // For demo, we'll just take some as "featured"
-      setFeaturedProducts(allProducts.slice(0, 6));
+      
+      // Shuffle products for random featured products
+      const shuffled = allProducts.sort(() => 0.5 - Math.random());
+      setFeaturedProducts(shuffled.slice(0, 6));
 
       const uniqueLines = [...new Set(allProducts.map(p => p.name))].sort();
       setProductLines(uniqueLines);
@@ -381,3 +383,4 @@ export default function HomePage() {
     
 
     
+
