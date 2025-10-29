@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import Link from 'next/link';
@@ -84,7 +85,7 @@ export default function HomePage() {
       // For demo, we'll just take some as "featured"
       setFeaturedProducts(allProducts.slice(0, 6));
 
-      const uniqueLines = [...new Set(allProducts.map(p => p.line))].sort();
+      const uniqueLines = [...new Set(allProducts.map(p => p.name))].sort();
       setProductLines(uniqueLines);
     }
     loadInitialData();
@@ -180,7 +181,7 @@ export default function HomePage() {
             <h2 className="text-3xl font-headline font-bold text-center text-primary mb-12">Nuestras Líneas de Producto</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {productLines.slice(0, 8).map((line) => (
-                <Link key={line} href={`/search?line=${encodeURIComponent(line)}`} className="group">
+                <Link key={line} href={`/search?keyword=${encodeURIComponent(line)}`} className="group">
                   <Card className="overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1">
                      <div className="relative h-40 w-full">
                         <Image

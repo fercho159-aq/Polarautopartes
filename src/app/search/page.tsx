@@ -57,10 +57,9 @@ function SearchPageContent() {
         ? product.applications.some(app => app.motor === motor)
         : true;
 
-      const line = searchParams.get('line');
-      const lineMatch = line ? product.line === line : true;
+      const nameMatch = searchParams.get('keyword') ? product.name === searchParams.get('keyword') : true;
 
-      return keywordMatch && brandMatch && modelMatch && yearMatch && lineMatch && motorMatch;
+      return keywordMatch && brandMatch && modelMatch && yearMatch && nameMatch && motorMatch;
     });
   };
 
@@ -78,7 +77,7 @@ function SearchPageContent() {
         motor: searchParams.get('motor') || '',
       };
 
-      if (Object.values(initialCriteria).some(v => v) || searchParams.get('line')) {
+      if (Object.values(initialCriteria).some(v => v) || searchParams.get('keyword')) {
         const initiallyFiltered = applyFilters(products, initialCriteria);
         setFilteredProducts(initiallyFiltered);
       } else {
