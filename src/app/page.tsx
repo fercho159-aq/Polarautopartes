@@ -52,19 +52,18 @@ const testimonials = [
 ];
 
 const heroSlides = [
-  {
-    image: "/Images/Banners/polar 2.jpg",
-    title: "Bombas de Agua de Alto Rendimiento",
-    subtitle: "Durabilidad y eficiencia para mantener tu motor en la temperatura correcta.",
-    hint: "car water pump"
-},
+    {
+      image: "/Images/Banners/polar 2.jpg",
+      title: "Bombas de Agua de Alto Rendimiento",
+      subtitle: "Durabilidad y eficiencia para mantener tu motor en la temperatura correcta.",
+      hint: "car water pump"
+    },
     {
         image: "/Images/Banners/polar 1.jpg",
         title: "Encuentra la Refacción Ideal para tu Auto",
         subtitle: "Calidad y cobertura para el sistema de enfriamiento de tu vehículo.",
         hint: "car engine cooling system"
     },
-    
     {
         image: "/Images/Banners/polar 3.jpg",
         title: "Radiadores para Todos los Modelos",
