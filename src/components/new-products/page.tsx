@@ -1,9 +1,20 @@
 import { ProductCard } from "@/components/product-card";
-import { mockProducts } from "@/lib/mock-data";
 import { Badge } from "@/components/ui/badge";
+import { loadProductsFromCSV } from "@/lib/data-loader";
+import { Product } from "@/types";
+import { useEffect, useState } from "react";
 
 export default function NewProductsPage() {
-  const newProducts = mockProducts.slice(0, 4);
+  const [newProducts, setNewProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    async function fetchNewProducts() {
+      const allProducts = await loadProductsFromCSV();
+      // For demo, we'll just take some as "new"
+      setNewProducts(allProducts.slice(0, 4));
+    }
+    fetchNewProducts();
+  }, []);
 
   return (
     <div className="container mx-auto px-4 py-12">

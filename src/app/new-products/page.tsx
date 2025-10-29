@@ -1,12 +1,23 @@
 
 import { ProductCard } from "@/components/product-card";
-import { mockProducts } from "@/lib/mock-data";
 import { Badge } from "@/components/ui/badge";
 import { ContactSection } from "@/components/contact-section";
+import { loadProductsFromCSV } from "@/lib/data-loader";
+import { useEffect, useState } from "react";
+import type { Product } from "@/types";
 
 export default function NewProductsPage() {
-  // Filter for recent products, here we just take some from mock data
-  const newProducts = mockProducts.slice(0, 4);
+  const [newProducts, setNewProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    async function fetchNewProducts() {
+      const allProducts = await loadProductsFromCSV();
+      // For demo, we'll just take some as "new"
+      setNewProducts(allProducts.slice(0, 4));
+    }
+    fetchNewProducts();
+  }, []);
+
 
   return (
     <>
