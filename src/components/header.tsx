@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -33,6 +34,7 @@ const lineLinks = [
     { href: '/lines/motoventiladores', label: 'Motoventiladores' },
     { href: '/lines/radiadores', label: 'Radiadores' },
     { href: '/lines/tapones', label: 'Tapones' },
+    { href: '/lines/toma-de-agua', label: 'Toma de Agua' },
 ]
 
 export default function Header() {
