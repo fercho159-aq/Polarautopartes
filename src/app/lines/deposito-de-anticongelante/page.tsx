@@ -16,7 +16,7 @@ export default function DepositoDeAnticongelantePage() {
     async function fetchData() {
       setIsLoading(true);
       const allProducts = await loadProductsFromCSV();
-      const filtered = allProducts.filter(p => p.line.toLowerCase() === 'depositos');
+      const filtered = allProducts.filter(p => p.name.toLowerCase() === 'depósito de anticongelante');
       setProducts(filtered);
       setIsLoading(false);
     }

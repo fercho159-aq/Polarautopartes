@@ -42,7 +42,7 @@ export default function MotoventiladoresPage() {
     async function fetchData() {
       setIsLoading(true);
       const allProducts = await loadProductsFromCSV();
-      const filtered = allProducts.filter(p => p.line.toLowerCase() === 'motoventilador');
+      const filtered = allProducts.filter(p => p.name.toLowerCase() === 'motoventilador');
       setProducts(filtered);
       setIsLoading(false);
     }
@@ -102,7 +102,7 @@ export default function MotoventiladoresPage() {
                   <Wrench className="h-5 w-5 text-primary" />
                   Catálogo de Motoventiladores
               </CardTitle>
-          </CardHeader>
+          </Header>
           <CardContent>
               {isLoading ? (
                   <div className="text-center py-16">
