@@ -72,6 +72,17 @@ const heroSlides = [
     }
 ];
 
+const linePageMap: { [key: string]: string } = {
+  'Bomba de Agua': '/lines/bomba-de-agua',
+  'Depósito de Anticongelante': '/lines/deposito-de-anticongelante',
+  'Motoventilador': '/lines/motoventiladores',
+  'Radiador': '/lines/radiadores',
+  'Tapón de Radiador': '/lines/tapones',
+  'Tapón para Depósito de Anticongelante': '/lines/tapones',
+  'Toma de Agua': '/lines/toma-de-agua',
+  'Tubo de Enfriamiento': '/lines/tubos-de-enfriamiento',
+};
+
 
 export default function HomePage() {
   const router = useRouter();
@@ -95,6 +106,27 @@ export default function HomePage() {
     if (criteria.year) params.set('year', criteria.year);
     if (criteria.motor) params.set('motor', criteria.motor);
     router.push(`/search?${params.toString()}`);
+  };
+
+  const getLineHref = (line: string): string => {
+    if (linePageMap[line]) {
+      return linePageMap[line];
+    }
+    
+    // Special cases for combined lines
+    if (line.toLowerCase().includes('tapón')) {
+        return '/lines/tapones';
+    }
+
+    if (line.toLowerCase() === 'motoventiladores') {
+      return '/lines/motoventiladores';
+    }
+
+    if (line.toLowerCase() === 'radiadores') {
+      return '/lines/radiadores';
+    }
+
+    return `/search?keyword=${encodeURIComponent(line)}`;
   };
 
 
@@ -170,7 +202,7 @@ export default function HomePage() {
             <h2 className="text-3xl font-headline font-bold text-center text-primary mb-12">Nuestras Líneas de Producto</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {productLines.map((line) => (
-                <Link key={line} href={`/search?keyword=${encodeURIComponent(line)}`} className="group">
+                <Link key={line} href={getLineHref(line)} className="group">
                   <Card className="overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1">
                      <div className="relative h-40 w-full">
                         <Image
@@ -341,8 +373,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-    
-
-    
-
