@@ -15,6 +15,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { cn } from '@/lib/utils';
@@ -22,10 +23,18 @@ import { usePathname } from 'next/navigation';
 
 const navLinks = [
     { href: '/', label: 'Inicio' },
-    { href: '/search', label: 'Catálogo' },
     { href: '/nosotros', label: 'Nosotros' },
     { href: '/#contacto', label: 'Contacto' },
 ];
+
+const catalogLinks = [
+    { href: '/search', label: 'Catálogo Completo' },
+    { href: '/catalogs/bombas.pdf', label: 'Bombas' },
+    { href: '/catalogs/tomas.pdf', label: 'Tomas' },
+    { href: '/catalogs/tubos.pdf', label: 'Tubos' },
+    { href: '/catalogs/numeros-nuevos.pdf', label: 'Números Nuevos' },
+    { href: '/catalogs/mangueras.pdf', label: 'Mangueras' },
+]
 
 const lineLinks = [
     { href: '/lines', label: 'Todas las Líneas' },
@@ -60,6 +69,22 @@ export default function Header() {
             </Link>
           ))}
           
+           <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className={cn("px-4 py-2 flex items-center gap-1", pathname.startsWith('/search') || pathname.startsWith('/catalogs') ? "text-foreground font-semibold" : "text-foreground/60 hover:text-foreground/80")}>
+                Catálogos
+                <ChevronDown className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              {catalogLinks.map(link => (
+                <DropdownMenuItem key={link.href} asChild>
+                  <Link href={link.href} target={link.href.endsWith('.pdf') ? '_blank' : undefined}>{link.label}</Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
            <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className={cn("px-4 py-2 flex items-center gap-1", pathname.startsWith('/lines') ? "text-foreground font-semibold" : "text-foreground/60 hover:text-foreground/80")}>
@@ -102,6 +127,20 @@ export default function Header() {
                         {link.label}
                       </Link>
                     ))}
+                    <div className="pt-2">
+                        <h3 className="text-lg font-semibold mb-2">Catálogos</h3>
+                        {catalogLinks.map(link => (
+                             <Link
+                                key={link.href}
+                                href={link.href}
+                                className="block pl-4 py-2 text-muted-foreground"
+                                onClick={() => setIsOpen(false)}
+                                target={link.href.endsWith('.pdf') ? '_blank' : undefined}
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
+                    </div>
                     <div className="pt-2">
                         <h3 className="text-lg font-semibold mb-2">Líneas</h3>
                         {lineLinks.map(link => (
