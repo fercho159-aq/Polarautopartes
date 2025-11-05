@@ -71,7 +71,7 @@ export function SearchFilters({
       const products = await loadProductsFromCSV();
       setAllProducts(products);
 
-      const uniqueLines = [...new Set(products.map(p => p.line))].filter(Boolean).sort();
+      const uniqueLines = [...new Set(products.map(p => p.name))].filter(Boolean).sort();
       setLines(uniqueLines);
 
       const allApps = products.flatMap(p => p.applications);
@@ -323,3 +323,5 @@ export function SearchFilters({
     </Card>
   );
 }
+
+    
