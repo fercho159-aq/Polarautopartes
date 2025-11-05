@@ -169,7 +169,7 @@ export default function HomePage() {
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-headline font-bold text-center text-primary mb-12">Nuestras Líneas de Producto</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {productLines.slice(0, 8).map((line) => (
+              {productLines.map((line) => (
                 <Link key={line} href={`/search?keyword=${encodeURIComponent(line)}`} className="group">
                   <Card className="overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1">
                      <div className="relative h-40 w-full">
@@ -188,11 +188,6 @@ export default function HomePage() {
                   </Card>
                 </Link>
               ))}
-            </div>
-             <div className="text-center mt-12">
-                <Button asChild variant="secondary">
-                    <Link href="/lines">Explorar Todas las Líneas</Link>
-                </Button>
             </div>
           </div>
         </section>
@@ -350,3 +345,4 @@ export default function HomePage() {
     
 
     
+
