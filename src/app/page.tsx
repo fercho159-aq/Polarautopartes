@@ -70,13 +70,13 @@ const heroSlides = [
 ];
 
 const productLines = [
-    { name: 'Bombas de Agua', href: '/lines/bomba-de-agua', image: '/Images/a2.png' },
-    { name: 'Depósitos de Anticongelante', href: '/lines/deposito-de-anticongelante', image: '/Images/a2.png' },
-    { name: 'Motoventiladores', href: '/lines/motoventiladores', image: '/Images/a2.png' },
-    { name: 'Radiadores', href: '/lines/radiadores', image: '/Images/a2.png' },
-    { name: 'Tapones', href: '/lines/tapones', image: '/Images/a2.png' },
-    { name: 'Tomas de Agua', href: '/lines/toma-de-agua', image: '/Images/a2.png' },
-    { name: 'Tubos de Enfriamiento', href: '/lines/tubos-de-enfriamiento', image: '/Images/a2.png' },
+    { name: 'Bombas de Agua', href: '/lines/bomba-de-agua', image: '/Images/Categorias/BOMBAS DE AGUA/BOMBA DE AGUA.jpg' },
+    { name: 'Depósitos de Anticongelante', href: '/lines/deposito-de-anticongelante', image: '/Images/Categorias/DEPOSITOS DE ANTICONGELANTE/DEPOSITO DE ANTICONGELANTE 1.jpg' },
+    { name: 'Motoventiladores', href: '/lines/motoventiladores', image: '/Images/Categorias/MOTOVENTILADORES/MOTOVENTILADOR 1.jpg' },
+    { name: 'Radiadores', href: '/lines/radiadores', image: '/Images/Categorias/RADIADORES/RADIADOR 1.jpg' },
+    { name: 'Tapones', href: '/lines/tapones', image: '/Images/Categorias/TAPONES DE DEPOSITO Y RADIADOR/TAPON DE DEPOSITO DE ANTICONGELANTE 1.jpg' },
+    { name: 'Tomas de Agua', href: '/lines/toma-de-agua', image: '/Images/Categorias/TOMAS DE AGUA/TOMA DE AGUA 1.jpg' },
+    { name: 'Tubos de Enfriamiento', href: '/lines/tubos-de-enfriamiento', image: '/Images/Categorias/TUBOS DE ENFRIAMIENTO/TUBO DE ENFRIAMIENTO 1.jpg' },
     { name: 'Todas las Líneas', href: '/lines', image: '/Images/a2.png' },
 ]
 
