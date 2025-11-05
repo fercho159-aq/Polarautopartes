@@ -32,6 +32,7 @@ const lineLinks = [
     { href: '/lines/deposito-de-anticongelante', label: 'Depósito de Anticongelante' },
     { href: '/lines/motoventiladores', label: 'Motoventiladores' },
     { href: '/lines/radiadores', label: 'Radiadores' },
+    { href: '/lines/tapones', label: 'Tapones' },
 ]
 
 export default function Header() {
