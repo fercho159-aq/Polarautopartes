@@ -147,13 +147,6 @@ export default function HomePage() {
         </section>
 
 
-        {/* Search Block */}
-        <section id="search" className="py-12 bg-muted">
-            <div className="container mx-auto px-4">
-                <SearchFilters onSearch={handleSearch} onClear={() => router.push('/search')} />
-            </div>
-        </section>
-
         {/* Benefits Section */}
         <section className="py-16 bg-card">
           <div className="container mx-auto px-4">
@@ -383,4 +376,3 @@ export default function HomePage() {
     
 
     
-
