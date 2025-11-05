@@ -14,7 +14,6 @@ import { SearchFilters } from '@/components/search-filters';
 import { Badge } from '@/components/ui/badge';
 import { useRouter } from 'next/navigation';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import { FeaturedProductCard } from '@/components/featured-product-card';
 import { useEffect, useState } from 'react';
 import type { Product } from '@/types';
 import { loadProductsFromCSV } from '@/lib/data-loader';
@@ -76,17 +75,12 @@ const heroSlides = [
 
 export default function HomePage() {
   const router = useRouter();
-  const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
   const [productLines, setProductLines] = useState<string[]>([]);
 
   useEffect(() => {
     async function loadInitialData() {
       const allProducts = await loadProductsFromCSV();
       
-      // Shuffle products for random featured products
-      const shuffled = allProducts.sort(() => 0.5 - Math.random());
-      setFeaturedProducts(shuffled.slice(0, 6));
-
       const uniqueLines = [...new Set(allProducts.map(p => p.name))].sort();
       setProductLines(uniqueLines);
     }
@@ -203,26 +197,6 @@ export default function HomePage() {
           </div>
         </section>
         
-        {/* Featured Products */}
-        <section id="destacados" className="py-16 bg-muted">
-            <div className="container mx-auto px-4">
-                <h2 className="text-3xl font-headline font-bold text-center text-primary mb-12">Productos Destacados</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {featuredProducts.map(product => (
-                        <div key={product.id} className="relative">
-                            <Badge className="absolute top-4 left-4 z-10 bg-accent text-accent-foreground">Más Vendido</Badge>
-                            <FeaturedProductCard product={product} />
-                        </div>
-                    ))}
-                </div>
-                 <div className="text-center mt-12">
-                    <Button asChild>
-                        <Link href="/search">Ver Todo el Catálogo</Link>
-                    </Button>
-                </div>
-            </div>
-        </section>
-
         {/* Nosotros Section */}
         <section id="nosotros" className="py-16 bg-card">
           <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
