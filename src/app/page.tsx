@@ -73,14 +73,13 @@ const heroSlides = [
 ];
 
 const linePageMap: { [key: string]: string } = {
-  'Bomba de Agua': '/lines/bomba-de-agua',
-  'Depósito de Anticongelante': '/lines/deposito-de-anticongelante',
-  'Motoventilador': '/lines/motoventiladores',
-  'Radiador': '/lines/radiadores',
-  'Tapón de Radiador': '/lines/tapones',
-  'Tapón para Depósito de Anticongelante': '/lines/tapones',
-  'Toma de Agua': '/lines/toma-de-agua',
-  'Tubo de Enfriamiento': '/lines/tubos-de-enfriamiento',
+  'Bombas de Agua': '/lines/bomba-de-agua',
+  'Depósitos de Anticongelante': '/lines/deposito-de-anticongelante',
+  'Motoventiladores': '/lines/motoventiladores',
+  'Radiadores': '/lines/radiadores',
+  'Tapones': '/lines/tapones',
+  'Tomas de Agua': '/lines/toma-de-agua',
+  'Tubos de Enfriamiento': '/lines/tubos-de-enfriamiento',
 };
 
 
@@ -92,7 +91,7 @@ export default function HomePage() {
     async function loadInitialData() {
       const allProducts = await loadProductsFromCSV();
       
-      const uniqueLines = [...new Set(allProducts.map(p => p.name))].sort();
+      const uniqueLines = [...new Set(allProducts.map(p => p.line))].sort();
       setProductLines(uniqueLines);
     }
     loadInitialData();
@@ -109,13 +108,11 @@ export default function HomePage() {
   };
 
   const getLineHref = (line: string): string => {
-    // Check for specific line names that have dedicated pages
     if (linePageMap[line]) {
       return linePageMap[line];
     }
     
-    // Default to search page if no specific landing page is found
-    return `/search?keyword=${encodeURIComponent(line)}`;
+    return `/search?line=${encodeURIComponent(line)}`;
   };
 
 
@@ -362,3 +359,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+    

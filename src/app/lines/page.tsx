@@ -16,7 +16,7 @@ export default function AllLinesPage() {
   useEffect(() => {
     async function fetchLines() {
         const products = await loadProductsFromCSV();
-        const uniqueLines = [...new Set(products.map(p => p.name))].sort();
+        const uniqueLines = [...new Set(products.map(p => p.line))].sort();
         setLines(uniqueLines);
     }
     fetchLines();
@@ -36,7 +36,7 @@ export default function AllLinesPage() {
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
         {lines.map((line) => (
-          <Link key={line} href={`/search?keyword=${encodeURIComponent(line)}`} className="group">
+          <Link key={line} href={`/search?line=${encodeURIComponent(line)}`} className="group">
             <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full flex flex-col">
               <div className="relative h-40 w-full">
                 <Image
@@ -60,3 +60,5 @@ export default function AllLinesPage() {
     </>
   );
 }
+
+    
