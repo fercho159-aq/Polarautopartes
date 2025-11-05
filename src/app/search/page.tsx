@@ -17,6 +17,7 @@ function SearchPageContent() {
   const initialModel = searchParams.get('model') || '';
   const initialYear = searchParams.get('year') || '';
   const initialKeyword = searchParams.get('keyword') || '';
+  const initialLine = searchParams.get('line') || '';
 
 
   const [allProducts, setAllProducts] = useState<Product[]>([]);
@@ -24,7 +25,7 @@ function SearchPageContent() {
   const [isLoading, setIsLoading] = useState(true);
 
    const applyFilters = (products: Product[], criteria: SearchCriteria) => {
-    const { keyword, brand, model, year, motor } = criteria;
+    const { keyword, line, brand, model, year, motor } = criteria;
     
     return products.filter(product => {
       const keywordMatch = keyword 
@@ -32,6 +33,8 @@ function SearchPageContent() {
           product.sku.toLowerCase().includes(keyword.toLowerCase()) ||
           (product.description && product.description.toLowerCase().includes(keyword.toLowerCase()))
         : true;
+      
+      const lineMatch = line ? product.line.toLowerCase() === line.toLowerCase() : true;
 
       const brandMatch = brand 
         ? product.applications.some(app => app.brand.toLowerCase() === brand.toLowerCase())
@@ -57,9 +60,7 @@ function SearchPageContent() {
         ? product.applications.some(app => app.motor === motor)
         : true;
 
-      const nameMatch = searchParams.get('keyword') ? product.name === searchParams.get('keyword') : true;
-
-      return keywordMatch && brandMatch && modelMatch && yearMatch && nameMatch && motorMatch;
+      return keywordMatch && lineMatch && brandMatch && modelMatch && yearMatch && motorMatch;
     });
   };
 
@@ -74,10 +75,11 @@ function SearchPageContent() {
         model: initialModel,
         year: initialYear,
         keyword: initialKeyword,
+        line: initialLine,
         motor: searchParams.get('motor') || '',
       };
 
-      if (Object.values(initialCriteria).some(v => v) || searchParams.get('keyword')) {
+      if (Object.values(initialCriteria).some(v => v)) {
         const initiallyFiltered = applyFilters(products, initialCriteria);
         setFilteredProducts(initiallyFiltered);
       } else {
@@ -93,13 +95,11 @@ function SearchPageContent() {
   const handleSearch = (criteria: SearchCriteria) => {
      const params = new URLSearchParams();
     if (criteria.keyword) params.set('keyword', criteria.keyword);
+    if (criteria.line) params.set('line', criteria.line);
     if (criteria.brand) params.set('brand', criteria.brand);
     if (criteria.model) params.set('model', criteria.model);
     if (criteria.year) params.set('year', criteria.year);
     if (criteria.motor) params.set('motor', criteria.motor);
-    
-    const line = searchParams.get('line');
-    if (line) params.set('line', line);
 
     // Using replace to avoid bloating browser history on every filter change
     router.replace(`/search?${params.toString()}`);

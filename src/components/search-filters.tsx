@@ -15,6 +15,7 @@ import { loadProductsFromCSV } from '@/lib/data-loader';
 
 export interface SearchCriteria {
     keyword: string;
+    line: string;
     brand: string;
     model: string;
     year: string;
@@ -40,11 +41,13 @@ export function SearchFilters({
 }: SearchFiltersProps) {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [keyword, setKeyword] = useState('');
+  const [selectedLine, setSelectedLine] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('');
   const [selectedModel, setSelectedModel] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
   const [selectedMotor, setSelectedMotor] = useState('');
   
+  const [lines, setLines] = useState<string[]>([]);
   const [brands, setBrands] = useState<string[]>([]);
   const [availableModels, setAvailableModels] = useState<string[]>([]);
   const [availableYears, setAvailableYears] = useState<string[]>([]);
@@ -68,6 +71,9 @@ export function SearchFilters({
       const products = await loadProductsFromCSV();
       setAllProducts(products);
 
+      const uniqueLines = [...new Set(products.map(p => p.line))].filter(Boolean).sort();
+      setLines(uniqueLines);
+
       const allApps = products.flatMap(p => p.applications);
       const uniqueBrands = [...new Set(allApps.map(app => app.brand))].filter(Boolean).sort();
       
@@ -79,6 +85,7 @@ export function SearchFilters({
   useEffect(() => {
     const criteria: SearchCriteria = {
         keyword: debouncedKeyword,
+        line: selectedLine,
         brand: selectedBrand,
         model: selectedModel,
         year: selectedYear,
@@ -89,7 +96,7 @@ export function SearchFilters({
       onSearch(criteria);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedKeyword, selectedBrand, selectedModel, selectedYear, selectedMotor]);
+  }, [debouncedKeyword, selectedLine, selectedBrand, selectedModel, selectedYear, selectedMotor]);
 
   const getYearsFromRange = (range: string): number[] => {
     if (!range) return [];
@@ -143,6 +150,7 @@ export function SearchFilters({
 
   const handleClear = () => {
     setKeyword('');
+    setSelectedLine('');
     setSelectedBrand('');
     setSelectedModel('');
     setSelectedYear('');
@@ -155,7 +163,17 @@ export function SearchFilters({
 
   if (variant === 'compact') {
       return (
-        <form onSubmit={(e) => e.preventDefault()} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center gap-3">
+        <form onSubmit={(e) => e.preventDefault()} className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 items-center gap-3">
+             <Select onValueChange={setSelectedLine} value={selectedLine}>
+              <SelectTrigger>
+                <SelectValue placeholder="Línea" />
+              </SelectTrigger>
+              <SelectContent>
+                {lines.map((line) => (
+                  <SelectItem key={line} value={line}>{line}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
             <Select onValueChange={handleBrandChange} value={selectedBrand}>
               <SelectTrigger>
                 <SelectValue placeholder="Marca" />
@@ -227,6 +245,19 @@ export function SearchFilters({
           )}
           
           <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+             <div className="flex flex-col gap-1.5 md:col-span-2">
+                <Label htmlFor="line-select">Línea</Label>
+                <Select onValueChange={setSelectedLine} value={selectedLine}>
+                <SelectTrigger id="line-select">
+                    <SelectValue placeholder="Selecciona" />
+                </SelectTrigger>
+                <SelectContent>
+                    {lines.map((line) => (
+                    <SelectItem key={line} value={line}>{line}</SelectItem>
+                    ))}
+                </SelectContent>
+                </Select>
+            </div>
             <div className="flex flex-col gap-1.5">
                 <Label htmlFor="brand-select">Marca</Label>
                 <Select onValueChange={handleBrandChange} value={selectedBrand}>
