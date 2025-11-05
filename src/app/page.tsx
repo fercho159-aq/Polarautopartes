@@ -14,9 +14,6 @@ import { SearchFilters } from '@/components/search-filters';
 import { Badge } from '@/components/ui/badge';
 import { useRouter } from 'next/navigation';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import { useEffect, useState } from 'react';
-import type { Product } from '@/types';
-import { loadProductsFromCSV } from '@/lib/data-loader';
 
 const testimonials = [
   {
@@ -72,30 +69,20 @@ const heroSlides = [
     }
 ];
 
-const linePageMap: { [key: string]: string } = {
-  'Bombas de Agua': '/lines/bomba-de-agua',
-  'Depósitos de Anticongelante': '/lines/deposito-de-anticongelante',
-  'Motoventiladores': '/lines/motoventiladores',
-  'Radiadores': '/lines/radiadores',
-  'Tapones': '/lines/tapones',
-  'Tomas de Agua': '/lines/toma-de-agua',
-  'Tubos de Enfriamiento': '/lines/tubos-de-enfriamiento',
-};
+const productLines = [
+    { name: 'Bombas de Agua', href: '/lines/bomba-de-agua', image: '/Images/a2.png' },
+    { name: 'Depósitos de Anticongelante', href: '/lines/deposito-de-anticongelante', image: '/Images/a2.png' },
+    { name: 'Motoventiladores', href: '/lines/motoventiladores', image: '/Images/a2.png' },
+    { name: 'Radiadores', href: '/lines/radiadores', image: '/Images/a2.png' },
+    { name: 'Tapones', href: '/lines/tapones', image: '/Images/a2.png' },
+    { name: 'Tomas de Agua', href: '/lines/toma-de-agua', image: '/Images/a2.png' },
+    { name: 'Tubos de Enfriamiento', href: '/lines/tubos-de-enfriamiento', image: '/Images/a2.png' },
+    { name: 'Todas las Líneas', href: '/lines', image: '/Images/a2.png' },
+]
 
 
 export default function HomePage() {
   const router = useRouter();
-  const [productLines, setProductLines] = useState<string[]>([]);
-
-  useEffect(() => {
-    async function loadInitialData() {
-      const allProducts = await loadProductsFromCSV();
-      
-      const uniqueLines = [...new Set(allProducts.map(p => p.line))].sort();
-      setProductLines(uniqueLines);
-    }
-    loadInitialData();
-  }, []);
 
   const handleSearch = (criteria: any) => {
     const params = new URLSearchParams();
@@ -105,14 +92,6 @@ export default function HomePage() {
     if (criteria.year) params.set('year', criteria.year);
     if (criteria.motor) params.set('motor', criteria.motor);
     router.push(`/search?${params.toString()}`);
-  };
-
-  const getLineHref = (line: string): string => {
-    if (linePageMap[line]) {
-      return linePageMap[line];
-    }
-    
-    return `/search?line=${encodeURIComponent(line)}`;
   };
 
 
@@ -188,12 +167,12 @@ export default function HomePage() {
             <h2 className="text-3xl font-headline font-bold text-center text-primary mb-12">Nuestras Líneas de Producto</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {productLines.map((line) => (
-                <Link key={line} href={getLineHref(line)} className="group">
+                <Link key={line.name} href={line.href} className="group">
                   <Card className="overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1">
                      <div className="relative h-40 w-full">
                         <Image
-                          src="/Images/a2.png"
-                          alt={line}
+                          src={line.image}
+                          alt={line.name}
                           fill
                           objectFit="cover"
                           className="transition-transform duration-300 group-hover:scale-110"
@@ -201,7 +180,7 @@ export default function HomePage() {
                         />
                       </div>
                     <CardContent className="p-4 text-center">
-                      <h3 className="font-headline font-semibold text-lg">{line}</h3>
+                      <h3 className="font-headline font-semibold text-lg">{line.name}</h3>
                     </CardContent>
                   </Card>
                 </Link>
@@ -359,5 +338,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-    
