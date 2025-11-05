@@ -109,23 +109,25 @@ export default function HomePage() {
   };
 
   const getLineHref = (line: string): string => {
+    const normalizedLine = line.toLowerCase();
+    
+    // Check for specific line names that have dedicated pages
     if (linePageMap[line]) {
       return linePageMap[line];
     }
     
-    // Special cases for combined lines
-    if (line.toLowerCase().includes('tapón')) {
+    // Fallback for similar names
+    if (normalizedLine.includes('tapón')) {
         return '/lines/tapones';
     }
-
-    if (line.toLowerCase() === 'motoventiladores') {
+    if (normalizedLine === 'motoventiladores') {
       return '/lines/motoventiladores';
     }
-
-    if (line.toLowerCase() === 'radiadores') {
+    if (normalizedLine === 'radiadores') {
       return '/lines/radiadores';
     }
 
+    // Default to search page if no specific landing page is found
     return `/search?keyword=${encodeURIComponent(line)}`;
   };
 
