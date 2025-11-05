@@ -102,7 +102,7 @@ export default function MotoventiladoresPage() {
                   <Wrench className="h-5 w-5 text-primary" />
                   Catálogo de Motoventiladores
               </CardTitle>
-          </Header>
+          </CardHeader>
           <CardContent>
               {isLoading ? (
                   <div className="text-center py-16">
