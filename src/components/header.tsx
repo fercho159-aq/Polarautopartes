@@ -29,6 +29,7 @@ const navLinks = [
 const lineLinks = [
     { href: '/lines', label: 'Todas las Líneas' },
     { href: '/lines/bomba-de-agua', label: 'Bomba de Agua' },
+    { href: '/lines/deposito-de-anticongelante', label: 'Depósito de Anticongelante' },
 ]
 
 export default function Header() {
