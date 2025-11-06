@@ -34,7 +34,7 @@ function SearchPageContent() {
           (product.description && product.description.toLowerCase().includes(keyword.toLowerCase()))
         : true;
       
-      const lineMatch = line ? product.line.toLowerCase() === line.toLowerCase() : true;
+      const lineMatch = line ? product.name.toLowerCase() === line.toLowerCase() : true;
 
       const brandMatch = brand 
         ? product.applications.some(app => app.brand.toLowerCase() === brand.toLowerCase())
