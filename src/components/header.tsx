@@ -46,6 +46,7 @@ const lineLinks = [
     { href: '/lines/tapones', label: 'Tapones' },
     { href: '/lines/toma-de-agua', label: 'Toma de Agua' },
     { href: '/lines/tubos-de-enfriamiento', label: 'Tubos de Enfriamiento' },
+    { href: '/lines/mangueras', label: 'Mangueras' },
 ]
 
 export default function Header() {

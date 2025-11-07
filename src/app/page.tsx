@@ -34,16 +34,17 @@ const heroSlides = [
 ];
 
 const productLines = [
-    { name: 'Bombas de Agua', href: '/lines/bomba-de-agua', image: '/Images/Categorias/BOMBAS DE AGUA/BOMBA DE AGUA.jpg' },
-    { name: 'Depósitos de Anticongelante', href: '/lines/deposito-de-anticongelante', image: '/Images/Categorias/DEPOSITOS DE ANTICONGELANTE/DEPOSITO DE ANTICONGELANTE 1.jpg' },
-    { name: 'Motoventiladores', href: '/lines/motoventiladores', image: '/Images/Categorias/MOTOVENTILADORES/MOTOVENTILADOR 1.jpg' },
-    { name: 'Radiadores', href: '/lines/radiadores', image: '/Images/Categorias/RADIADORES/RADIADOR 1.jpg' },
+    { name: 'Bombas de Agua', href: '/lines/bomba-de-agua', image: '/Images/Categorias/BOMBAS DE AGUA/BOMBA DE AGUA.jpg', dataAiHint: "water pump" },
+    { name: 'Depósitos de Anticongelante', href: '/lines/deposito-de-anticongelante', image: '/Images/Categorias/DEPOSITOS DE ANTICONGELANTE/DEPOSITO DE ANTICONGELANTE 1.jpg', dataAiHint: "coolant reservoir" },
+    { name: 'Motoventiladores', href: '/lines/motoventiladores', image: '/Images/Categorias/MOTOVENTILADORES/MOTOVENTILADOR 1.jpg', dataAiHint: "cooling fan" },
+    { name: 'Radiadores', href: '/lines/radiadores', image: '/Images/Categorias/RADIADORES/RADIADOR 1.jpg', dataAiHint: "radiator" },
     { name: 'Soportes de Motor y Transmisión', href: '/lines/soportes-de-motor-y-transmision', image: 'https://picsum.photos/seed/engine-mount/600/400', dataAiHint: 'engine mount' },
-    { name: 'Tapones', href: '/lines/tapones', image: '/Images/Categorias/TAPONES DE DEPOSITO Y RADIADOR/TAPON DE DEPOSITO DE ANTICONGELANTE 1.jpg' },
-    { name: 'Tomas de Agua', href: '/lines/toma-de-agua', image: '/Images/Categorias/TOMAS DE AGUA/TOMA DE AGUA 1.jpg' },
-    { name: 'Tubos de Enfriamiento', href: '/lines/tubos-de-enfriamiento', image: '/Images/Categorias/TUBOS DE ENFRIAMIENTO/TUBO DE ENFRIAMIENTO 1.jpg' },
+    { name: 'Tapones', href: '/lines/tapones', image: '/Images/Categorias/TAPONES DE DEPOSITO Y RADIADOR/TAPON DE DEPOSITO DE ANTICONGELANTE 1.jpg', dataAiHint: "radiator cap" },
+    { name: 'Tomas de Agua', href: '/lines/toma-de-agua', image: '/Images/Categorias/TOMAS DE AGUA/TOMA DE AGUA 1.jpg', dataAiHint: "water outlet" },
+    { name: 'Tubos de Enfriamiento', href: '/lines/tubos-de-enfriamiento', image: '/Images/Categorias/TUBOS DE ENFRIAMIENTO/TUBO DE ENFRIAMIENTO 1.jpg', dataAiHint: "cooling pipe" },
     { name: 'Poleas y Tensores', href: '/lines/poleas-y-tensores', image: 'https://picsum.photos/seed/pulleys-tensioners/600/400', dataAiHint: 'pulleys tensioners' },
-    { name: 'Todas las Líneas', href: '/lines', image: '/Images/a2.png' },
+    { name: 'Mangueras', href: '/lines/mangueras', image: 'https://picsum.photos/seed/radiator-hose/600/400', dataAiHint: 'radiator hose' },
+    { name: 'Todas las Líneas', href: '/lines', image: '/Images/a2.png', dataAiHint: "car parts" },
 ]
 
 
@@ -131,7 +132,7 @@ export default function HomePage() {
         <section id="lineas" className="py-16">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-headline font-bold text-center text-primary mb-12">Nuestras Líneas de Producto</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
               {productLines.map((line) => (
                 <Link key={line.name} href={line.href} className="group">
                   <Card className="overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1">
