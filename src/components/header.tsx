@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -42,6 +41,7 @@ const lineLinks = [
     { href: '/lines/deposito-de-anticongelante', label: 'Depósito de Anticongelante' },
     { href: '/lines/motoventiladores', label: 'Motoventiladores' },
     { href: '/lines/radiadores', label: 'Radiadores' },
+    { href: '/lines/soportes-de-motor-y-transmision', label: 'Soportes de Motor y Transmisión' },
     { href: '/lines/tapones', label: 'Tapones' },
     { href: '/lines/toma-de-agua', label: 'Toma de Agua' },
     { href: '/lines/tubos-de-enfriamiento', label: 'Tubos de Enfriamiento' },

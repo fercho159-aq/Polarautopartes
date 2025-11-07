@@ -1,5 +1,3 @@
-
-
 'use client';
 
 import Link from 'next/link';
@@ -74,6 +72,7 @@ const productLines = [
     { name: 'Depósitos de Anticongelante', href: '/lines/deposito-de-anticongelante', image: '/Images/Categorias/DEPOSITOS DE ANTICONGELANTE/DEPOSITO DE ANTICONGELANTE 1.jpg' },
     { name: 'Motoventiladores', href: '/lines/motoventiladores', image: '/Images/Categorias/MOTOVENTILADORES/MOTOVENTILADOR 1.jpg' },
     { name: 'Radiadores', href: '/lines/radiadores', image: '/Images/Categorias/RADIADORES/RADIADOR 1.jpg' },
+    { name: 'Soportes de Motor y Transmisión', href: '/lines/soportes-de-motor-y-transmision', image: 'https://picsum.photos/seed/engine-mount/600/400', dataAiHint: 'engine mount' },
     { name: 'Tapones', href: '/lines/tapones', image: '/Images/Categorias/TAPONES DE DEPOSITO Y RADIADOR/TAPON DE DEPOSITO DE ANTICONGELANTE 1.jpg' },
     { name: 'Tomas de Agua', href: '/lines/toma-de-agua', image: '/Images/Categorias/TOMAS DE AGUA/TOMA DE AGUA 1.jpg' },
     { name: 'Tubos de Enfriamiento', href: '/lines/tubos-de-enfriamiento', image: '/Images/Categorias/TUBOS DE ENFRIAMIENTO/TUBO DE ENFRIAMIENTO 1.jpg' },
@@ -176,7 +175,7 @@ export default function HomePage() {
                           fill
                           objectFit="cover"
                           className="transition-transform duration-300 group-hover:scale-110"
-                          data-ai-hint="car part"
+                          data-ai-hint={line.dataAiHint || "car part"}
                         />
                       </div>
                     <CardContent className="p-4 text-center">
