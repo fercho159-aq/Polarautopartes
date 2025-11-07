@@ -36,17 +36,17 @@ const heroSlides = [
 const productLines = [
     { name: 'Bombas de Agua', href: '/lines/bomba-de-agua', image: '/Images/Categorias/BOMBAS DE AGUA/BOMBA DE AGUA.jpg', dataAiHint: "water pump" },
     { name: 'Depósitos de Anticongelante', href: '/lines/deposito-de-anticongelante', image: '/Images/Categorias/DEPOSITOS DE ANTICONGELANTE/DEPOSITO DE ANTICONGELANTE 1.jpg', dataAiHint: "coolant reservoir" },
-    { name: 'Anticongelantes', href: '/lines/anticongelantes', image: 'https://picsum.photos/seed/antifreeze-bottle/600/400', dataAiHint: 'antifreeze bottle' },
-    { name: 'Filtros de Aire', href: '/lines/filtros-de-aire', image: 'https://picsum.photos/seed/air-filter/600/400', dataAiHint: 'air filter' },
-    { name: 'Mangueras', href: '/lines/mangueras', image: 'https://picsum.photos/seed/radiator-hose/600/400', dataAiHint: 'radiator hose' },
+    { name: 'Anticongelantes', href: '/lines/anticongelantes', image: '/Images/Categorias/DEPOSITOS DE ANTICONGELANTE/DEPOSITO DE ANTICONGELANTE 2.jpg', dataAiHint: 'antifreeze bottle' },
+    { name: 'Filtros de Aire', href: '/lines/filtros-de-aire', image: '/Images/Categorias/FILTROS DE AIRE/FILTRO DE AIRE 3.jpg', dataAiHint: 'air filter' },
+    { name: 'Mangueras', href: '/lines/mangueras', image: '/Images/Categorias/MANGUERAS/MANGUERA 1.jpg', dataAiHint: 'radiator hose' },
     { name: 'Motoventiladores', href: '/lines/motoventiladores', image: '/Images/Categorias/MOTOVENTILADORES/MOTOVENTILADOR 1.jpg', dataAiHint: "cooling fan" },
-    { name: 'Poleas y Tensores', href: '/lines/poleas-y-tensores', image: 'https://picsum.photos/seed/pulleys-tensioners/600/400', dataAiHint: 'pulleys tensioners' },
+    { name: 'Poleas y Tensores', href: '/lines/poleas-y-tensores', image: '/Images/Categorias/POLEAS/POLEA 1.jpg', dataAiHint: 'pulleys tensioners' },
     { name: 'Radiadores', href: '/lines/radiadores', image: '/Images/Categorias/RADIADORES/RADIADOR 1.jpg', dataAiHint: "radiator" },
-    { name: 'Soportes de Motor y Transmisión', href: '/lines/soportes-de-motor-y-transmision', image: 'https://picsum.photos/seed/engine-mount/600/400', dataAiHint: 'engine mount' },
+    { name: 'Soportes de Motor y Transmisión', href: '/lines/soportes-de-motor-y-transmision', image: '/Images/Categorias/SOPORTES DE MOTOR Y TRANSMISION/SOPORTE DE MOTOR 1.png', dataAiHint: 'engine mount' },
     { name: 'Tapones', href: '/lines/tapones', image: '/Images/Categorias/TAPONES DE DEPOSITO Y RADIADOR/TAPON DE DEPOSITO DE ANTICONGELANTE 1.jpg', dataAiHint: "radiator cap" },
     { name: 'Tomas de Agua', href: '/lines/toma-de-agua', image: '/Images/Categorias/TOMAS DE AGUA/TOMA DE AGUA 1.jpg', dataAiHint: "water outlet" },
     { name: 'Tubos de Enfriamiento', href: '/lines/tubos-de-enfriamiento', image: '/Images/Categorias/TUBOS DE ENFRIAMIENTO/TUBO DE ENFRIAMIENTO 1.jpg', dataAiHint: "cooling pipe" },
-    { name: 'Condensadores', href: '/lines/condensadores', image: 'https://picsum.photos/seed/ac-condenser/600/400', dataAiHint: "ac condenser" },
+    { name: 'Condensadores', href: '/lines/condensadores', image: '/Images/Categorias/CONDENSADORES/CONDENSADOR 1.jpg', dataAiHint: "ac condenser" },
     { name: 'Todas las Líneas', href: '/lines', image: '/Images/a2.png', dataAiHint: "car parts" },
 ];
 
