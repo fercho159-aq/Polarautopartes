@@ -39,14 +39,15 @@ const lineLinks = [
     { href: '/lines', label: 'Todas las Líneas' },
     { href: '/lines/bomba-de-agua', label: 'Bomba de Agua' },
     { href: '/lines/deposito-de-anticongelante', label: 'Depósito de Anticongelante' },
+    { href: '/lines/filtros-de-aire', label: 'Filtros de Aire' },
+    { href: '/lines/mangueras', label: 'Mangueras' },
     { href: '/lines/motoventiladores', label: 'Motoventiladores' },
+    { href: '/lines/poleas-y-tensores', label: 'Poleas y Tensores' },
     { href: '/lines/radiadores', label: 'Radiadores' },
     { href: '/lines/soportes-de-motor-y-transmision', label: 'Soportes de Motor y Transmisión' },
-    { href: '/lines/poleas-y-tensores', label: 'Poleas y Tensores' },
     { href: '/lines/tapones', label: 'Tapones' },
     { href: '/lines/toma-de-agua', label: 'Toma de Agua' },
     { href: '/lines/tubos-de-enfriamiento', label: 'Tubos de Enfriamiento' },
-    { href: '/lines/mangueras', label: 'Mangueras' },
 ]
 
 export default function Header() {
