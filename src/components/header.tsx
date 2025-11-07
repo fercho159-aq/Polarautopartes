@@ -42,6 +42,7 @@ const lineLinks = [
     { href: '/lines/motoventiladores', label: 'Motoventiladores' },
     { href: '/lines/radiadores', label: 'Radiadores' },
     { href: '/lines/soportes-de-motor-y-transmision', label: 'Soportes de Motor y Transmisión' },
+    { href: '/lines/poleas-y-tensores', label: 'Poleas y Tensores' },
     { href: '/lines/tapones', label: 'Tapones' },
     { href: '/lines/toma-de-agua', label: 'Toma de Agua' },
     { href: '/lines/tubos-de-enfriamiento', label: 'Tubos de Enfriamiento' },
