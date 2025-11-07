@@ -36,6 +36,7 @@ const heroSlides = [
 const productLines = [
     { name: 'Bombas de Agua', href: '/lines/bomba-de-agua', image: '/Images/Categorias/BOMBAS DE AGUA/BOMBA DE AGUA.jpg', dataAiHint: "water pump" },
     { name: 'Depósitos de Anticongelante', href: '/lines/deposito-de-anticongelante', image: '/Images/Categorias/DEPOSITOS DE ANTICONGELANTE/DEPOSITO DE ANTICONGELANTE 1.jpg', dataAiHint: "coolant reservoir" },
+    { name: 'Anticongelantes', href: '/lines/anticongelantes', image: 'https://picsum.photos/seed/antifreeze-bottle/600/400', dataAiHint: 'antifreeze bottle' },
     { name: 'Filtros de Aire', href: '/lines/filtros-de-aire', image: 'https://picsum.photos/seed/air-filter/600/400', dataAiHint: 'air filter' },
     { name: 'Mangueras', href: '/lines/mangueras', image: 'https://picsum.photos/seed/radiator-hose/600/400', dataAiHint: 'radiator hose' },
     { name: 'Motoventiladores', href: '/lines/motoventiladores', image: '/Images/Categorias/MOTOVENTILADORES/MOTOVENTILADOR 1.jpg', dataAiHint: "cooling fan" },
