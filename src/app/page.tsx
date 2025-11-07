@@ -46,8 +46,9 @@ const productLines = [
     { name: 'Tapones', href: '/lines/tapones', image: '/Images/Categorias/TAPONES DE DEPOSITO Y RADIADOR/TAPON DE DEPOSITO DE ANTICONGELANTE 1.jpg', dataAiHint: "radiator cap" },
     { name: 'Tomas de Agua', href: '/lines/toma-de-agua', image: '/Images/Categorias/TOMAS DE AGUA/TOMA DE AGUA 1.jpg', dataAiHint: "water outlet" },
     { name: 'Tubos de Enfriamiento', href: '/lines/tubos-de-enfriamiento', image: '/Images/Categorias/TUBOS DE ENFRIAMIENTO/TUBO DE ENFRIAMIENTO 1.jpg', dataAiHint: "cooling pipe" },
+    { name: 'Condensadores', href: '/lines/condensadores', image: 'https://picsum.photos/seed/ac-condenser/600/400', dataAiHint: "ac condenser" },
     { name: 'Todas las Líneas', href: '/lines', image: '/Images/a2.png', dataAiHint: "car parts" },
-]
+];
 
 
 export default function HomePage() {

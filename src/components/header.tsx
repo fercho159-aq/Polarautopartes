@@ -49,6 +49,7 @@ const lineLinks = [
     { href: '/lines/toma-de-agua', label: 'Toma de Agua' },
     { href: '/lines/tubos-de-enfriamiento', label: 'Tubos de Enfriamiento' },
     { href: '/lines/anticongelantes', label: 'Anticongelantes' },
+    { href: '/lines/condensadores', label: 'Condensadores' },
 ]
 
 export default function Header() {
