@@ -5,7 +5,7 @@ import { ProductList } from '@/components/product-list';
 import type { Product } from '@/types';
 import { loadProductsFromCSV } from '@/lib/data-loader';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Wrench, ShieldCheck, AlertCircle, Wind } from 'lucide-react';
+import { Wrench, ShieldCheck, Wind } from 'lucide-react';
 import { ContactSection } from '@/components/contact-section';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
