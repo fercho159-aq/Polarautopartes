@@ -14,23 +14,35 @@ import { TestimonialsSection } from '@/components/testimonials-section';
 
 const heroSlides = [
     {
-      image: "/Images/Banners/polar 2.jpg",
+      image: "/Images/Banners/polar 1.jpg",
       title: "Bombas de Agua de Alto Rendimiento",
       subtitle: "Durabilidad y eficiencia para mantener tu motor en la temperatura correcta.",
       hint: "car water pump"
     },
     {
-        image: "/Images/Banners/polar 1.jpg",
+        image: "/Images/Banners/polar 2.jpg",
         title: "Encuentra la Refacción Ideal para tu Auto",
         subtitle: "Calidad y cobertura para el sistema de enfriamiento de tu vehículo.",
         hint: "car engine cooling system"
     },
     {
-        image: "/Images/Banners/polar 3.jpg",
+        image: "/Images/Banners/polar 4.jpg",
         title: "Radiadores para Todos los Modelos",
         subtitle: "La mayor cobertura del mercado para autos nacionales e importados.",
         hint: "automotive parts warehouse"
-    }
+    },
+    {
+      image: "/Images/Banners/polar 5.jpg",
+      title: "Encuentra la Refacción Ideal para tu Auto",
+      subtitle: "Calidad y cobertura para el sistema de enfriamiento de tu vehículo.",
+      hint: "car engine cooling system"
+  },
+  {
+      image: "/Images/Banners/polar 6.jpg",
+      title: "Radiadores para Todos los Modelos",
+      subtitle: "La mayor cobertura del mercado para autos nacionales e importados.",
+      hint: "automotive parts warehouse"
+  }
 ];
 
 const productLines = [
