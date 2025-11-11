@@ -23,6 +23,7 @@ import { usePathname } from 'next/navigation';
 const navLinks = [
     { href: '/', label: 'Inicio' },
     { href: '/nosotros', label: 'Nosotros' },
+    { href: '/blog', label: 'Blog' },
     { href: '/#contacto', label: 'Contacto' },
 ];
 

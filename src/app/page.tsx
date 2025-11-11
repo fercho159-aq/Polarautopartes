@@ -26,19 +26,19 @@ const heroSlides = [
         hint: "car engine cooling system"
     },
     {
-        image: "/Images/Banners/polar 4.jpg",
+        image: "/Images/Banners/polar4.jpg",
         title: "Radiadores para Todos los Modelos",
         subtitle: "La mayor cobertura del mercado para autos nacionales e importados.",
         hint: "automotive parts warehouse"
     },
     {
-      image: "/Images/Banners/polar 5.jpg",
+      image: "/Images/Banners/polar5.jpg",
       title: "Encuentra la Refacción Ideal para tu Auto",
       subtitle: "Calidad y cobertura para el sistema de enfriamiento de tu vehículo.",
       hint: "car engine cooling system"
   },
   {
-      image: "/Images/Banners/polar 6.jpg",
+      image: "/Images/Banners/polar6.jpg",
       title: "Radiadores para Todos los Modelos",
       subtitle: "La mayor cobertura del mercado para autos nacionales e importados.",
       hint: "automotive parts warehouse"

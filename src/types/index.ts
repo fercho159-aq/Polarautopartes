@@ -17,3 +17,16 @@ export interface Product {
   characteristics?: string;
   applications: ProductApplication[];
 }
+
+export interface BlogPost {
+  slug: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  imageUrl: string;
+  content: string;
+  author: {
+    name: string;
+    avatarUrl: string;
+  }
+}
