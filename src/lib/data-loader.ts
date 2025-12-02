@@ -1,3 +1,4 @@
+
 import type { Product, ProductApplication } from '@/types';
 import Papa from 'papaparse';
 
@@ -44,6 +45,10 @@ export async function loadProductsFromCSV(): Promise<Product[]> {
         motor: row.applications_motor,
         years: row.applications_years,
       };
+      
+      // Clean up image URL to handle spaces
+      const imageUrl = row.imageUrl ? row.imageUrl.replace(/\s+/g, '%20') : '/Images/logop.png';
+
 
       if (productMap.has(row.id)) {
         productMap.get(row.id)!.applications.push(application);
@@ -55,7 +60,7 @@ export async function loadProductsFromCSV(): Promise<Product[]> {
           line: row.line,
           description: row.description,
           sku: row.sku,
-          imageUrl: row.imageUrl,
+          imageUrl: imageUrl,
           specifications: row.specifications,
           characteristics: row.characteristics,
           applications: [application],
