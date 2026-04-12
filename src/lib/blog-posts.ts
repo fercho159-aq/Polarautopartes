@@ -6,7 +6,7 @@ export const blogPosts: BlogPost[] = [
     title: 'La Importancia Vital de la Bomba de Agua en tu Motor',
     date: '2024-07-28',
     excerpt: 'La bomba de agua es el corazón del sistema de enfriamiento. Descubre por qué es crucial para la salud de tu motor y cuándo debes reemplazarla.',
-    imageUrl: 'https://picsum.photos/seed/water-pump/800/600',
+    imageUrl: '/Images/WebPolar/Blog/bomba-de-agua-motor.jpg',
     author: {
         name: 'Equipo Polar',
         avatarUrl: '/Images/5.png'
@@ -27,7 +27,7 @@ export const blogPosts: BlogPost[] = [
     title: '5 Errores Comunes que Dañan tu Sistema de Enfriamiento',
     date: '2024-07-20',
     excerpt: 'Evita estos 5 errores comunes con el anticongelante que pueden costarte caro a largo plazo. Aprende a cuidar tu sistema de enfriamiento como un profesional.',
-    imageUrl: 'https://picsum.photos/seed/antifreeze-mistakes/800/600',
+    imageUrl: '/Images/WebPolar/Blog/5-errores-comunes.jpg',
     author: {
         name: 'Equipo Polar',
         avatarUrl: '/Images/5.png'

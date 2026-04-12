@@ -3,57 +3,51 @@
 import { blogPosts } from '@/lib/blog-posts';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, Calendar, User } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import { ArrowRight, Calendar } from 'lucide-react';
 
 export default function BlogIndexPage() {
   return (
-    <div className="container mx-auto px-4 py-12">
-      <section className="text-center mb-12">
-        <h1 className="font-headline text-4xl md:text-5xl font-bold text-primary mb-4">
-          Nuestro Blog
+    <div className="bg-white min-h-screen">
+      <div className="container mx-auto px-4 py-12">
+        <h1 className="font-headline text-3xl md:text-4xl font-bold text-polar-dark text-center mb-12">
+          Bomba de Agua
         </h1>
-        <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-          Consejos de expertos, guías de mantenimiento y las últimas noticias del mundo automotriz.
-        </p>
-      </section>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {blogPosts.map((post) => (
-          <Card key={post.slug} className="flex flex-col overflow-hidden transition-shadow hover:shadow-xl">
-            <Link href={`/blog/${post.slug}`}>
-                <div className="relative aspect-[4/3] w-full">
-                    <Image
-                        src={post.imageUrl}
-                        alt={post.title}
-                        fill
-                        className="object-cover"
-                        data-ai-hint="blog post topic"
-                    />
-                </div>
-            </Link>
-            <CardHeader>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {blogPosts.map((post) => (
+            <Card key={post.slug} className="flex flex-col overflow-hidden transition-shadow hover:shadow-xl border-0 shadow-md">
               <Link href={`/blog/${post.slug}`}>
-                <CardTitle className="font-headline text-xl hover:text-primary transition-colors">{post.title}</CardTitle>
+                <div className="relative aspect-[16/10] w-full">
+                  <Image
+                    src={post.imageUrl}
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                    data-ai-hint="blog post topic"
+                  />
+                </div>
               </Link>
-            </CardHeader>
-            <CardContent className="flex-grow">
-              <p className="text-muted-foreground text-sm">{post.excerpt}</p>
-            </CardContent>
-            <CardFooter className="flex justify-between items-center text-xs text-muted-foreground border-t pt-4">
-               <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-1.5">
-                        <Calendar className="h-3.5 w-3.5" />
-                        <span>{new Date(post.date).toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                    </div>
-               </div>
-              <Link href={`/blog/${post.slug}`} className="text-primary font-semibold flex items-center gap-1 hover:underline">
-                Leer más <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </CardFooter>
-          </Card>
-        ))}
+              <CardContent className="p-5 flex-grow">
+                <Link href={`/blog/${post.slug}`}>
+                  <h2 className="font-headline text-lg font-bold text-foreground hover:text-polar-dark transition-colors mb-2">
+                    {post.title}
+                  </h2>
+                </Link>
+                <p className="text-muted-foreground text-sm leading-relaxed">{post.excerpt}</p>
+              </CardContent>
+              <CardFooter className="flex justify-between items-center text-xs text-muted-foreground border-t px-5 py-3">
+                <div className="flex items-center gap-1.5">
+                  <Calendar className="h-3.5 w-3.5" />
+                  <span>{new Date(post.date).toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                </div>
+                <Link href={`/blog/${post.slug}`} className="text-polar-dark font-semibold flex items-center gap-1 hover:underline">
+                  Leer más <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </CardFooter>
+            </Card>
+          ))}
+        </div>
       </div>
     </div>
   );

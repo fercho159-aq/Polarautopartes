@@ -1,58 +1,76 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaFacebook, FaInstagram, FaYoutube, FaTiktok } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaYoutube, FaTiktok, FaWhatsapp } from 'react-icons/fa';
 
 
 export default function Footer() {
   return (
-    <footer className="bg-card text-card-foreground border-t">
-      <div className="container mx-auto px-4 py-8">
+    <footer className="bg-white border-t">
+      <div className="container mx-auto px-4 py-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Logo & tagline */}
           <div>
             <Link href="/" className="flex items-center gap-2 mb-4">
-               <Image src="/Images/logop.png" alt="Polar Autopartes Logo" width={180} height={40} data-ai-hint="logo" />
+               <Image src="/Images/logop.png" alt="Polar Autopartes Logo" width={150} height={35} data-ai-hint="logo" />
             </Link>
-            <p className="text-muted-foreground text-sm">
-              Tu tienda de confianza para partes de vehículos.
+            <p className="text-polar-dark text-sm font-medium">
+              Tu tienda de confianza<br />para partes de vehículos.
             </p>
           </div>
+
+          {/* Navegación */}
           <div>
-            <h3 className="font-headline text-lg font-semibold mb-4">Navegación</h3>
+            <h3 className="font-headline text-lg font-bold mb-4 text-foreground">Navegación</h3>
             <ul className="space-y-2">
-              <li><Link href="/" className="text-sm text-muted-foreground hover:text-primary">Inicio</Link></li>
-              <li><Link href="/search" className="text-sm text-muted-foreground hover:text-primary">Catálogo</Link></li>
-              <li><Link href="/nosotros" className="text-sm text-muted-foreground hover:text-primary">Nosotros</Link></li>
-              <li><Link href="/#contacto" className="text-sm text-muted-foreground hover:text-primary">Contacto</Link></li>
-              <li><Link href="/how-to-buy" className="text-sm text-muted-foreground hover:text-primary">Cómo Comprar</Link></li>
+              <li><Link href="/" className="text-sm text-polar-cyan hover:text-polar-dark transition-colors">Inicio</Link></li>
+              <li><Link href="/search" className="text-sm text-polar-cyan hover:text-polar-dark transition-colors">Catálogo</Link></li>
+              <li><Link href="/nosotros" className="text-sm text-polar-cyan hover:text-polar-dark transition-colors">Nosotros</Link></li>
+              <li><Link href="/contact" className="text-sm text-polar-cyan hover:text-polar-dark transition-colors">Contacto</Link></li>
+              <li><Link href="/how-to-buy" className="text-sm text-polar-cyan hover:text-polar-dark transition-colors">Cómo Comprar</Link></li>
             </ul>
           </div>
+
+          {/* Legal + Síguenos */}
           <div>
-            <h3 className="font-headline text-lg font-semibold mb-4">Legal</h3>
+            <h3 className="font-headline text-lg font-bold mb-4 text-foreground">Legal</h3>
             <ul className="space-y-2">
-              <li><Link href="/" className="text-sm text-muted-foreground hover:text-primary">Términos y Condiciones</Link></li>
-              <li><Link href="/" className="text-sm text-muted-foreground hover:text-primary">Política de Privacidad</Link></li>
-              <li><Link href="/" className="text-sm text-muted-foreground hover:text-primary">Política de Devoluciones</Link></li>
+              <li><Link href="/" className="text-sm text-muted-foreground hover:text-polar-dark transition-colors">Términos y Condiciones</Link></li>
+              <li><Link href="/" className="text-sm text-muted-foreground hover:text-polar-dark transition-colors">Política de Privacidad</Link></li>
+              <li><Link href="/" className="text-sm text-muted-foreground hover:text-polar-dark transition-colors">Política de Devoluciones</Link></li>
             </ul>
-          </div>
-          <div>
-            <h3 className="font-headline text-lg font-semibold mb-4">Síguenos</h3>
-            <div className="flex space-x-4">
-              <Link href="https://www.facebook.com/polarautopartes?mibextid=ZbWKwL" className="text-muted-foreground hover:text-primary" target="_blank" rel="noopener noreferrer">
-                <FaFacebook className="h-6 w-6" />
-              </Link>
-              <Link href="https://www.instagram.com/polarautopartesmty?igsh=MWhxaTZzanBkdzZncA==" className="text-muted-foreground hover:text-primary" target="_blank" rel="noopener noreferrer">
+            <h3 className="font-headline text-lg font-bold mt-6 mb-4 text-foreground">Síguenos</h3>
+            <div className="flex space-x-3">
+              <Link href="https://www.instagram.com/polarautopartesmty" className="text-foreground hover:text-polar-cyan transition-colors" target="_blank" rel="noopener noreferrer">
                 <FaInstagram className="h-6 w-6" />
               </Link>
-              <Link href="https://youtube.com/@polarautopartesmty?si=tlXGMePgs8R1Gw5c" className="text-muted-foreground hover:text-primary" target="_blank" rel="noopener noreferrer">
+              <Link href="https://www.facebook.com/polarautopartes" className="text-foreground hover:text-polar-cyan transition-colors" target="_blank" rel="noopener noreferrer">
+                <FaFacebook className="h-6 w-6" />
+              </Link>
+              <Link href="https://wa.me/5218116924693" className="text-foreground hover:text-polar-cyan transition-colors" target="_blank" rel="noopener noreferrer">
+                <FaWhatsapp className="h-6 w-6" />
+              </Link>
+              <Link href="https://youtube.com/@polarautopartesmty" className="text-foreground hover:text-polar-cyan transition-colors" target="_blank" rel="noopener noreferrer">
                 <FaYoutube className="h-6 w-6" />
               </Link>
-              <Link href="https://www.tiktok.com/@polarautopartesmty" className="text-muted-foreground hover:text-primary" target="_blank" rel="noopener noreferrer">
+              <Link href="https://www.tiktok.com/@polarautopartesmty" className="text-foreground hover:text-polar-cyan transition-colors" target="_blank" rel="noopener noreferrer">
                 <FaTiktok className="h-6 w-6" />
               </Link>
             </div>
           </div>
+
+          {/* Información de Contacto */}
+          <div>
+            <h3 className="font-headline text-lg font-bold mb-4 text-foreground">Información de Contacto</h3>
+            <div className="space-y-2 text-sm text-muted-foreground">
+              <p className="font-semibold text-foreground">Dirección</p>
+              <p>Jesus Cantu Leal #1423, Monterrey, Mexico</p>
+              <p className="pt-2">WhatsApp: +52 1 81 1692 4693</p>
+              <p className="pt-2"><span className="font-semibold text-foreground">Correos:</span> admon@polarautopartes.com</p>
+            </div>
+          </div>
         </div>
+
         <div className="border-t mt-8 pt-6 text-center text-sm text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} Polar Autopartes. Todos los derechos reservados.</p>
         </div>

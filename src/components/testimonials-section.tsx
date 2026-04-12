@@ -10,31 +10,31 @@ const testimonials = [
     name: 'Carlos M.',
     role: 'Taller Mecánico "El Rápido"',
     quote: 'La calidad de las bombas de agua es insuperable. Mis clientes notan la diferencia y yo tengo la confianza de instalar un producto duradero.',
-    avatar: 'https://placehold.co/100x100.png',
+    avatar: '/Images/5.png',
   },
   {
     name: 'Ana G.',
     role: 'Refaccionaria "Autopartes del Sur"',
     quote: 'El catálogo es muy completo y fácil de usar. Siempre encuentro la pieza exacta que necesito para los modelos más comerciales. ¡Excelente servicio!',
-    avatar: 'https://placehold.co/100x100.png',
+    avatar: '/Images/5.png',
   },
     {
     name: 'Javier L.',
     role: 'Cliente Particular',
     quote: 'Compré un radiador para mi Passat y el ajuste fue perfecto. La entrega fue rápida y el empaque protegió muy bien la pieza. ¡Recomendado!',
-    avatar: 'https://placehold.co/100x100.png',
+    avatar: '/Images/5.png',
   },
   {
     name: 'Sofia R.',
     role: 'Flotilla de Transporte "Logística Veloz"',
     quote: 'Manejamos una flotilla grande y los tensores de accesorios han demostrado ser muy fiables. Hemos reducido costos de mantenimiento gracias a su calidad.',
-    avatar: 'https://placehold.co/100x100.png',
+    avatar: '/Images/5.png',
   },
   {
     name: 'Miguel H.',
     role: 'Especialista en Aire Acondicionado',
     quote: 'Los condensadores tienen un rendimiento excelente. Mis clientes de autos de alta gama quedan muy satisfechos con la eficiencia del enfriamiento.',
-    avatar: 'https://placehold.co/100x100.png',
+    avatar: '/Images/5.png',
   },
 ];
 
