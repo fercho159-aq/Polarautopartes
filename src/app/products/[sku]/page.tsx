@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, use } from 'react';
 import { loadProductsFromCSV } from '@/lib/data-loader';
 import type { Product } from '@/types';
 import { ProductCard } from '@/components/product-card';
@@ -128,9 +128,9 @@ function ProductDetailContent({ sku }: { sku: string }) {
 }
 
 
-export default function ProductDetailPage({ params }: { params: { sku: string } }) {
-    // We decode the sku here and pass it to the client component
-    const sku = safeDecode(params.sku);
+export default function ProductDetailPage({ params }: { params: Promise<{ sku: string }> }) {
+    const { sku: rawSku } = use(params);
+    const sku = safeDecode(rawSku);
 
     return <ProductDetailContent sku={sku} />;
 }

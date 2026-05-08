@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { ProductList } from '@/components/product-list';
+import { CategoryGallery } from '@/components/category-gallery';
 import type { Product } from '@/types';
 import { loadProductsFromCSV } from '@/lib/data-loader';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -77,8 +78,14 @@ export default function FiltrosDeAirePage() {
                             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
                             <p className="mt-4 text-muted-foreground">Cargando productos...</p>
                         </div>
-                    ) : (
+                    ) : products.length > 0 ? (
                         <ProductList products={products} />
+                    ) : (
+                        <CategoryGallery
+                            folder="FILTROS DE AIRE"
+                            images={["FILTRO DE AIRE 1.jpg", "FILTRO DE AIRE 2.jpg", "FILTRO DE AIRE 3.jpg"]}
+                            title="Filtros de Aire"
+                        />
                     )}
                 </CardContent>
             </Card>

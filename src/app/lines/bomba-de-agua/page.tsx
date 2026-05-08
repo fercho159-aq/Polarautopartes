@@ -6,7 +6,8 @@ import { ProductList } from '@/components/product-list';
 import type { Product } from '@/types';
 import { loadProductsFromCSV } from '@/lib/data-loader';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { AlertTriangle, Search, SlidersHorizontal, Info } from 'lucide-react';
+import { Search, SlidersHorizontal, Info } from 'lucide-react';
+import { LineInfoSection } from '@/components/line-info-section';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
@@ -58,11 +59,26 @@ export default function BombaDeAguaPage() {
   }, [searchQuery, brandFilter, modelFilter, yearFilter, products]);
 
   // Get unique brands and models from applications
-  const uniqueBrands = [...new Set(products.flatMap(p => p.applications.map(a => a.brand)))].sort();
-  const uniqueModels = [...new Set(products.flatMap(p => p.applications.map(a => a.model)))].sort();
+  const uniqueBrands = [...new Set(products.flatMap(p => p.applications.map(a => a.brand)))].filter(Boolean).sort();
+  const uniqueModels = [...new Set(products.flatMap(p => p.applications.map(a => a.model)))].filter(Boolean).sort();
 
   return (
     <div className="bg-white min-h-screen">
+      <LineInfoSection
+        title="la Bomba de Agua"
+        description="Es un componente mecánico o eléctrico que impulsa el refrigerante (agua o anticongelante) a través del motor, el radiador y el sistema de calefacción. Se acciona normalmente por una banda o cadena conectada al cigüeñal."
+        quote="La bomba de agua es el corazón del sistema de enfriamiento: hace circular la vida del motor."
+        anatomyImage="/Images/Anatomia/bomba-de-agua-anatomia.png"
+        anatomyImageAlt="Anatomía de la bomba de agua — partes y componentes"
+        steps={[
+          { text: 'La bomba toma el refrigerante frío del radiador.' },
+          { text: 'Lo impulsa hacia el bloque del motor, donde absorbe el calor.' },
+          { text: 'Luego el líquido caliente vuelve al radiador, donde se enfría nuevamente.' },
+          { text: 'Este ciclo se repite constantemente mientras el motor está encendido.' },
+          { text: 'Si la bomba se detiene, el motor se sobrecalienta en minutos.' },
+        ]}
+      />
+
       {/* Filter Bar */}
       <div className="bg-gray-50 border-b sticky top-[104px] z-40">
         <div className="container mx-auto px-4 py-3">

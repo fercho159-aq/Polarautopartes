@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { ProductList } from '@/components/product-list';
+import { CategoryGallery } from '@/components/category-gallery';
 import type { Product } from '@/types';
 import { loadProductsFromCSV } from '@/lib/data-loader';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -105,8 +106,14 @@ export default function SoportesMotorPage() {
                             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
                             <p className="mt-4 text-muted-foreground">Cargando productos...</p>
                         </div>
-                    ) : (
+                    ) : products.length > 0 ? (
                         <ProductList products={products} />
+                    ) : (
+                        <CategoryGallery
+                            folder="SOPORTES DE MOTOR Y TRANSMISION"
+                            images={["SOPORTE DE MOTOR 1.png", "SOPORTE DE MOTOR 2.png", "SOPORTE DE MOTOR 3.png", "SOPORTE DE MOTOR 4.png"]}
+                            title="Soportes de Motor y Transmisión"
+                        />
                     )}
                 </CardContent>
             </Card>

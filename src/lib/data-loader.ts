@@ -46,8 +46,7 @@ export async function loadProductsFromCSV(): Promise<Product[]> {
         years: row.applications_years,
       };
       
-      // Clean up image URL to handle spaces
-      const imageUrl = row.imageUrl ? row.imageUrl.replace(/\s+/g, '%20') : '/Images/logop.png';
+      const imageUrl = row.imageUrl || '/Images/logop.png';
 
 
       if (productMap.has(row.id)) {

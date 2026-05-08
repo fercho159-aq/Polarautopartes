@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, ShoppingCart, User, MapPin, ChevronDown } from 'lucide-react';
+import { Menu, ShoppingCart, MapPin, ChevronDown, FileText } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import {
   Sheet,
@@ -22,10 +22,10 @@ import { usePathname } from 'next/navigation';
 
 const navLinks = [
     { href: '/', label: 'Inicio' },
-    { href: '/lines', label: 'Producto' },
+    { href: '/lines', label: 'Productos' },
     { href: '/nosotros', label: 'Nosotros' },
     { href: '/contact', label: 'Contacto' },
-    { href: '/blog', label: 'blog' },
+    { href: '/blog', label: 'Blog' },
 ];
 
 const catalogLinks = [
@@ -107,6 +107,21 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
+            {/* Catálogos dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger className="px-4 py-2 rounded-full transition-colors text-[15px] text-gray-600 hover:text-polar-dark inline-flex items-center gap-1 outline-none">
+                Catálogos <ChevronDown className="h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                {catalogLinks.map(link => (
+                  <DropdownMenuItem key={link.href} asChild>
+                    <Link href={link.href} target={link.href.endsWith('.pdf') ? '_blank' : undefined} className="flex items-center gap-2">
+                      <FileText className="h-4 w-4" /> {link.label}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </nav>
 
           {/* Right side icons */}
@@ -115,11 +130,6 @@ export default function Header() {
             <Link href="/search" className="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-polar-cyan text-white hover:bg-polar-cyan/90 transition-colors">
               <ShoppingCart className="h-5 w-5" />
             </Link>
-            {/* User icon */}
-            <div className="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-polar-cyan text-white">
-              <User className="h-5 w-5" />
-            </div>
-
             {/* Mobile menu */}
             <div className="md:hidden">
               <Sheet open={isOpen} onOpenChange={setIsOpen}>

@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from 'react';
 import { ProductList } from '@/components/product-list';
+import { CategoryGallery } from '@/components/category-gallery';
 import type { Product } from '@/types';
 import { loadProductsFromCSV } from '@/lib/data-loader';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -68,8 +69,14 @@ export default function RadiadoresPage() {
                             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
                             <p className="mt-4 text-muted-foreground">Cargando productos...</p>
                         </div>
-                    ) : (
+                    ) : products.length > 0 ? (
                         <ProductList products={products} />
+                    ) : (
+                        <CategoryGallery
+                            folder="RADIADORES"
+                            images={["RADIADOR 1.jpg", "RADIADOR 2.jpg"]}
+                            title="Radiadores"
+                        />
                     )}
                 </CardContent>
             </Card>

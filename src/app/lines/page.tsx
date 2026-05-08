@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 const productCategories = [
     { name: 'Bomba de Agua', href: '/lines/bomba-de-agua', image: '/Images/Categorias/BOMBAS DE AGUA/BOMBA DE AGUA.jpg' },
@@ -24,27 +23,6 @@ const productCategories = [
 export default function AllLinesPage() {
   return (
     <div className="bg-white min-h-screen">
-      {/* Hero banner */}
-      <section className="relative w-full">
-        <div className="container mx-auto px-4 py-4">
-          <Carousel className="w-full" opts={{ loop: true }}>
-            <CarouselContent>
-              <CarouselItem>
-                <div className="relative w-full aspect-[16/5] rounded-lg overflow-hidden">
-                  <Image
-                    src="/Images/WebPolar/Productos/banner.jpg"
-                    alt="Polar Autopartes - El Stock Más Completo"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-              </CarouselItem>
-            </CarouselContent>
-          </Carousel>
-        </div>
-      </section>
-
       {/* Product Categories Grid */}
       <section className="py-12">
         <div className="container mx-auto px-4">
