@@ -2,10 +2,10 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Star } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { NosotrosSection } from '@/components/nosotros-section';
 import { HomeFilterBar } from '@/components/home-filter-bar';
+import { BrandsCarousel } from '@/components/brands-carousel';
 
 const heroSlides = [
     {
@@ -65,38 +65,6 @@ const categoriasDestacadas = [
   },
 ];
 
-const testimonials = [
-  {
-    name: 'Carlos M.',
-    role: 'Taller Mecánico "El Rápido"',
-    quote: 'La calidad de las bombas de agua es insuperable. Mis clientes notan la diferencia y yo tengo la confianza de instalar un producto duradero.',
-    avatar: '/Images/5.png',
-  },
-  {
-    name: 'Ana G.',
-    role: 'Refaccionaria "Autopartes del Sur"',
-    quote: 'El catálogo es muy completo y fácil de usar. Siempre encuentro la pieza exacta que necesito para los modelos más comerciales.',
-    avatar: '/Images/5.png',
-  },
-  {
-    name: 'Javier L.',
-    role: 'Cliente Particular',
-    quote: 'Compré un radiador para mi Passat y el ajuste fue perfecto. La entrega fue rápida y el empaque protegió muy bien la pieza.',
-    avatar: '/Images/5.png',
-  },
-  {
-    name: 'Sofia R.',
-    role: 'Flotilla de Transporte',
-    quote: 'Manejamos una flotilla grande y los tensores de accesorios han demostrado ser muy fiables.',
-    avatar: '/Images/5.png',
-  },
-  {
-    name: 'Miguel H.',
-    role: 'Especialista en A/C',
-    quote: 'Los condensadores tienen un rendimiento excelente. Mis clientes quedan muy satisfechos con la eficiencia del enfriamiento.',
-    avatar: '/Images/5.png',
-  },
-];
 
 
 export default function HomePage() {
@@ -202,32 +170,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Comentarios / Testimonials Section */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-headline font-bold text-center mb-12">Comentarios</h2>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-              {testimonials.map((t, i) => (
-                <div key={i} className="flex flex-col items-center text-center">
-                  <div className="relative w-24 h-24 rounded-full overflow-hidden mb-3 bg-gray-200">
-                    <Image
-                      src={t.avatar}
-                      alt={t.name}
-                      fill
-                      className="object-cover"
-                      data-ai-hint="person portrait"
-                    />
-                  </div>
-                  <div className="flex items-center gap-1 mb-1">
-                    <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
-                    <span className="text-sm text-muted-foreground">Opinión</span>
-                  </div>
-                  <p className="font-semibold text-sm">{t.name}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* Distribuidores Oficiales - carrusel de logos de marcas */}
+        <BrandsCarousel />
 
         {/* Nosotros Section - "Tu Aliado de Confianza" */}
         <NosotrosSection />
