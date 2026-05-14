@@ -12,7 +12,7 @@ export default function Footer() {
           {/* Logo & tagline */}
           <div>
             <Link href="/" className="flex items-center gap-2 mb-4">
-               <Image src="/Images/logop.png" alt="Polar Autopartes Logo" width={150} height={35} data-ai-hint="logo" />
+               <Image src="/Images/polar-logo.png" alt="Polar Autopartes Logo" width={152} height={50} data-ai-hint="logo" />
             </Link>
             <p className="text-polar-dark text-sm font-medium">
               Tu tienda de confianza<br />para partes de vehículos.

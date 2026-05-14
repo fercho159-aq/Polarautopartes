@@ -19,7 +19,7 @@ export function NosotrosSection() {
               className="object-cover"
             />
             <div className="absolute top-4 left-4">
-              <Image src="/Images/logop.png" alt="Polar Logo" width={80} height={20} className="brightness-0 invert" />
+              <Image src="/Images/polar-logo-white.png" alt="Polar Logo" width={92} height={30} />
             </div>
           </div>
           {/* Text side */}

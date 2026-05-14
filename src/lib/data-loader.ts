@@ -46,7 +46,7 @@ export async function loadProductsFromCSV(): Promise<Product[]> {
         years: row.applications_years,
       };
       
-      const imageUrl = row.imageUrl || '/Images/logop.png';
+      const imageUrl = row.imageUrl || '/Images/polar-logo.png';
 
 
       if (productMap.has(row.id)) {

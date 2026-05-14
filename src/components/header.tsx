@@ -88,7 +88,7 @@ export default function Header() {
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 shrink-0">
-            <Image src="/Images/logop.png" alt="Polar Autopartes Logo" width={150} height={35} data-ai-hint="logo" />
+            <Image src="/Images/polar-logo.png" alt="Polar Autopartes Logo" width={152} height={50} priority data-ai-hint="logo" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -141,7 +141,7 @@ export default function Header() {
                 </SheetTrigger>
                 <SheetContent side="right">
                     <Link href="/" className="flex items-center gap-2 mb-8" onClick={() => setIsOpen(false)}>
-                       <Image src="/Images/logop.png" alt="Polar Autopartes Logo" width={150} height={35} data-ai-hint="logo" />
+                       <Image src="/Images/polar-logo.png" alt="Polar Autopartes Logo" width={152} height={50} data-ai-hint="logo" />
                     </Link>
                   <nav className="flex flex-col gap-4">
                     {navLinks.map(link => (
